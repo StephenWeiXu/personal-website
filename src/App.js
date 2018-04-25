@@ -1,64 +1,44 @@
 import React, { Component } from 'react';
+import { Route, NavLink, HashRouter } from "react-router-dom";
+import $ from "jquery";
+import "foundation-sites/dist/css/foundation.css";
+import "foundation-sites/dist/js/foundation.min.js";
+import Home from './components/Home';
+import Project from './components/Project';
+import Publication from './components/Publication';
 import './App.css';
 
+window.$ = window.jQuery = $;
 
-class SwitchButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {isButtonON: true};
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(){
-    this.setState( prevState => ({
-      isButtonON: !prevState.isButtonON
-    }));
-  }
-
-  render() {
-    return (
-      <button onClick={this.handleClick}>I am {this.state.isButtonON ? 'ON' : 'OFF'}</button>
-    );
-  }
-}
-
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval( () => this.tick(), 1000);
-  }
-
-  componentWillMount() {
-    clearInterval(this.timerID);
-  }
-
-  tick() {
-    this.setState({date: new Date()});
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Now is { this.state.date.toLocaleTimeString() }.</h1>
-      </div>
-    );
-  }
-}
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <Clock />
-        <SwitchButton />
-      </div>
-    );
-  }
-}
+	componentDidMount() {
+		$(document).foundation();
+	}
 
+	render() {
+	return(
+		<HashRouter>
+			<div>
+				<div className="top-bar">
+					<div className="top-bar-left">
+						<ul className="dropdown menu" data-dropdown-menu>
+							<li> <NavLink to="/">HOME</NavLink></li>
+							<li> <NavLink to="/project">Project</NavLink></li>
+							<li> <NavLink to="/publication">PUBLICATION</NavLink></li>
+						</ul>
+					</div>
+				</div>
+
+				<div className="content">
+					<Route exact path="/" component={Home} />
+					<Route path="/project" component={Project} />
+					<Route path="/publication" component={Publication} />
+				</div>
+			</div>
+		</HashRouter>
+	);
+	}
+}
 
 export default App;
