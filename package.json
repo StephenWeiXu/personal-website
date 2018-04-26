@@ -1,6 +1,7 @@
 {
   "name": "personal-website",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "homepage": "http://StephenWeiXu.github.io/personal-website",
   "description": "Personal website using webpack, react, and github pages",
   "main": "index.js",
   "scripts": {
