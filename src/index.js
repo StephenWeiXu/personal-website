@@ -1,0 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import $ from "jquery";
+import "foundation-sites/dist/css/foundation.css";
+import "foundation-sites/dist/js/foundation.min.js";
+
+ReactDOM.render(<App/>, document.getElementById('root'));
