@@ -1,16 +1,27 @@
-const path = require('path');
-const WebpackShellPlugin = require("webpack-shell-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const htmlWebpackPlugin = new HtmlWebpackPlugin({
-    template: path.join(__dirname, "src/index.html"),
-    filename: "./index.html"
-});
+const path = require('path'),
+    WebpackShellPlugin = require("webpack-shell-plugin"),
+    HtmlWebpackPlugin = require("html-webpack-plugin"),
+    htmlWebpackPlugin = new HtmlWebpackPlugin({
+        template: path.join(__dirname, "src/index.html"),
+        filename: "index.html"
+    }),
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    extractSass = new ExtractTextPlugin({
+        filename: "style.css"
+    });
+
 module.exports = {
-    entry: path.join(__dirname, "src/index.js"),
+    entry: {
+        app: [
+            path.join(__dirname, "./src/index.js"), 
+            path.join(__dirname, "./src/scss/index.scss")
+        ]
+    },
     output: {
-	   path: path.join(__dirname, "build/"),
+	   path: path.join(__dirname, "build"),
 	   filename: "bundle.js"
     },
+    devtool: process.env.NODE_ENV === "production" ? "#hidden-source-map" : "#inline-source-map",
     module: {
         rules: [
             {
@@ -19,18 +30,41 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                test: /\.s?css$/,
+                use: extractSass.extract({
+                    use: [{
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }, {
+                        loader: "sass-loader",
+                        options: {
+                            includePaths: [
+                                "scss",
+                                "node_modules/"
+                            ],
+                            sourceMap: true,
+                            outputStyle: "expanded"
+                        }
+                    }],
+                    fallback: "style-loader"
+                })
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     "file-loader?name=/images/[name].[ext]"
                 ]
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+                loader: "url-loader?limit=100000&name=/fonts/[hash].[ext]"
             }
         ]
     },
     plugins: [
+        extractSass,
         htmlWebpackPlugin,
         new WebpackShellPlugin({
             onBuildStart:[

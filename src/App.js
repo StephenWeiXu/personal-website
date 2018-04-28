@@ -4,7 +4,6 @@ import $ from "jquery";
 import Home from './components/Home';
 import Project from './components/Project';
 import Publication from './components/Publication';
-import './App.css';
 
 window.$ = window.jQuery = $;
 
@@ -17,7 +16,7 @@ class App extends Component {
 	render() {
 		return(
 			<HashRouter>
-				<div>
+				<div className="row">
 					<div className="top-bar">
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
