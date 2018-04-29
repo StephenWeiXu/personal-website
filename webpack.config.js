@@ -1,5 +1,10 @@
 const path = require('path'),
     WebpackShellPlugin = require("webpack-shell-plugin"),
+    StyleLintPlugin = require("stylelint-webpack-plugin"),
+    styleLintSass = new StyleLintPlugin({
+        syntax: "scss",
+        configFile: ".stylelintrc"
+    }),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
     htmlWebpackPlugin = new HtmlWebpackPlugin({
         template: path.join(__dirname, "src/index.html"),
@@ -64,6 +69,7 @@ module.exports = {
         ]
     },
     plugins: [
+        styleLintSass,
         extractSass,
         htmlWebpackPlugin,
         new WebpackShellPlugin({

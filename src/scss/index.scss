@@ -1,12 +1,50 @@
 @import "global";
 
-#root {
-	background-image: url(../../images/background.jpg);
-	height: 100%;
-	position: relative;
-	opacity: 0.6;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: $base-color;
 }
 
+body,
+html {
+  height: 100%;
+}
+
+#root {
+  background-image: url(../../images/background.jpg);
+  height: 100%;
+  position: relative;
+  // opacity: 0.6;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: auto;
+}
+
+.top-bar {
+  a {
+    color: $base-color;
+    font-weight: bold;
+  }
+}
+
+.profile {
+  margin-top: 15%;
+
+  .social-icons {
+    font-size: 25px;
+  }
+}
+
+.data-table {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  .data-heading {
+    th {
+      border-bottom: 1px solid #000;
+    }
+  }
+}

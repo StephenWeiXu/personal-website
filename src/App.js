@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import $ from "jquery";
-import Home from './components/Home';
+import About from './components/About';
 import Project from './components/Project';
 import Publication from './components/Publication';
 
@@ -16,11 +16,11 @@ class App extends Component {
 	render() {
 		return(
 			<HashRouter>
-				<div className="row">
+				<div className="grid-container">
 					<div className="top-bar">
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
-								<li> <NavLink to="/">HOME</NavLink></li>
+								<li> <NavLink to="/">ABOUT</NavLink></li>
 								<li> <NavLink to="/project">PROJECT</NavLink></li>
 								<li> <NavLink to="/publication">PUBLICATION</NavLink></li>
 							</ul>
@@ -28,7 +28,7 @@ class App extends Component {
 					</div>
 
 					<div className="content">
-						<Route exact path="/" component={Home} />
+						<Route exact path="/" component={About} />
 						<Route path="/project" component={Project} />
 						<Route path="/publication" component={Publication} />
 					</div>

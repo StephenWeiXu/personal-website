@@ -1,3 +1,15 @@
 $fa-font-path: "~font-awesome/fonts";
 
+// Foundation variables overrides
 $topbar-background: none;
+$table-background: transparent;
+
+// Defined variables
+$base-color: #fff !default;
+
+$base-spacing: 4px !default;
+$base-spacing-extra-small: 4px !default;
+$base-spacing-small: $base-spacing * 2 !default;
+$base-spacing-medium: $base-spacing * 4 !default;
+$base-spacing-large: $base-spacing * 6 !default;
+$base-spacing-extra-large: $base-spacing * 8 !default;

@@ -1,15 +1,11 @@
 @import "settings";
 @import "foundation-sites/scss/foundation";
 @import "font-awesome/scss/font-awesome";
+@import "display";
+@import "typography";
+@import "spacing";
 
 @include foundation-everything;
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
-body, html {
-    height: 100%;
-}
+@include display-utils;
+@include typography;
+@include spacing;
