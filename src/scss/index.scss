@@ -13,10 +13,10 @@ html {
 }
 
 #root {
-  background-image: url(../../images/background.jpg);
+  // background-image: url(../../images/background.jpg);
+  background: rgba(0, 0, 0, 0.4);
   height: 100%;
   position: relative;
-  // opacity: 0.6;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: auto;
@@ -27,6 +27,10 @@ html {
     color: $base-color;
     font-weight: bold;
   }
+}
+
+.content {
+  margin-top: 50px;
 }
 
 .profile {
@@ -41,6 +45,10 @@ html {
   width: auto;
   margin-left: auto;
   margin-right: auto;
+
+  thead {
+    color: $base-color;
+  }
 
   .data-heading {
     th {

@@ -18,11 +18,15 @@ class Experiment extends Component {
 
 				<h3>Experiment on Corel 10 dataset</h3>
 				<div>
-					<p><b>Corel 10 dataset:</b> This dataset consists of a subset of 1,000 images of the Corel photo database, which are classified into 10 categories. For each category, 100 images with the size of 384 × 256 or 256 × 384 pixels are included. Most of categories or images are informative with complex background.</p>
+					<p>
+						<span className="bold">Corel 10 dataset:</span>
+						This dataset consists of a subset of 1,000 images of the Corel photo database, which are classified into 10 categories. 
+						For each category, 100 images with the size of 384 × 256 or 256 × 384 pixels are included. Most of categories or images are informative with complex background.
+					</p>
 					<div className="txtc">
 						<p className="bold">Table 1. Classification performance on Corel 10 dataset</p>
 						<table className="data-table">
-							<tbody>
+							<thead>
 								<tr className="data-heading">
 									<th>Algorithms</th>
 									<th>Buildings</th>
@@ -33,6 +37,8 @@ class Experiment extends Component {
 									<th>Food</th>
 									<th>Mean</th>
 								</tr>
+							</thead>
+							<tbody>
 								<tr>
 									<th>STL-SVM</th><td>0.66</td><td>0.94</td><td>1</td><td>0.98</td><td>0.98</td><td>0.74</td><td>0.88</td>
 								</tr>
@@ -52,11 +58,17 @@ class Experiment extends Component {
 
 				<h3>Experiment on Caltech 101 dataset</h3>
 				<div>
-					<p><b>Caltech 101 dataset:</b> This Dataset is composed of 101 categories in total, with inconsistent number of images ranging from 40 to 800 per category. The size of each image is roughly 300×200 pixels. For some categories in this database, the images do not contain cluster background, which may results in little difference between the original images and those after saliency region detection. Thus we choose 10 categories with rich background from this database, which are airplanes, motorbikes, electric guitar, elephant, dolphin, faces, dalmatian, kangaroo, sunflower and flamingo, each with a label.</p>
+					<p>
+						<span className="bold">Caltech 101 dataset:</span>
+						This Dataset is composed of 101 categories in total, with inconsistent number of images ranging from 40 to 800 per category. 
+						The size of each image is roughly 300×200 pixels. For some categories in this database, the images do not contain cluster background, 
+						which may results in little difference between the original images and those after saliency region detection. 
+						Thus we choose 10 categories with rich background from this database, which are airplanes, motorbikes, electric guitar, elephant, dolphin, faces, dalmatian, kangaroo, sunflower and flamingo, each with a label.
+					</p>
 					<div className="txtc">
 						<p className="bold">Table 2. Classification performance on Caltech 101 dataset</p>
 						<table className="data-table">
-							<tbody>
+							<thead>
 								<tr className="data-heading">
 									<th>Algorithms</th>
 									<th>Airplanes</th>
@@ -70,8 +82,9 @@ class Experiment extends Component {
 									<th>Sunflower</th>
 									<th>Flamingo</th>
 									<th>Mean</th>
-
 								</tr>
+							</thead>
+							<tbody>
 								<tr>
 									<th>STL-SVM</th><td>0.76</td><td>0.73</td><td>0.20</td><td>0.20</td><td>0.33</td><td>0.90</td><td>0.43</td><td>0.30</td><td>0.73</td><td>0.36</td><td>0.49</td>
 								</tr>
