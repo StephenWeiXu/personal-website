@@ -14,7 +14,7 @@ html {
 
 #root {
   // background-image: url(../../images/background.jpg);
-  background: rgba(0, 0, 0, 0.4);
+  background-color: #c0c0c0;
   height: 100%;
   position: relative;
   background-repeat: no-repeat;
@@ -38,6 +38,13 @@ html {
 
   .social-icons {
     font-size: 25px;
+  }
+}
+
+.project-container {
+  img {
+    max-height: 250px;
+    width: max-content;
   }
 }
 
