@@ -28,9 +28,9 @@ html {
       color: $base-color;
       font-weight: bold;
 
-      &.active span {
-        border-bottom: 1px solid $base-color;
-      }
+      // &.active span {
+      //   border-bottom: 1px solid $base-color;
+      // }
     }
   }
 }
@@ -49,8 +49,16 @@ html {
 
 .project-container {
   img {
-    max-height: 250px;
     width: max-content;
+  }
+
+  .card {
+    height: 360px;
+
+    img {
+      min-height: 250px;
+      height: 250px;
+    }
   }
 }
 
