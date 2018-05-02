@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, BrowserRouter } from "react-router-dom";
+import { Route, NavLink, HashRouter } from "react-router-dom";
 import $ from "jquery";
 import About from './components/About';
 import Project from './components/Project';
@@ -15,14 +15,14 @@ class App extends Component {
 
 	render() {
 		return(
-			<BrowserRouter>
+			<HashRouter>
 				<div className="grid-container">
 					<div className="top-bar">
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
-								<li> <Link to="/" className="active"><span>ABOUT</span></Link></li>
-								<li> <Link to="/project"><span>PROJECT</span></Link></li>
-								<li> <Link to="/publication"><span>PUBLICATION</span></Link></li>
+								<li> <NavLink to="/" className="active"><span>ABOUT</span></NavLink></li>
+								<li> <NavLink to="/project"><span>PROJECT</span></NavLink></li>
+								<li> <NavLink to="/publication"><span>PUBLICATION</span></NavLink></li>
 							</ul>
 						</div>
 					</div>
@@ -33,7 +33,7 @@ class App extends Component {
 						<Route path="/publication" component={Publication} />
 					</div>
 				</div>
-			</BrowserRouter>
+			</HashRouter>
 		);
 	}
 }

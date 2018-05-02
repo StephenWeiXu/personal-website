@@ -25,7 +25,6 @@ module.exports = {
     output: {
 	   path: path.join(__dirname, "build"),
 	   filename: "bundle.js",
-       publicPath: '/'
     },
     devtool: process.env.NODE_ENV === "production" ? "#hidden-source-map" : "#inline-source-map",
     module: {
@@ -84,7 +83,6 @@ module.exports = {
         extensions: [".js", ".jsx"]
     },
     devServer: {
-        historyApiFallback: true,
         port: 3000
     }
 };
