@@ -23,9 +23,15 @@ html {
 }
 
 .top-bar {
-  a {
-    color: $base-color;
-    font-weight: bold;
+  ul[data-dropdown-menu] li {
+    a {
+      color: $base-color;
+      font-weight: bold;
+
+      &.active span {
+        border-bottom: 1px solid $base-color;
+      }
+    }
   }
 }
 
