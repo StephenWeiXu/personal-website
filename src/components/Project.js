@@ -1,42 +1,77 @@
 import React, { Component } from "react";
 import ProjectCard from "./project/ProjectCard";
+import ProjectDetail from "./project/ProjectDetail";
+import { Route } from "react-router-dom";
+
 
 class Project extends Component {
 	constructor(props) {
 		super(props);
 
+		this.match = props.match;
+
 		this.cards = [
 			{
+				"name": "umich-dataset-catalog",
 				"imagePath": "images/project-dataset-catalog.jpg",
 				"title": "Web Application Development for UMICH Health System Dataset Catalog" 
 			},
 			{
+				"name": "retinal-diagnose-tool",
 				"imagePath": "images/project-retinal-diagnose.jpg",
 				"title": "Diagnostic tool development for Retinal Dystrophy" 
 			},
 			{
+				"name": "car-brand-prediction",
 				"imagePath": "images/project-car-brand-prediction.jpg",
 				"title": "Car Brand Prediction Based on Twitter Tweets" 
 			},
 			{
+				"name": "natural-scene-text-detection",
 				"imagePath": "images/project-text-detection.jpg",
 				"title": "Text Detection in Natural Scene Images" 
 			}
 		];
 	}
 
-	render() {
-		const cardsTemplate = this.cards.map((card, index) => {
+	getCardsTemplate() {
+		let cardsTemplate = this.cards.map((card, index) => {
 			return (
-				<ProjectCard key={index} card={card} />
+				<ProjectCard key={index} card={card} match={this.match} />
 			);
 		});
 
-		return (
-			<div className="project-container">
-				<div className="grid-x grid-padding-x small-up-4">
-					{cardsTemplate}
+		return cardsTemplate;
+	}
+
+	getProjectRoute() {
+		let projectRoute = <Route exact path={this.match.path} render={() => (
+				<div className="project-container">
+					<div className="grid-x grid-padding-x small-up-4">
+						{this.getCardsTemplate()}
+					</div>
 				</div>
+			)}
+		/>
+
+		return projectRoute;
+	}
+
+	getCardsRoutes() {
+		let cardsRoutes = this.cards.map((card, index) => {
+			return (
+				<Route key={index} path={`${this.match.path}/${card.name}`} render={() => <ProjectDetail card={card} />} />
+			);
+		});
+
+		return cardsRoutes;
+	}
+
+	render() {
+		return (
+			<div>
+				{this.getProjectRoute()}
+				{this.getCardsRoutes()}
 			</div>
 		);
 	}
