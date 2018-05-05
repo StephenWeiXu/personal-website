@@ -13,10 +13,11 @@ class ProjectCard extends Component {
 		return (
 			<div className="cell">
 				<div className="card">
-					<img src={this.card.imagePath} alt={this.card.title} />
-					<div className="card-section mts">
-						<Link to={`${this.parentMatch.url}/${this.card.name}`}>{this.card.title}</Link>
-					</div>
+					<Link to={`${this.parentMatch.url}/${this.card.name}`}><img src={this.card.imagePath} alt={this.card.title} />
+						<div className="card-section mts">
+							{this.card.title}
+						</div>
+					</Link>
 				</div>
 			</div>
 		);

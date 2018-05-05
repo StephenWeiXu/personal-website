@@ -53,7 +53,7 @@ html {
   }
 
   .card {
-    height: 360px;
+    height: 380px;
 
     img {
       min-height: 250px;
@@ -63,6 +63,10 @@ html {
 
   .project-detail {
     border: 1px solid $base-color;
+
+    .back-icon {
+      font-size: 30px;
+    }
 
     .pagination-icons a {
       font-size: 30px;

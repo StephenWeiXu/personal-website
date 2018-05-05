@@ -9,6 +9,7 @@ class ProjectDetail extends Component {
 		this.previousCard = props.previousCard;
 		this.nextCard = props.nextCard;
 		this.totalLength = props.totalLength;
+		this.parentmatch = props.parentmatch;
 		this.card = props.card;
 	}
 
@@ -24,15 +25,18 @@ class ProjectDetail extends Component {
 						<img src={this.card.imagePath} />
 					</div>
 					<div className="cell auto">
-						<span className="inline-block bold mbm">{this.card.title}</span>
+						<div className="mbm">
+							<span className="bold mbm">{this.card.title}</span>
+							<Link to={this.parentmatch.url} className="float-right back-icon"><i className="fa fa-times-circle txtt"></i></Link>
+						</div>
 						<p dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
 					</div>
 				</div>
 				<div className="grid-x grid-padding-x mbm">
-					<div className="pagination-icons cell small-2 small-offset-10 txtc">
-						<span className="txttb mrm">{this.currentIndex+1}/{this.totalLength}</span>
-						<Link to={`/project/${this.previousCard}`}><i className="fa fa-arrow-circle-left mrs"></i></Link>
-						<Link to={`/project/${this.nextCard}`}><i className="fa fa-arrow-circle-right mls"></i></Link>
+					<div className="pagination-icons cell small-4 small-offset-8 large-2 large-offset-10 txtr">
+						<span className="txttb mrs">{this.currentIndex+1}/{this.totalLength}</span>
+						<Link to={`${this.parentmatch.url}/${this.previousCard}`}><i className="fa fa-arrow-circle-left mrs"></i></Link>
+						<Link to={`${this.parentmatch.url}/${this.nextCard}`}><i className="fa fa-arrow-circle-right mls"></i></Link>
 					</div>
 				</div>
 			</div>
