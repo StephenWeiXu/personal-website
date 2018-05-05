@@ -27,7 +27,7 @@ class App extends Component {
 						</div>
 					</div>
 
-					<div className="content">
+					<div className="content ptxl">
 						<Route exact path="/" component={About} />
 						<Route path="/project" component={Project} />
 						<Route path="/publication" component={Publication} />

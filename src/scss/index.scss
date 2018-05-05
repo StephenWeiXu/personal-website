@@ -40,7 +40,7 @@ html {
 }
 
 .profile {
-  margin-top: 15%;
+  margin-top: 10%;
 
   .social-icons {
     font-size: 25px;
@@ -58,6 +58,14 @@ html {
     img {
       min-height: 250px;
       height: 250px;
+    }
+  }
+
+  .project-detail {
+    border: 1px solid $base-color;
+
+    .pagination-icons a {
+      font-size: 30px;
     }
   }
 }
