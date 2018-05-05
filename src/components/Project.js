@@ -69,6 +69,12 @@ class Project extends Component {
 		this.totalCardsLength = this.cards.length;
 	}
 
+	componentDidMount() {
+		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
+			$("a#about_nav").removeClass("active");
+		}
+	}
+
 	getPreviousCardName(currentIndex) {
 		let previousIndex = currentIndex > 0 ? currentIndex-1 : this.totalCardsLength-1;
 		return this.cards[previousIndex].name;

@@ -28,9 +28,9 @@ html {
       color: $base-color;
       font-weight: bold;
 
-      // &.active span {
-      //   border-bottom: 1px solid $base-color;
-      // }
+      &.active span {
+        border-bottom: 2px solid $base-color;
+      }
     }
   }
 }

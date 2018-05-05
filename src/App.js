@@ -9,8 +9,17 @@ window.$ = window.jQuery = $;
 
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	componentDidMount() {
 		$('[data-dropdown-menu]').foundation();
+	}
+
+	handleNavClick(event) {
+		$(event.target).closest("li").siblings().find("a").removeClass("active");
+		$(event.target).closest("a").addClass("active");
 	}
 
 	render() {
@@ -20,9 +29,9 @@ class App extends Component {
 					<div className="top-bar">
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
-								<li> <NavLink to="/" className="active"><span>ABOUT</span></NavLink></li>
-								<li> <NavLink to="/project"><span>PROJECT</span></NavLink></li>
-								<li> <NavLink to="/publication"><span>PUBLICATION</span></NavLink></li>
+								<li onClick={this.handleNavClick}><NavLink to="/" id="about_nav"><span>ABOUT</span></NavLink></li>
+								<li onClick={this.handleNavClick}><NavLink to="/project"><span>PROJECT</span></NavLink></li>
+								<li onClick={this.handleNavClick}><NavLink to="/publication"><span>PUBLICATION</span></NavLink></li>
 							</ul>
 						</div>
 					</div>
