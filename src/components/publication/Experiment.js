@@ -5,7 +5,7 @@ class Experiment extends Component {
 	render() {
 		return (
 			<li className="accordion-item" data-accordion-item>
-				<a href="#" className="accordion-title"><h3>Experiments</h3></a>
+				<a href="#" className="accordion-title"><h4>Experiments</h4></a>
 				<div className="accordion-content" data-tab-content>
 					<div>
 						<p>In order to verifythe effectiveness of our proposed method, we compare four kinds of algorithms:</p> 

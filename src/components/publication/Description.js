@@ -4,7 +4,7 @@ class Description extends Component {
 	render() {
 		return (
 			<li className="accordion-item" data-accordion-item>
-				<a href="#" className="accordion-title"><h3>Description</h3></a>
+				<a href="#" className="accordion-title"><h4>Description</h4></a>
 				<div className="accordion-content" data-tab-content>
 					<p>
 						In this paper, we propose a novel image classification method based 
