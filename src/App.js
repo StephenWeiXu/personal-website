@@ -10,7 +10,7 @@ window.$ = window.jQuery = $;
 
 class App extends Component {
 	componentDidMount() {
-		$(document).foundation();
+		$('[data-dropdown-menu]').foundation();
 	}
 
 	render() {

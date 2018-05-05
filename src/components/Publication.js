@@ -4,6 +4,10 @@ import Experiment from "./publication/Experiment";
 import Conclusion from "./publication/Conclusion";
 
 class Publication extends Component {
+	componentDidMount() {
+		$("[data-accordion]").foundation();
+	}
+
 	render() {
 		return (
 			<div>
