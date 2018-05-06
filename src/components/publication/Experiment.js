@@ -8,7 +8,7 @@ class Experiment extends Component {
 				<a href="#" className="accordion-title"><h4>Experiments</h4></a>
 				<div className="accordion-content" data-tab-content>
 					<div>
-						<p>In order to verifythe effectiveness of our proposed method, we compare four kinds of algorithms:</p> 
+						<p>In order to verify the effectiveness of our proposed method, we compare four kinds of algorithms:</p> 
 						<ul>
 							<li>STL-SVM on original images (STL-SVM)</li>
 							<li>SVM+MTL on original images (SVM+MTL)</li> 
@@ -20,7 +20,7 @@ class Experiment extends Component {
 					<h3>Experiment on Corel 10 dataset</h3>
 					<div>
 						<p>
-							<span className="bold">Corel 10 dataset:</span>
+							<span className="bold">Corel 10 dataset: </span>
 							This dataset consists of a subset of 1,000 images of the Corel photo database, which are classified into 10 categories. 
 							For each category, 100 images with the size of 384 × 256 or 256 × 384 pixels are included. Most of categories or images are informative with complex background.
 						</p>
@@ -60,7 +60,7 @@ class Experiment extends Component {
 					<h3>Experiment on Caltech 101 dataset</h3>
 					<div>
 						<p>
-							<span className="bold">Caltech 101 dataset:</span>
+							<span className="bold">Caltech 101 dataset: </span>
 							This Dataset is composed of 101 categories in total, with inconsistent number of images ranging from 40 to 800 per category. 
 							The size of each image is roughly 300×200 pixels. For some categories in this database, the images do not contain cluster background, 
 							which may results in little difference between the original images and those after saliency region detection. 

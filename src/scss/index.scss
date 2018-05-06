@@ -29,7 +29,7 @@ html {
       font-weight: bold;
 
       &.active span {
-        border-bottom: 2px solid $base-color;
+        border-bottom: 2px solid $base-white;
       }
     }
   }
@@ -54,22 +54,34 @@ html {
 
   .card {
     height: 380px;
+    background: transparent;
 
     img {
       min-height: 250px;
       height: 250px;
     }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .card-section {
+      color: $base-white;
+      font-weight: bold;
+    }
   }
 
   .project-detail {
-    border: 1px solid $base-color;
+    border: 1px solid $base-white;
 
-    .back-icon {
+    .back-icon,
+    .pagination-icon {
       font-size: 30px;
-    }
+      color: $base-white;
 
-    .pagination-icons a {
-      font-size: 30px;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }
@@ -80,12 +92,12 @@ html {
   margin-right: auto;
 
   thead {
-    color: $base-color;
+    color: $base-white;
   }
 
   .data-heading {
     th {
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid $base-white;
     }
   }
 }

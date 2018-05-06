@@ -1,7 +1,8 @@
 $fa-font-path: "~font-awesome/fonts";
 
 // Defined variables
-$base-color: #fff !default;
+$base-white: #fff !default;
+$base-color: $base-white !default;
 
 $base-spacing: 4px !default;
 $base-spacing-extra-small: 4px !default;

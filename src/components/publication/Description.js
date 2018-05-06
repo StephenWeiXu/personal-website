@@ -34,7 +34,7 @@ class Description extends Component {
 						</li>
 					</ul>
 
-					<div className="txtc">
+					<div className="txtc mtm">
 						<img src="images/publication-flow-chart.jpg" />
 						<p className="mts">Figure 1. The framework of Multi-task learning SVM based on saliency region detection</p>
 					</div>

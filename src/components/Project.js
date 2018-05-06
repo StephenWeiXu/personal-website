@@ -14,7 +14,7 @@ class Project extends Component {
 			{
 				"name": "umich-dataset-catalog",
 				"imagePath": "images/project-dataset-catalog.jpg",
-				"title": "Web Application Development for UMICH Health System Dataset Catalog",
+				"title": "Web App Development for UMICH Health System Dataset Catalog",
 				"description": 'I worked on this project as a Software Developer Intern at <a href="http://cci.med.umich.edu/" target="_blank"> \
 					University of Michigan Health System - Cancer Center Informatics</a> for 4 months. The project goal is to collect and publish \
 					the meatdata of research datasets across departments in University of Michigan Health System to provide researchers a convinent \
@@ -26,7 +26,7 @@ class Project extends Component {
 			{
 				"name": "retinal-diagnose-tool",
 				"imagePath": "images/project-retinal-diagnose.jpg",
-				"title": "Diagnostic tool development for Retinal Dystrophy",
+				"title": "Diagnostic Tool Development with Machine Learning for Retinal Dystrophy",
 				"description": 'I participated in this project as a team member of Machine Learning group, conducted \
 					by <a href="http://www.kellogg.umich.edu/" target="_blank"><i>Kellogg Eye Center(KEC)</i></a> of University of Michigan. Based \
 					on efficient Image Processing techniques and Machine Learning methods, our goal is to design a diagnostic support tool for \

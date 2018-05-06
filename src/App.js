@@ -30,7 +30,7 @@ class App extends Component {
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
 								<li onClick={this.handleNavClick}><NavLink to="/" id="about_nav"><span>ABOUT</span></NavLink></li>
-								<li onClick={this.handleNavClick}><NavLink to="/project"><span>PROJECT</span></NavLink></li>
+								<li onClick={this.handleNavClick}><NavLink to="/project"><span>PROJECTS</span></NavLink></li>
 								<li onClick={this.handleNavClick}><NavLink to="/publication"><span>PUBLICATION</span></NavLink></li>
 							</ul>
 						</div>
