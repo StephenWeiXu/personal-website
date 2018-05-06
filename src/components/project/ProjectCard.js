@@ -9,6 +9,16 @@ class ProjectCard extends Component {
 		this.parentMatch = props.match
 	}
 
+	getCardLabels() {
+		let labelsTemplate = this.card.labels.map((label, index) => {
+			return (
+				<span key={index} className="label secondary mrs mts">{label}</span>
+			);
+		});
+
+		return labelsTemplate;
+	}
+
 	render() {
 		return (
 			<div className="cell">
@@ -16,6 +26,9 @@ class ProjectCard extends Component {
 					<Link to={`${this.parentMatch.url}/${this.card.name}`}><img src={this.card.imagePath} alt={this.card.title} />
 						<div className="card-section mts">
 							{this.card.title}
+							<div className="block">
+								{this.getCardLabels()}
+							</div>
 						</div>
 					</Link>
 				</div>

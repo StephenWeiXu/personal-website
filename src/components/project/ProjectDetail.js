@@ -13,6 +13,16 @@ class ProjectDetail extends Component {
 		this.card = props.card;
 	}
 
+	getCardLabels() {
+		let labelsTemplate = this.card.labels.map((label, index) => {
+			return (
+				<span key={index} className="label secondary mrs mts">{label}</span>
+			);
+		});
+
+		return labelsTemplate;
+	}
+
 	renderDescriptionInHTML() {
 		return {__html: this.card.description};
 	}
@@ -30,6 +40,9 @@ class ProjectDetail extends Component {
 							<Link to={this.parentmatch.url} className="float-right back-icon">
 								<i className="fa fa-times-circle txtt"></i>
 							</Link>
+							<div className="block">
+								{this.getCardLabels()}
+							</div>
 						</div>
 						<p dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
 					</div>
