@@ -12,46 +12,30 @@ html {
   height: 100%;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: #fff;
-}
-
 #root {
-  background: #c0c0c0;
   height: 100%;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: scroll;
+  overflow: auto;
 }
 
-// .background {
-//   background-image: url(../../images/background.jpg);
-//   background-size: cover;
-//   position: fixed;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   left: 0;
-//   z-index: -1;
-// }
+.background {
+  // background-image: url(../../images/background.jpg);
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
 
-// .background-blur {
-//   background: #d0d0d0;
-//   opacity: 0.6;
-//   background-size: cover;
-//   position: fixed;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   left: 0;
-//   z-index: -1;
-// }
+.background-blur {
+  background: $base-background;
+  opacity: 0.2;
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
 
 .top-bar {
   ul[data-dropdown-menu] li {
@@ -101,6 +85,15 @@ html {
   }
 
   .project-detail {
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
     border: 1px solid $base-white;
 
     .project-main {
