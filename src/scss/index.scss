@@ -21,7 +21,7 @@ html {
 }
 
 .background {
-  // background-image: url(../../images/background.jpg);
+  background-image: url(../../images/background.jpg);
   background-size: cover;
   position: fixed;
   width: 100%;
@@ -30,7 +30,7 @@ html {
 
 .background-blur {
   background: $base-background;
-  opacity: 0.2;
+  opacity: 0.5;
   background-size: cover;
   position: fixed;
   width: 100%;
