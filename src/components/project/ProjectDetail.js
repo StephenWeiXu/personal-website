@@ -30,11 +30,11 @@ class ProjectDetail extends Component {
 	render() {
 		return (
 			<div className="project-detail">
-				<div className="grid-x grid-padding-x mvm">
-					<div className="cell small-4">
+				<div className="project-main grid-x grid-padding-x mvm">
+					<div className="cell small-12 medium-5">
 						<img src={this.card.imagePath} />
 					</div>
-					<div className="cell auto">
+					<div className="cell small-12 medium-7">
 						<div className="mbm">
 							<span className="bold mbm">{this.card.title}</span>
 							<Link to={this.parentmatch.url} className="float-right back-icon">
@@ -44,7 +44,7 @@ class ProjectDetail extends Component {
 								{this.getCardLabels()}
 							</div>
 						</div>
-						<p dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
+						<div className="project-desc" dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
 					</div>
 				</div>
 				<div className="grid-x grid-padding-x mbm">
