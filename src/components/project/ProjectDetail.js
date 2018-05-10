@@ -40,7 +40,7 @@ class ProjectDetail extends Component {
 							<Link to={this.parentmatch.url} className="float-right back-icon">
 								<i className="fa fa-times-circle txtt"></i>
 							</Link>
-							<div className="block">
+							<div className="block bold">
 								{this.getCardLabels()}
 							</div>
 						</div>

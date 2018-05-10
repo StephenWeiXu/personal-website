@@ -6,8 +6,8 @@ class About extends Component {
 		return (
 			<div className="profile txtc">
 				<h1>WEI XU</h1>
-				<span>Web Application Developer</span>
-				<div className="social-icons">
+				<span className="occupation">Web Application Developer</span>
+				<div className="social-icons mts">
 					<ul className="inline-list">
 						<li>
 							<a href="https://github.com/StephenWeiXu" target="_blank">
