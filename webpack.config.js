@@ -13,9 +13,24 @@ const path = require('path'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     extractSass = new ExtractTextPlugin({
         filename: "style.css"
-    });
+    }),
+    MiniCssExtractPlugin = require("mini-css-extract-plugin"),
+    miniCssExtract = new MiniCssExtractPlugin({
+        filename: "style.css"
+    }),
+    UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
+    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    },
     entry: {
         app: [
             path.join(__dirname, "./src/index.js"), 
@@ -71,6 +86,7 @@ module.exports = {
     plugins: [
         styleLintSass,
         extractSass,
+        miniCssExtract,
         htmlWebpackPlugin,
         new WebpackShellPlugin({
             onBuildStart:[
