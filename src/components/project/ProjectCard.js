@@ -21,7 +21,7 @@ class ProjectCard extends Component {
 
 	render() {
 		return (
-			<div className="cell">
+			<div className="cell mbm">
 				<div className="card">
 					<Link to={`${this.parentMatch.url}/${this.card.name}`}><img src={this.card.imagePath} alt={this.card.title} />
 						<div className="card-section mts">

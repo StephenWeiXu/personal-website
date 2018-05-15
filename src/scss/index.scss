@@ -67,11 +67,19 @@ html {
 
 .project-container {
   .card {
-    height: 420px;
+    height: 450px;
     background: transparent;
 
+    @include breakpoint(small down) {
+      height: 100%;
+    }
+
     img {
-      height: 250px;
+      width: 100%;
+
+      @include breakpoint(medium up) {
+        height: 250px;
+      }
     }
 
     &:hover {

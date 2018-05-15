@@ -48,7 +48,7 @@ class ProjectDetail extends Component {
 					</div>
 				</div>
 				<div className="grid-x grid-padding-x mbm">
-					<div className="cell small-4 small-offset-8 large-2 large-offset-10 txtr">
+					<div className="cell small-12 large-2 large-offset-10 txtr">
 						<span className="txttb mrs">{this.currentIndex+1}/{this.totalLength}</span>
 						<Link to={`${this.parentmatch.url}/${this.previousCard}`} className="pagination-icon">
 							<i className="fa fa-arrow-circle-left mrs"></i>
