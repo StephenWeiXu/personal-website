@@ -62,6 +62,14 @@ html {
 
   .social-icons {
     font-size: 25px;
+
+    a {
+      color: $base-white;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
 }
 
