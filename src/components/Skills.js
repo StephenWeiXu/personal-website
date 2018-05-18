@@ -5,44 +5,62 @@ class Skills extends Component {
 	constructor(props) {
 		super(props);
 
-		this.languages = [
+		this.match = props.match;
+
+		this.languageNodes = [
 			{ id: "python", position: 0, group: 0, label: "Python", level: 1},
 			{ id: "javascript", position: 0, group: 1, label: "JavaScript", level: 1}
 		]
 
 		this.skillNodes = {
-			"python": [
-				{ id: "django"   , position: 1, group: 0, label: "Django"   , level: 2 },
-				{ id: "apache", position: 1, group: 0, label: "Apache", level: 2 },
-				{ id: "aws", position: 1, group: 0, label: "AWS", level: 2 },
-				{ id: "docker", position: 1, group: 0, label: "Docker", level: 2 },
-				{ id: "kubernetes", position: 1, group: 0, label: "Kubernetes", level: 2 },
-				{ id: "mysql"   , position: 1, group: 0, label: "MySQL"   , level: 2 },
-				{ id: "html"   , position: 1, group: 0, label: "HTML"   , level: 2 },
-				{ id: "css"  , position: 1, group: 0, label: "CSS"   , level: 2 },
-				{ id: "pycharm", position: 1, group: 0, label: "Pycharm", level: 3 },
+			"python": {
+				"web-app": [
+					{ id: "django"   , position: 1, group: 0, label: "Django"   , level: 2 },
+					{ id: "apache", position: 1, group: 0, label: "Apache", level: 2 },
+					{ id: "aws", position: 1, group: 0, label: "AWS", level: 2 },
+					{ id: "docker", position: 1, group: 0, label: "Docker", level: 2 },
+					{ id: "kubernetes", position: 1, group: 0, label: "Kubernetes", level: 2 },
+					{ id: "mysql"   , position: 1, group: 0, label: "MySQL"   , level: 2 },
+					{ id: "foundation"  , position: 1, group: 0, label: "Foundation"   , level: 2 },
+					{ id: "html"   , position: 1, group: 0, label: "HTML"   , level: 2 },
+					{ id: "css"  , position: 1, group: 0, label: "CSS"   , level: 2 },
+					{ id: "pycharm", position: 1, group: 0, label: "Pycharm", level: 3 },
+					{ id: "responsive-design", position: 1, group: 0, label: "Responsive Design", level: 3 },
+					{ id: "accessibility", position: 1, group: 0, label: "Accessibility", level: 3 },
+				],
 
-				{ id: "pandas"   , position: 2, group: 0, label: "Pandas"   , level: 2 },
-				{ id: "scikit-learn"   , position: 2, group: 0, label: "Scikit-learn"   , level: 2 },
-				{ id: "pyspark"   , position: 2, group: 0, label: "Pyspark"   , level: 2 },
-				{ id: "aws-emr"   , position: 2, group: 0, label: "AWS EMR"   , level: 2 },
-				{ id: "zeppelin"   , position: 2, group: 0, label: "Zeppelin"   , level: 2 },
-			],
-			"javascript": [
-				{ id: "es6"  , position: 1, group: 1, label: "ES6"   , level: 2 },
-				{ id: "react"  , position: 1, group: 1, label: "React"   , level: 2 },
-				{ id: "jquery"  , position: 1, group: 1, label: "jQuery"   , level: 2 },
-				{ id: "webpack"  , position: 1, group: 1, label: "Webpack"   , level: 2 },
+				"data-science": [
+					{ id: "pandas"   , position: 2, group: 0, label: "Pandas"   , level: 2 },
+					{ id: "scikit-learn"   , position: 2, group: 0, label: "Scikit-learn"   , level: 2 },
+					{ id: "pyspark"   , position: 2, group: 0, label: "Pyspark"   , level: 2 },
+					{ id: "aws-emr"   , position: 2, group: 0, label: "AWS EMR"   , level: 2 },
+					{ id: "zeppelin"   , position: 2, group: 0, label: "Zeppelin"   , level: 2 },
+				]
+			},
 
-				{ id: "d3"  , position: 2, group: 1, label: "D3"   , level: 2 },
-			]
-		}	
+			"javascript": {
+				"web-app": [
+					{ id: "es6"  , position: 1, group: 1, label: "ES6"   , level: 2 },
+					{ id: "react"  , position: 1, group: 1, label: "React"   , level: 2 },
+					{ id: "jquery"  , position: 1, group: 1, label: "jQuery"   , level: 2 },
+					{ id: "webpack"  , position: 1, group: 1, label: "Webpack"   , level: 2 },
+				],
 
-		this.nodes = this.languages;
-		for (let language in this.skillNodes) {
-			this.skillNodes[language].map( element => {
-				this.nodes.push(element);
-			});
+				"data-science": [{ id: "d3"  , position: 2, group: 1, label: "D3"   , level: 2 }]
+			}
+		}
+
+		this.nodes = [];
+		this.languageNodes.forEach(languageNode => {
+			this.nodes.push(languageNode);
+		})
+		
+		for(let language in this.skillNodes) {
+			for(let area in this.skillNodes[language]) {
+				this.skillNodes[language][area].forEach(skillNode => {
+					this.nodes.push(skillNode);
+				});
+			}
 		}
 
 		this.links = [
@@ -65,7 +83,7 @@ class Skills extends Component {
 		const nodeColorMap = {
 			'1': 'red',
 			'2': 'green',
-			'3': 'gray',
+			'3': 'black',
 		}
 
 		let level = node.level.toString();
@@ -74,6 +92,10 @@ class Skills extends Component {
 	}
 
 	componentDidMount() {
+		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
+			$("a#about_nav").removeClass("active");
+		}
+
 		const width = window.innerWidth;
 		const height = window.innerHeight;
 		const svg = d3.select('svg');
@@ -100,18 +122,39 @@ class Skills extends Component {
 			.force('center', d3.forceCenter(width/3, height/3));
 
 
-		const nodeElements = svg.append('g')
+		let nodes = svg.append("g"),
+			texts = svg.append("g");
+
+		nodes.append("g")
 			.attr("class", "nodes")
 			.selectAll('circle')
-			.data(this.nodes)
+			.data(this.languageNodes)
 			.enter().append('circle')
 			.attr('r', 10)
 			.attr('fill', this.getNodeColor);
 
-		const textElements = svg.append('g')
+		texts.append('g')
 			.attr("class", "texts")
 			.selectAll('text')
-			.data(this.nodes)
+			.data(this.languageNodes)
+			.enter().append('text')
+			.text(node => node.label)
+			.attr('font-size', 15)
+			.attr('dx', 15)
+			.attr('dy', 4);
+
+		nodes.append('g')
+			.attr("class", "nodes")
+			.selectAll('circle')
+			.data(this.skillNodes["python"]["web-app"])
+			.enter().append('circle')
+			.attr('r', 10)
+			.attr('fill', this.getNodeColor);
+
+		texts.append('g')
+			.attr("class", "texts")
+			.selectAll('text')
+			.data(this.skillNodes["python"]["web-app"])
 			.enter().append('text')
 			.text(node => node.label)
 			.attr('font-size', 15)
@@ -119,11 +162,11 @@ class Skills extends Component {
 			.attr('dy', 4);
 
 		simulation.nodes(this.nodes).on("tick", () => {
-			nodeElements
+			nodes.selectAll("g").selectAll('circle')
 				.attr("cx", node => node.x)
 				.attr("cy", node => node.y);
-
-			textElements
+ 
+			texts.selectAll("g").selectAll('text')
 				.attr("x", node => node.x)
 				.attr("y", node => node.y);
 		});
