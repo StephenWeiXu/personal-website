@@ -5,18 +5,45 @@ class Skills extends Component {
 	constructor(props) {
 		super(props);
 
-		this.nodes = [
-			{ id: "python", group: 0, label: "Python", level: 1 },
-			{ id: "django"   , group: 1, label: "Django"   , level: 2 },
-			{ id: "pandas"   , group: 1, label: "Pandas"   , level: 2 },
-			{ id: "pycharm", group: 1, label: "Pycharm", level: 3 },
-			{ id: "mysql"   , group: 1, label: "MySQL"   , level: 2 },
-			{ id: "html"   , group: 1, label: "HTML"   , level: 2 },
-			{ id: "css"  , group: 2, label: "CSS"   , level: 2 },
-			{ id: "javascript"   , group: 0, label: "JavaScript"   , level: 1 },
-			{ id: "es6"  , group: 2, label: "ES6"   , level: 2 },
-			{ id: "react"  , group: 2, label: "React"   , level: 2 },
+		this.languages = [
+			{ id: "python", position: 0, group: 0, label: "Python", level: 1},
+			{ id: "javascript", position: 0, group: 1, label: "JavaScript", level: 1}
 		]
+
+		this.skillNodes = {
+			"python": [
+				{ id: "django"   , position: 1, group: 0, label: "Django"   , level: 2 },
+				{ id: "apache", position: 1, group: 0, label: "Apache", level: 2 },
+				{ id: "aws", position: 1, group: 0, label: "AWS", level: 2 },
+				{ id: "docker", position: 1, group: 0, label: "Docker", level: 2 },
+				{ id: "kubernetes", position: 1, group: 0, label: "Kubernetes", level: 2 },
+				{ id: "mysql"   , position: 1, group: 0, label: "MySQL"   , level: 2 },
+				{ id: "html"   , position: 1, group: 0, label: "HTML"   , level: 2 },
+				{ id: "css"  , position: 1, group: 0, label: "CSS"   , level: 2 },
+				{ id: "pycharm", position: 1, group: 0, label: "Pycharm", level: 3 },
+
+				{ id: "pandas"   , position: 2, group: 0, label: "Pandas"   , level: 2 },
+				{ id: "scikit-learn"   , position: 2, group: 0, label: "Scikit-learn"   , level: 2 },
+				{ id: "pyspark"   , position: 2, group: 0, label: "Pyspark"   , level: 2 },
+				{ id: "aws-emr"   , position: 2, group: 0, label: "AWS EMR"   , level: 2 },
+				{ id: "zeppelin"   , position: 2, group: 0, label: "Zeppelin"   , level: 2 },
+			],
+			"javascript": [
+				{ id: "es6"  , position: 1, group: 1, label: "ES6"   , level: 2 },
+				{ id: "react"  , position: 1, group: 1, label: "React"   , level: 2 },
+				{ id: "jquery"  , position: 1, group: 1, label: "jQuery"   , level: 2 },
+				{ id: "webpack"  , position: 1, group: 1, label: "Webpack"   , level: 2 },
+
+				{ id: "d3"  , position: 2, group: 1, label: "D3"   , level: 2 },
+			]
+		}	
+
+		this.nodes = this.languages;
+		for (let language in this.skillNodes) {
+			this.skillNodes[language].map( element => {
+				this.nodes.push(element);
+			});
+		}
 
 		this.links = [
 			{ target: "python", source: "django" , strength: 0.7 },
@@ -53,8 +80,24 @@ class Skills extends Component {
 		svg.attr('width', width).attr('height', height);
 
 		const simulation = d3.forceSimulation()
-			.force('charge', d3.forceManyBody().strength(-50)) 
-			.force('center', d3.forceCenter(width/2, height/3));
+			.force('charge', d3.forceManyBody().strength(-80))
+				.force("x", d3.forceX(node => {
+					if(node.position === 0) {
+						return width/3;
+					} else if(node.position === 1) {
+						return width/4;
+					} else if(node.position === 2) {
+						return width/2;
+					}
+				}))
+				.force("y", d3.forceY(node => {
+					if(node.group === 0) {
+						return height/3;
+					} else if(node.group === 1) {
+						return height/2;
+					}
+				}))
+			.force('center', d3.forceCenter(width/3, height/3));
 
 
 		const nodeElements = svg.append('g')
