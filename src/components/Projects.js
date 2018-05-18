@@ -4,7 +4,7 @@ import ProjectDetail from "./project/ProjectDetail";
 import { Route } from "react-router-dom";
 
 
-class Project extends Component {
+class Projects extends Component {
 	constructor(props) {
 		super(props);
 
@@ -140,4 +140,4 @@ class Project extends Component {
 	}
 }
 
-export default Project;
+export default Projects;

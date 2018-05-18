@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import $ from "jquery";
 import About from './components/About';
-import Project from './components/Project';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
 import Publication from './components/Publication';
 
 window.$ = window.jQuery = $;
@@ -30,7 +31,8 @@ class App extends Component {
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
 								<li onClick={this.handleNavClick}><NavLink to="/" id="about_nav"><span>ABOUT</span></NavLink></li>
-								<li onClick={this.handleNavClick}><NavLink to="/project"><span>PROJECTS</span></NavLink></li>
+								<li onClick={this.handleNavClick}><NavLink to="/skills"><span>SKILLS</span></NavLink></li>
+								<li onClick={this.handleNavClick}><NavLink to="/projects"><span>PROJECTS</span></NavLink></li>
 								<li onClick={this.handleNavClick}><NavLink to="/publication"><span>PUBLICATION</span></NavLink></li>
 							</ul>
 						</div>
@@ -38,7 +40,8 @@ class App extends Component {
 
 					<div className="content ptxl">
 						<Route exact path="/" component={About} />
-						<Route path="/project" component={Project} />
+						<Route path="/skills" component={Skills} />
+						<Route path="/projects" component={Projects} />
 						<Route path="/publication" component={Publication} />
 					</div>
 				</div>
