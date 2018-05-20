@@ -161,54 +161,7 @@ class Skills extends Component {
 			.attr("font-size", 15)
 			.attr("dy", 4);
 	}
-
-	componentDidMountDisable() {
-		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
-			$("a#about_nav").removeClass("active");
-		}
-
-		const width = 500;
-		const height = 500;
-		const svg = d3.select("svg");
-		svg.attr("width", width).attr("height", height);
-
-		let g = svg.append("g").attr("transform", "translate(2,2)"),
-			format = d3.format(",d");
-		
-		let pack = d3.pack()
-			.size([width - 4, width - 4])
-			.padding(5);
-
-		d3.json("/src/components/skills.json", (error, root) => {
-			if (error) throw error;
-
-			root = d3.hierarchy(root)
-				.sum(function(d) { return d.size; })
-				.sort(function(a, b) { return b.value - a.value; });
-
-			let node = g.selectAll(".node")
-				.data(pack(root).descendants())
-				.enter().append("g")
-				.attr("class", function(d) { return d.children ? "node" : "leaf node"; })
-				.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-				.attr("fill", "lightblue")
-				.attr("fill-opacity", "0.25")
-				.style("stroke", "black");
-
-			node.append("title")
-				.text(function(d) { return d.data.name + "\n" + format(d.value); });
-
-			node.append("circle")
-				.attr("r", function(d) { return d.r; });
-
-			node.filter(function(d) { return !d.children; }).append("text")
-				.attr("dy", "0.3em")
-				.attr("text-anchor", "middle")
-				.style("font", "10px sans-serif")
-				.text(function(d) { return d.data.name.substring(0, d.r / 3); });
-		});	
-	}
-
+	
 	componentDidMount() {
 		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
 			$("a#about_nav").removeClass("active");
