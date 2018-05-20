@@ -69,18 +69,20 @@ class Skills extends Component {
 					{ id: "webpack"  , position: 1, group: 1, label: "Webpack"   , level: 2 },
 				],
 
-				"data-science": [{ id: "d3"  , position: 2, group: 1, label: "D3"   , level: 2 }]
+				"data-science": [{ id: "d3"  , position: 2, group: 1, label: "D3.js"   , level: 2 }]
 			}
 		}
 
 		this.nodes = [];
 		this.languageNodes.forEach(languageNode => {
+			languageNode.radius = languageNode.label.length * 5;
 			this.nodes.push(languageNode);
 		})
 		
 		for(let language in this.skillNodes) {
 			for(let area in this.skillNodes[language]) {
 				this.skillNodes[language][area].forEach(skillNode => {
+					skillNode.radius = skillNode.label.length * 5;
 					this.nodes.push(skillNode);
 				});
 			}
@@ -98,7 +100,7 @@ class Skills extends Component {
 					this.links.push(tempLink);
 				});
 			}
-		})
+		});
 	}
 
 	getNodeColor(node) {
@@ -144,7 +146,7 @@ class Skills extends Component {
 			.enter().append("circle")
 			.attr("id", node => node.id)
 			.attr("class", "skill-node")
-			.attr("r", node => node.label.length * 5)
+			.attr("r", node => node.radius)
 			.attr("fill", this.getNodeColor);
 	}
 
@@ -160,6 +162,53 @@ class Skills extends Component {
 			.attr("dy", 4);
 	}
 
+	componentDidMountDisable() {
+		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
+			$("a#about_nav").removeClass("active");
+		}
+
+		const width = 500;
+		const height = 500;
+		const svg = d3.select("svg");
+		svg.attr("width", width).attr("height", height);
+
+		let g = svg.append("g").attr("transform", "translate(2,2)"),
+			format = d3.format(",d");
+		
+		let pack = d3.pack()
+			.size([width - 4, width - 4])
+			.padding(5);
+
+		d3.json("/src/components/skills.json", (error, root) => {
+			if (error) throw error;
+
+			root = d3.hierarchy(root)
+				.sum(function(d) { return d.size; })
+				.sort(function(a, b) { return b.value - a.value; });
+
+			let node = g.selectAll(".node")
+				.data(pack(root).descendants())
+				.enter().append("g")
+				.attr("class", function(d) { return d.children ? "node" : "leaf node"; })
+				.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+				.attr("fill", "lightblue")
+				.attr("fill-opacity", "0.25")
+				.style("stroke", "black");
+
+			node.append("title")
+				.text(function(d) { return d.data.name + "\n" + format(d.value); });
+
+			node.append("circle")
+				.attr("r", function(d) { return d.r; });
+
+			node.filter(function(d) { return !d.children; }).append("text")
+				.attr("dy", "0.3em")
+				.attr("text-anchor", "middle")
+				.style("font", "10px sans-serif")
+				.text(function(d) { return d.data.name.substring(0, d.r / 3); });
+		});	
+	}
+
 	componentDidMount() {
 		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
 			$("a#about_nav").removeClass("active");
@@ -170,10 +219,9 @@ class Skills extends Component {
 		const svg = d3.select("svg");
 		svg.attr("width", width).attr("height", height);
 
-
 		const simulation = d3.forceSimulation()
-			.force("link", d3.forceLink().id(link => link.id).distance(300))
-			.force("charge", d3.forceManyBody().strength(-150))
+			// .force("link", d3.forceLink().id(link => link.id).distance(300))
+			.force("charge", d3.forceManyBody().strength(-200))
 				.force("x", d3.forceX(node => {
 					if(node.position === 0) {
 						return width/3;
@@ -185,13 +233,14 @@ class Skills extends Component {
 				}))
 				.force("y", d3.forceY(node => {
 					if(node.group === 0) {
-						return height/3;
+						return height/4;
 					} else if(node.group === 1) {
 						return height/2;
 					}
 				}))
-			.force("center", d3.forceCenter(width/3, height/3));
-
+			.force("center", d3.forceCenter(width/3, height/3))
+			.force("collide", d3.forceCollide().radius(function(d) { return d.radius }));
+		
 
 		let nodes = svg.append("g"),
 			texts = svg.append("g");
