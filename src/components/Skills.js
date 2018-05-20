@@ -12,6 +12,28 @@ class Skills extends Component {
 			{ id: "javascript", position: 0, group: 1, label: "JavaScript", level: 1}
 		]
 
+		this.areaNodes = {
+			"python": {
+				"web-app": [
+					{ id: "python-web-app"   , position: 1, group: 0, label: "Python Web APP"   , level: 2 }
+				],
+
+				"data-science": [
+					{ id: "pyton-data-science"   , position: 2, group: 0, label: "Python Data Science"   , level: 2 }
+				]
+			},
+
+			"javascript": {
+				"web-app": [
+					{ id: "javascript-web-app"  , position: 1, group: 1, label: "JavaScript Web App"   , level: 2 }
+				],
+
+				"data-science": [
+					{ id: "javascript-data-science"  , position: 2, group: 1, label: "JavaScript Data Science"   , level: 2 }
+				]
+			}
+		}
+
 		this.skillNodes = {
 			"python": {
 				"web-app": [
@@ -25,6 +47,7 @@ class Skills extends Component {
 					{ id: "html"   , position: 1, group: 0, label: "HTML"   , level: 2 },
 					{ id: "css"  , position: 1, group: 0, label: "CSS"   , level: 2 },
 					{ id: "pycharm", position: 1, group: 0, label: "Pycharm", level: 3 },
+
 					{ id: "responsive-design", position: 1, group: 0, label: "Responsive Design", level: 3 },
 					{ id: "accessibility", position: 1, group: 0, label: "Accessibility", level: 3 },
 				],
@@ -63,32 +86,78 @@ class Skills extends Component {
 			}
 		}
 
-		this.links = [
-			{ target: "python", source: "django" , strength: 0.7 },
-			{ target: "python", source: "pandas" , strength: 0.7 },
-			{ target: "insect", source: "ant" , strength: 0.7 },
-			{ target: "insect", source: "bee" , strength: 0.7 },
-			{ target: "fish"  , source: "carp", strength: 0.7 },
-			{ target: "fish"  , source: "pike", strength: 0.7 },
-			{ target: "cat"   , source: "elk" , strength: 0.1 },
-			{ target: "carp"  , source: "ant" , strength: 0.1 },
-			{ target: "elk"   , source: "bee" , strength: 0.1 },
-			{ target: "dog"   , source: "cat" , strength: 0.1 },
-			{ target: "fox"   , source: "ant" , strength: 0.1 },
-			{ target: "pike"  , source: "cat" , strength: 0.1 }
-		]
+		this.links = [];
+		this.languageNodes.forEach(languageNode => {
+			let language = languageNode.id;
+			for(let area in this.skillNodes[language]) {
+				this.skillNodes[language][area].forEach(skillNode => {
+					let tempLink = {};
+					tempLink.target = language;
+					tempLink.source = skillNode.id;
+					tempLink.type = area;
+					this.links.push(tempLink);
+				});
+			}
+		})
 	}
 
 	getNodeColor(node) {
 		const nodeColorMap = {
-			'1': 'red',
-			'2': 'green',
-			'3': 'black',
+			1: "red",
+			2: "green",
+			3: "gray",
 		}
 
-		let level = node.level.toString();
+		return nodeColorMap[node.level];
+	}
 
-		return nodeColorMap[level];
+	getLinkColor(link) {
+		const linkColorMap = {
+			"web-app": "black",
+			"data-science": "blue"
+		}
+
+		return linkColorMap[link.type];
+	}
+
+	appendNodes(nodesData, nodesElements, area = "", language = "") {
+		let tempNodes = nodesElements.append("g").attr("class", "nodes");
+		
+		// if(area.length && language.length) {
+		// 	tempNodes
+		// 		.selectAll("circle")
+		// 		.data(this.areaNodes[language][area])
+		// 		.enter().append("circle")
+		// 		.attr("class", "area-node")
+		// 		.attr("r", 150)
+		// 		.attr("fill", "transparent")
+		// 		.style("stroke", "black");
+
+		// 	this.areaNodes[language][area].forEach(node => {
+		// 		this.nodes.push(node);
+		// 	});
+		// }
+
+		tempNodes
+			.selectAll("circle")
+			.data(nodesData)
+			.enter().append("circle")
+			.attr("id", node => node.id)
+			.attr("class", "skill-node")
+			.attr("r", node => node.label.length * 5)
+			.attr("fill", this.getNodeColor);
+	}
+
+	appendTexts(nodesData, textsElements) {
+		textsElements.append("g")
+			.attr("class", "texts")
+			.selectAll("text")
+			.data(nodesData)
+			.enter().append("text")
+			.style("text-anchor", "middle")
+			.text(node => node.label)
+			.attr("font-size", 15)
+			.attr("dy", 4);
 	}
 
 	componentDidMount() {
@@ -98,11 +167,13 @@ class Skills extends Component {
 
 		const width = window.innerWidth;
 		const height = window.innerHeight;
-		const svg = d3.select('svg');
-		svg.attr('width', width).attr('height', height);
+		const svg = d3.select("svg");
+		svg.attr("width", width).attr("height", height);
+
 
 		const simulation = d3.forceSimulation()
-			.force('charge', d3.forceManyBody().strength(-80))
+			.force("link", d3.forceLink().id(link => link.id).distance(300))
+			.force("charge", d3.forceManyBody().strength(-150))
 				.force("x", d3.forceX(node => {
 					if(node.position === 0) {
 						return width/3;
@@ -119,57 +190,55 @@ class Skills extends Component {
 						return height/2;
 					}
 				}))
-			.force('center', d3.forceCenter(width/3, height/3));
+			.force("center", d3.forceCenter(width/3, height/3));
 
 
 		let nodes = svg.append("g"),
 			texts = svg.append("g");
 
-		nodes.append("g")
-			.attr("class", "nodes")
-			.selectAll('circle')
-			.data(this.languageNodes)
-			.enter().append('circle')
-			.attr('r', 10)
-			.attr('fill', this.getNodeColor);
+		this.appendNodes(this.languageNodes, nodes);
+		this.appendTexts(this.languageNodes, texts);
 
-		texts.append('g')
-			.attr("class", "texts")
-			.selectAll('text')
-			.data(this.languageNodes)
-			.enter().append('text')
-			.text(node => node.label)
-			.attr('font-size', 15)
-			.attr('dx', 15)
-			.attr('dy', 4);
+		for(let language in this.skillNodes) {
+			for(let area in this.skillNodes[language]) {
+				this.appendTexts(this.skillNodes[language][area], texts);
+				this.appendNodes(this.skillNodes[language][area], nodes, area, language);
+			}
+		}
 
-		nodes.append('g')
-			.attr("class", "nodes")
-			.selectAll('circle')
-			.data(this.skillNodes["python"]["web-app"])
-			.enter().append('circle')
-			.attr('r', 10)
-			.attr('fill', this.getNodeColor);
-
-		texts.append('g')
-			.attr("class", "texts")
-			.selectAll('text')
-			.data(this.skillNodes["python"]["web-app"])
-			.enter().append('text')
-			.text(node => node.label)
-			.attr('font-size', 15)
-			.attr('dx', 15)
-			.attr('dy', 4);
+		let links = svg.append("g")
+			.attr("class", "links")
+			.selectAll("line")
+			.data(this.links)
+			.enter().append("line")
+			.attr("stroke-width", 2)
+			.attr("stroke", this.getLinkColor);
 
 		simulation.nodes(this.nodes).on("tick", () => {
-			nodes.selectAll("g").selectAll('circle')
-				.attr("cx", node => node.x)
+			nodes.selectAll("circle.area-node")
+				.attr("cx", node => {
+				 return node.x 
+				})
+				.attr("cy", node => node.y);
+
+			nodes.selectAll("circle.skill-node")
+				.attr("cx", node => {
+				 return node.x 
+				})
 				.attr("cy", node => node.y);
  
-			texts.selectAll("g").selectAll('text')
+			texts.selectAll("g").selectAll("text")
 				.attr("x", node => node.x)
 				.attr("y", node => node.y);
+
+			links
+				.attr("x1", link => link.source.x)
+				.attr("y1", link => link.source.y)
+				.attr("x2", link => link.target.x)
+				.attr("y2", link => link.target.y);
 		});
+
+		// simulation.force("link").links(this.links);
 	}
 
 	render() {
