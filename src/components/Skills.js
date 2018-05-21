@@ -27,11 +27,11 @@ class Skills extends Component {
 
 			"javascript": {
 				"web-app": [
-					{ id: "javascript-web-app"  , position: 1, group: 1, label: ""   , level: 2 }
+					{ id: "javascript-web-app"  , position: 1, group: 1, label: "Web App"   , level: 2 }
 				],
 
 				"data-science": [
-					{ id: "javascript-data-science"  , position: 2, group: 1, label: ""   , level: 2 }
+					{ id: "javascript-data-science"  , position: 2, group: 1, label: "Data Science"   , level: 2 }
 				]
 			}
 		}
@@ -121,7 +121,7 @@ class Skills extends Component {
 
 	getNodeColor(node) {
 		const nodeColorMap = {
-			1: "red",
+			1: "orange",
 			2: "green",
 			3: "gray",
 		}
@@ -168,7 +168,8 @@ class Skills extends Component {
 			.attr("id", node => node.id)
 			.attr("class", "skill-node")
 			.attr("r", node => node.radius)
-			.attr("fill", this.getNodeColor);
+			.attr("fill", this.getNodeColor)
+			.call(this.dragDrop);
 	}
 
 	appendTexts(nodesData, textsElements, area = "", language = "") {
@@ -184,8 +185,10 @@ class Skills extends Component {
 				.attr("id", node => node.id)
 				.attr("class", "area-text")
 				.text(node => node.label)
-				.style("text-anchor", "top")
-				.attr("font-size", 15)
+				.style("text-anchor", "middle")
+				.style("fill", "white")
+				.style("font-size", "20px")
+				.attr("font-weight", "bold")
 				.attr("dy", 4);
 		}
 
@@ -198,9 +201,11 @@ class Skills extends Component {
 			.attr("id", node => node.id)
 			.attr("class", "skill-text")
 			.style("text-anchor", "middle")
+			.style("fill", "white")
 			.text(node => node.label)
-			.attr("font-size", 15)
-			.attr("dy", 4);
+			.style("font-size", 15)
+			.attr("dy", 4)
+			.call(this.dragDrop);
 	}
 
 	appendLinks(linksData, linksElements) {
@@ -219,12 +224,12 @@ class Skills extends Component {
 			$("a#about_nav").removeClass("active");
 		}
 
-		const width = window.innerWidth;
-		const height = window.innerHeight;
-		const svg = d3.select("svg");
+		let width = window.innerWidth;
+		let height = window.innerHeight;
+		let svg = d3.select("svg");
 		svg.attr("width", width).attr("height", height).style("overflow", "visible");
 
-		const simulation = d3.forceSimulation()
+		let simulation = d3.forceSimulation()
 			.force("link", d3.forceLink().id(link => link.id))
 			.force("charge", d3.forceManyBody().strength(-120))
 				.force("x", d3.forceX(node => {
@@ -238,13 +243,31 @@ class Skills extends Component {
 				}))
 				.force("y", d3.forceY(node => {
 					if(node.group === 0) {
-						return height/6;
+						return height/3.5;
 					} else if(node.group === 1) {
-						return height/2;
+						return height/1.5;
 					}
 				}))
-			.force("center", d3.forceCenter(width/3, height/3))
+			.force("center", d3.forceCenter(width/2.5, height/3))
 			.force("collide", d3.forceCollide().radius(function(d) { return d.radius }));
+
+		this.dragDrop = d3.drag()
+			.on('start', node => {
+				node.fx = node.x;
+				node.fy = node.y;
+			})
+			.on('drag', node => {
+				simulation.alphaTarget(1).restart()
+					node.fx = d3.event.x;
+					node.fy = d3.event.y;
+			})
+			.on('end', node => {
+				if (!d3.event.active) {
+					simulation.alphaTarget(0);
+				}
+				node.fx = null;
+				node.fy = null;
+			})
 
 		let nodes = svg.append("g"),
 			texts = svg.append("g"),
@@ -267,7 +290,7 @@ class Skills extends Component {
 				.attr("cx", node => node.x)
 				.attr("cy", node => node.y);
  
-			texts.selectAll("g").selectAll("text")
+			texts.selectAll("g").selectAll("text.skill-text")
 				.attr("x", node => node.x)
 				.attr("y", node => node.y);
 
@@ -283,6 +306,10 @@ class Skills extends Component {
 					.attr("cx", node => areaNodeCX)
 					.attr("cy", node => areaNodeCY)
 					.attr("r", areaNodeRadius);
+
+				texts.selectAll(`text#${className}`)
+					.attr("x", node => areaNodeCX)
+					.attr("y", node => areaNodeCY - areaNodeRadius - 10);
 
 				links.selectAll(`line#${className}`)
 					.attr("x1", link => {
