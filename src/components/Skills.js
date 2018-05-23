@@ -44,19 +44,19 @@ class Skills extends Component {
 					{ id: "aws", position: 1, group: 0, label: "AWS", level: 2 },
 					{ id: "docker", position: 1, group: 0, label: "Docker", level: 2 },
 					{ id: "kubernetes", position: 1, group: 0, label: "Kubernetes", level: 2 },
-					{ id: "mysql"   , position: 1, group: 0, label: "MySQL"   , level: 2 },
+					{ id: "mysql"   , position: 1, group: 0, label: "MySQL"   , level: 2, radius: 30 },
 					{ id: "foundation"  , position: 1, group: 0, label: "Foundation"   , level: 2 },
 					{ id: "html"   , position: 1, group: 0, label: "HTML"   , level: 2 },
 					{ id: "css"  , position: 1, group: 0, label: "CSS"   , level: 2 },
 					{ id: "pycharm", position: 1, group: 0, label: "Pycharm", level: 3 },
 
-					{ id: "responsive-design", position: 1, group: 0, label: "Responsive Design", level: 3 },
-					{ id: "accessibility", position: 1, group: 0, label: "Accessibility", level: 3 },
+					{ id: "responsive-design", position: 1, group: 0, label: "Responsive Design", level: 3, radius: 70 },
+					{ id: "accessibility", position: 1, group: 0, label: "Accessibility", level: 3, radius: 50 },
 				],
 
 				"data-science": [
 					{ id: "pandas"   , position: 2, group: 0, label: "Pandas"   , level: 2 },
-					{ id: "scikit-learn"   , position: 2, group: 0, label: "Scikit-learn"   , level: 2 },
+					{ id: "scikit-learn"   , position: 2, group: 0, label: "Scikit-learn"   , level: 2, radius: 50 },
 					{ id: "pyspark"   , position: 2, group: 0, label: "Pyspark"   , level: 2 },
 					{ id: "aws-emr"   , position: 2, group: 0, label: "AWS EMR"   , level: 2 },
 					{ id: "zeppelin"   , position: 2, group: 0, label: "Zeppelin"   , level: 2 },
@@ -73,7 +73,7 @@ class Skills extends Component {
 
 				"data-science": [
 					{ id: "d3"  , position: 2, group: 1, label: "D3.js"   , level: 2 },
-					{ id: "data-visualization"  , position: 2, group: 1, label: "Data Visualization"   , level: 3 }
+					{ id: "data-visualization"  , position: 2, group: 1, label: "Data Visualization"   , level: 3, radius: 70 }
 				]
 			}
 		}
@@ -219,38 +219,49 @@ class Skills extends Component {
 			.attr("stroke", this.getLinkColor);
 	}
 
-	componentDidMount() {
-		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
-			$("a#about_nav").removeClass("active");
+	buildElements(svg) {
+		this.nodesElements = svg.append("g");
+		this.textsElements = svg.append("g");
+		this.linksElements = svg.append("g");
+
+		this.appendNodes(this.languageNodes, this.nodesElements);
+		this.appendTexts(this.languageNodes, this.textsElements);
+
+		for(let language in this.skillNodes) {
+			for(let area in this.skillNodes[language]) {
+				this.appendTexts(this.skillNodes[language][area], this.textsElements, area, language);
+				this.appendNodes(this.skillNodes[language][area], this.nodesElements, area, language);
+			}
 		}
 
-		let width = window.innerWidth;
-		let height = window.innerHeight;
-		let svg = d3.select("svg");
-		svg.attr("width", width).attr("height", height).style("overflow", "visible");
+		this.appendLinks(this.links, this.linksElements);
+	}
 
-		let simulation = d3.forceSimulation()
+	buildForceSimulation() {
+		this.simulation = d3.forceSimulation()
 			.force("link", d3.forceLink().id(link => link.id))
 			.force("charge", d3.forceManyBody().strength(-120))
 				.force("x", d3.forceX(node => {
 					if(node.position === 0) {
-						return width/3;
+						return this.width/3;
 					} else if(node.position === 1) {
-						return width/8;
+						return this.width/8;
 					} else if(node.position === 2) {
-						return width/2;
+						return this.width/2;
 					}
 				}))
 				.force("y", d3.forceY(node => {
 					if(node.group === 0) {
-						return height/3.5;
+						return this.height/3.5;
 					} else if(node.group === 1) {
-						return height/1.5;
+						return this.height/1.5;
 					}
 				}))
-			.force("center", d3.forceCenter(width/2.5, height/3))
+			.force("center", d3.forceCenter(this.width/2.5, this.height/3))
 			.force("collide", d3.forceCollide().radius(function(d) { return d.radius }));
+	}
 
+	buildDragDropAnimation() {
 		this.dragDrop = d3.drag()
 			.on('start', node => {
 				node.fx = node.x;
@@ -263,67 +274,67 @@ class Skills extends Component {
 			})
 			.on('end', node => {
 				if (!d3.event.active) {
-					simulation.alphaTarget(0);
+					this.simulation.alphaTarget(0);
 				}
 				node.fx = null;
 				node.fy = null;
 			})
+	}
 
-		let nodes = svg.append("g"),
-			texts = svg.append("g"),
-			links = svg.append("g");
+	simulationTicked() {
+		this.nodesElements.selectAll("circle.skill-node")
+			.attr("cx", node => node.x)
+			.attr("cy", node => node.y);
 
-		this.appendNodes(this.languageNodes, nodes);
-		this.appendTexts(this.languageNodes, texts);
+		this.textsElements.selectAll("g").selectAll("text.skill-text")
+			.attr("x", node => node.x)
+			.attr("y", node => node.y);
 
-		for(let language in this.skillNodes) {
-			for(let area in this.skillNodes[language]) {
-				this.appendTexts(this.skillNodes[language][area], texts, area, language);
-				this.appendNodes(this.skillNodes[language][area], nodes, area, language);
-			}
+		let classList = ["python-web-app", "python-data-science", "javascript-web-app", "javascript-data-science"];
+
+		classList.forEach(className => {
+			let groupBBox = this.nodesElements.selectAll(`.${className}`).node().getBBox(),
+				areaNodeCX = groupBBox.x + groupBBox.width/2,
+				areaNodeCY = groupBBox.y + groupBBox.height/2,
+				areaNodeRadius = d3.max([groupBBox.height/2, groupBBox.width/2]) + 20;
+
+			this.nodesElements.selectAll(`circle#${className}`)
+				.attr("cx", node => areaNodeCX)
+				.attr("cy", node => areaNodeCY)
+				.attr("r", areaNodeRadius);
+
+			this.textsElements.selectAll(`text#${className}`)
+				.attr("x", node => areaNodeCX)
+				.attr("y", node => areaNodeCY - areaNodeRadius - 10);
+
+			this.linksElements.selectAll(`line#${className}`)
+				.attr("x1", link => {
+					return link.source.x + (link.target.position === 1 ? -(link.source.radius) : link.source.radius);
+				})
+				.attr("y1", link => link.source.y)
+				.attr("x2", link => {
+					return areaNodeCX + (link.target.position === 1 ? areaNodeRadius : -areaNodeRadius); 
+				})
+				.attr("y2", link => areaNodeCY);
+		});		
+	}
+
+	componentDidMount() {
+		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
+			$("a#about_nav").removeClass("active");
 		}
 
-		this.appendLinks(this.links, links);
+		this.width = window.innerWidth;
+		this.height = window.innerHeight;
+		let svg = d3.select("svg");
+		svg.attr("width", this.width).attr("height", this.height).style("overflow", "visible");
 
-		simulation.nodes(this.nodes).on("tick", () => {
-			nodes.selectAll("circle.skill-node")
-				.attr("cx", node => node.x)
-				.attr("cy", node => node.y);
- 
-			texts.selectAll("g").selectAll("text.skill-text")
-				.attr("x", node => node.x)
-				.attr("y", node => node.y);
+		this.buildForceSimulation();
+		this.buildDragDropAnimation();
+		this.buildElements(svg);
 
-			let classList = ["python-web-app", "python-data-science", "javascript-web-app", "javascript-data-science"];
-
-			classList.forEach(className => {
-				let groupBBox = nodes.selectAll(`.${className}`).node().getBBox(),
-					areaNodeCX = groupBBox.x + groupBBox.width/2,
-					areaNodeCY = groupBBox.y + groupBBox.height/2,
-					areaNodeRadius = d3.max([groupBBox.height/2, groupBBox.width/2]) + 20;
-
-				nodes.selectAll(`circle#${className}`)
-					.attr("cx", node => areaNodeCX)
-					.attr("cy", node => areaNodeCY)
-					.attr("r", areaNodeRadius);
-
-				texts.selectAll(`text#${className}`)
-					.attr("x", node => areaNodeCX)
-					.attr("y", node => areaNodeCY - areaNodeRadius - 10);
-
-				links.selectAll(`line#${className}`)
-					.attr("x1", link => {
-						return link.source.x + (link.target.position === 1? -(link.source.radius) : link.source.radius);
-					})
-					.attr("y1", link => link.source.y)
-					.attr("x2", link => {
-						return areaNodeCX + (link.target.position === 1 ? areaNodeRadius : -areaNodeRadius); 
-					})
-					.attr("y2", link => areaNodeCY);
-			});
-		});
-
-		simulation.force("link").links(this.links);
+		this.simulation.nodes(this.nodes).on("tick", () => this.simulationTicked());
+		this.simulation.force("link").links(this.links);
 	}
 
 	render() {
