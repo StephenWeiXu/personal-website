@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { MediaQuery } from 'foundation-sites/js/foundation.util.mediaQuery';
 import * as d3 from "d3";
 
 window.d3 = d3;
@@ -8,6 +9,9 @@ class Skills extends Component {
 		super(props);
 
 		this.match = props.match;
+
+		MediaQuery._init();
+		this.isSmallScreen = MediaQuery.is("small only");
 
 		this.languageNodes = [
 			{ id: "python", position: 0, group: 0, label: "Python", level: 1, radius: 50},
@@ -143,7 +147,7 @@ class Skills extends Component {
 
 		let tempNodes = nodesElements.append("g").attr("class", "nodes");
 		
-		if(area.length && language.length) {
+		if(!this.isSmallScreen && area.length && language.length) {
 			tempNodes
 				.selectAll("circle")
 				.data(this.areaNodes[language][area])
@@ -177,7 +181,7 @@ class Skills extends Component {
 
 		let tempTexts = textsElements.append("g").attr("class", "texts");
 
-		if(area.length && language.length) {
+		if(!this.isSmallScreen && area.length && language.length) {
 			tempTexts
 				.selectAll("text")
 				.data(this.areaNodes[language][area])
@@ -234,7 +238,9 @@ class Skills extends Component {
 			}
 		}
 
-		this.appendLinks(this.links, this.linksElements);
+		if(!this.isSmallScreen) {
+			this.appendLinks(this.links, this.linksElements);
+		}
 	}
 
 	buildForceSimulation() {
@@ -268,7 +274,7 @@ class Skills extends Component {
 				node.fy = node.y;
 			})
 			.on('drag', node => {
-				simulation.alphaTarget(1).restart()
+				this.simulation.alphaTarget(1).restart()
 					node.fx = d3.event.x;
 					node.fy = d3.event.y;
 			})
@@ -334,7 +340,10 @@ class Skills extends Component {
 		this.buildElements(svg);
 
 		this.simulation.nodes(this.nodes).on("tick", () => this.simulationTicked());
-		this.simulation.force("link").links(this.links);
+
+		if(!this.isSmallScreen) {
+			this.simulation.force("link").links(this.links);
+		}
 	}
 
 	render() {

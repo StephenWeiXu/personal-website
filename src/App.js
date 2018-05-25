@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import $ from "jquery";
+import { DropdownMenu } from "foundation-sites/js/foundation.dropdownMenu";
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -15,7 +16,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		$('[data-dropdown-menu]').foundation();
+		new DropdownMenu($("[data-dropdown-menu]"));
 	}
 
 	handleNavClick(event) {

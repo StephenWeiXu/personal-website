@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Accordion } from "foundation-sites/js/foundation.accordion";
 import Description from "./publication/Description";
 import Experiment from "./publication/Experiment";
 import Conclusion from "./publication/Conclusion";
+
 
 class Publication extends Component {
 	constructor(props) {
@@ -15,7 +17,7 @@ class Publication extends Component {
 			$("a#about_nav").removeClass("active");
 		}
 
-		$("[data-accordion]").foundation();
+		new Accordion($("[data-accordion]"));
 	}
 
 	render() {
