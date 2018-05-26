@@ -29,6 +29,9 @@ class App extends Component {
 			<HashRouter>
 				<div className="grid-container">
 					<div className="top-bar">
+						<div className="top-bar-left">
+							<img className="signature-icon" src="images/favicon.png" />
+						</div>
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
 								<li onClick={this.handleNavClick}><NavLink to="/" id="about_nav"><span>ABOUT</span></NavLink></li>

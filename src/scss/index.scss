@@ -34,6 +34,13 @@ html {
 }
 
 .top-bar {
+  .top-bar-left .signature-icon {
+    width: 50px;
+    height: 50px;
+    border: 2px solid $base-white;
+    border-radius: 50%;
+  }
+
   ul[data-dropdown-menu] li {
     a {
       color: $base-color;
