@@ -92,9 +92,7 @@ module.exports = {
             onBuildStart:[
                 "echo \033[1;33mMoving images into build/\033[0m",
                 "mkdir -p build",
-                "cp -R images build/",
-                "cp src/manifest.json build/",
-                "cp src/favicon.ico build/"
+                "cp -R images build/"
             ]
         })
     ],
