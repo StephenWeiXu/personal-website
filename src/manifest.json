@@ -1,6 +1,7 @@
 {
-  "short_name": "Wei Xu's Homepage",
-  "name": "Wei Xu's Homepage",
+  "short_name": "Wei Xu",
+  "name": "Wei Xu - Software Developer",
+  "description": "Wei Xu, Software developer specializing in web application development",
   "icons": [
     {
       "src": "images/favicon.ico",
