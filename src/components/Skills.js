@@ -14,14 +14,14 @@ class Skills extends Component {
 		this.isSmallScreen = MediaQuery.is("small only");
 
 		this.languageNodes = [
-			{ id: "python", position: 0, group: 0, label: "Python", level: 1, radius: 50},
-			{ id: "javascript", position: 0, group: 1, label: "JavaScript", level: 1, radius: 50}
+			{ id: "python", position: 0, group: 0, label: "Python", level: 1, radius: 50, "fontWeight": "bold"},
+			{ id: "javascript", position: 0, group: 1, label: "JavaScript", level: 1, radius: 50, "fontWeight": "bold"}
 		]
 
 		this.areaNodes = {
 			"python": {
 				"web-app": [
-					{ id: "python-web-app"   , position: 1, group: 0, label: "Web APP"   , level: 2 }
+					{ id: "python-web-app"   , position: 1, group: 0, label: "Software Development"   , level: 2 }
 				],
 
 				"data-science": [
@@ -31,7 +31,7 @@ class Skills extends Component {
 
 			"javascript": {
 				"web-app": [
-					{ id: "javascript-web-app"  , position: 1, group: 1, label: "Web App"   , level: 2 }
+					{ id: "javascript-web-app"  , position: 1, group: 1, label: "Software Development"   , level: 2 }
 				],
 
 				"data-science": [
@@ -127,7 +127,7 @@ class Skills extends Component {
 		const nodeColorMap = {
 			1: "orange",
 			2: "green",
-			3: "gray",
+			3: "green",
 		}
 
 		return nodeColorMap[node.level];
@@ -156,7 +156,8 @@ class Skills extends Component {
 				.attr("class", "area-node")
 				.attr("r", node => node.radius)
 				.attr("fill", "transparent")
-				.style("stroke", "black");
+				.style("stroke", "black")
+				.style("stroke-width", "2px");
 
 			this.areaNodes[language][area].forEach(node => {
 				this.nodes.push(node);
@@ -188,12 +189,12 @@ class Skills extends Component {
 				.enter().append("text")
 				.attr("id", node => node.id)
 				.attr("class", "area-text")
+				.attr("dy", 1)
 				.text(node => node.label)
 				.style("text-anchor", "middle")
 				.style("fill", "white")
 				.style("font-size", "20px")
-				.attr("font-weight", "bold")
-				.attr("dy", 4);
+				.style("font-weight", "bold");
 		}
 
 		tempTexts
@@ -204,11 +205,17 @@ class Skills extends Component {
 			.enter().append("text")
 			.attr("id", node => node.id)
 			.attr("class", "skill-text")
+			.attr("dy", 4)
+			.text(node => node.label)
 			.style("text-anchor", "middle")
 			.style("fill", "white")
-			.text(node => node.label)
 			.style("font-size", 15)
-			.attr("dy", 4)
+			.style("font-weight", node => {
+				if("fontWeight" in node) {
+					return node.fontWeight;
+				}
+				return "normal";
+			})
 			.call(this.dragDrop);
 	}
 
