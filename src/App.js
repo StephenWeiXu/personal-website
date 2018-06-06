@@ -30,7 +30,7 @@ class App extends Component {
 				<div className="grid-container">
 					<div className="top-bar">
 						<div className="top-bar-left">
-							<img className="signature-icon" src="images/favicon.png" />
+							<NavLink to="/"><img className="signature-icon hide-for-small-only" src="images/favicon.png" /></NavLink>
 						</div>
 						<div className="top-bar-right">
 							<ul className="dropdown menu" data-dropdown-menu>
