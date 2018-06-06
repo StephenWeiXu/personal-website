@@ -14,6 +14,7 @@ $base-spacing-large: $base-spacing * 6 !default;
 $base-spacing-extra-large: $base-spacing * 8 !default;
 
 // Foundation variables overrides
+$contrast-warnings: false;
 $body-font-color: $base-color;
 $body-font-family: Century Gothic, Arial, sans-serif;
 $topbar-background: none;
