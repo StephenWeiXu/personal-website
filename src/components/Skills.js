@@ -125,9 +125,9 @@ class Skills extends Component {
 
 	getNodeColor(node) {
 		const nodeColorMap = {
-			1: "orange",
-			2: "green",
-			3: "green",
+			1: "#578CA9",
+			2: "#6F9FD8",
+			3: "#6F9FD8",
 		}
 
 		return nodeColorMap[node.level];
@@ -149,12 +149,11 @@ class Skills extends Component {
 		
 		if(!this.isSmallScreen && area.length && language.length) {
 			tempNodes
-				.selectAll("circle")
+				.selectAll("path")
 				.data(this.areaNodes[language][area])
-				.enter().append("circle")
+				.enter().append("path")
 				.attr("id", node => node.id)
 				.attr("class", "area-node")
-				.attr("r", node => node.radius)
 				.attr("fill", "transparent")
 				.style("stroke", "white")
 				.style("stroke-width", "2px");
@@ -194,9 +193,12 @@ class Skills extends Component {
 				.selectAll("text")
 				.data(this.areaNodes[language][area])
 				.enter().append("text")
+				.attr("dy", -5)
+				.append("textPath")
+				.attr("xlink:href", node => "#" + node.id)
+				.attr("startOffset", "20%")
 				.attr("id", node => node.id)
 				.attr("class", "area-text")
-				.attr("dy", 1)
 				.text(node => node.label)
 				.style("text-anchor", "middle")
 				.style("fill", "white")
@@ -322,6 +324,14 @@ class Skills extends Component {
 				areaNodeCX = groupBBox.x + groupBBox.width/2,
 				areaNodeCY = groupBBox.y + groupBBox.height/2,
 				areaNodeRadius = d3.max([groupBBox.height/2, groupBBox.width/2]) + 20;
+
+			this.nodesElements.selectAll(`path#${className}`)
+				.attr("d", node => {
+					return `M ${areaNodeCX}, ${areaNodeCY}
+							m ${-areaNodeRadius},0
+			                a ${areaNodeRadius},${areaNodeRadius} 0 0,1 ${2*areaNodeRadius},0
+			                a ${areaNodeRadius},${areaNodeRadius} 0 0,1 ${-2*areaNodeRadius},0`
+				})
 
 			this.nodesElements.selectAll(`circle#${className}`)
 				.attr("cx", node => areaNodeCX)
