@@ -14,8 +14,8 @@ class Skills extends Component {
 		this.isSmallScreen = MediaQuery.is("small only");
 
 		this.languageNodes = [
-			{ id: "python", position: 0, group: 0, label: "Python", level: 1, radius: 50, "fontWeight": "bold"},
-			{ id: "javascript", position: 0, group: 1, label: "JavaScript", level: 1, radius: 50, "fontWeight": "bold"}
+			{ id: "python", position: 0, group: 0, label: "Python", level: 1, radius: 55, "fontSize": 18, "fontWeight": "bold", "stroke": "white"},
+			{ id: "javascript", position: 0, group: 1, label: "JavaScript", level: 1, radius: 55, "fontSize": 18, "fontWeight": "bold", "stroke": "white"}
 		]
 
 		this.areaNodes = {
@@ -135,8 +135,8 @@ class Skills extends Component {
 
 	getLinkColor(link) {
 		const linkColorMap = {
-			"web-app": "black",
-			"data-science": "black"
+			"web-app": "white",
+			"data-science": "white"
 		}
 
 		return linkColorMap[link.type];
@@ -156,7 +156,7 @@ class Skills extends Component {
 				.attr("class", "area-node")
 				.attr("r", node => node.radius)
 				.attr("fill", "transparent")
-				.style("stroke", "black")
+				.style("stroke", "white")
 				.style("stroke-width", "2px");
 
 			this.areaNodes[language][area].forEach(node => {
@@ -174,6 +174,13 @@ class Skills extends Component {
 			.attr("class", "skill-node")
 			.attr("r", node => node.radius)
 			.attr("fill", this.getNodeColor)
+			.style("stroke", node => {
+				if("stroke" in node) {
+					return node.stroke;
+				}
+				return "";
+			})
+			.style("stroke-width", "2px")
 			.call(this.dragDrop);
 	}
 
@@ -209,7 +216,12 @@ class Skills extends Component {
 			.text(node => node.label)
 			.style("text-anchor", "middle")
 			.style("fill", "white")
-			.style("font-size", 15)
+			.style("font-size", node => {
+				if("fontSize" in node) {
+					return node.fontSize;
+				}
+				return 15;
+			})
 			.style("font-weight", node => {
 				if("fontWeight" in node) {
 					return node.fontWeight;

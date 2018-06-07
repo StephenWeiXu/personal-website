@@ -5,6 +5,7 @@ $base-white: #fff !default;
 $base-black: #000 !default;
 $base-color: $base-white !default;
 $base-background: #505050 !default;
+$base-font: Century Gothic, arial, sans-serif !default;
 
 $base-spacing: 4px !default;
 $base-spacing-extra-small: 4px !default;
@@ -16,7 +17,7 @@ $base-spacing-extra-large: $base-spacing * 8 !default;
 // Foundation variables overrides
 $contrast-warnings: false;
 $body-font-color: $base-color;
-$body-font-family: Century Gothic, Arial, sans-serif;
+$body-font-family: $base-font;
 $topbar-background: none;
 $table-background: transparent;
 
