@@ -42,7 +42,7 @@ class App extends Component {
 						</div>
 					</div>
 
-					<div className="content ptxl">
+					<div id="content" className="content ptxl">
 						<Route exact path="/" component={About} />
 						<Route path="/skills" component={Skills} />
 						<Route path="/projects" component={Projects} />

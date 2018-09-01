@@ -71,6 +71,7 @@ class Skills extends Component {
 				"web-app": [
 					{ id: "es6"  , position: 1, group: 1, label: "ES6"   , level: 2 },
 					{ id: "react"  , position: 1, group: 1, label: "React"   , level: 2 },
+					{ id: "Vue"  , position: 1, group: 1, label: "Vue"   , level: 2 },
 					{ id: "jquery"  , position: 1, group: 1, label: "jQuery"   , level: 2 },
 					{ id: "webpack"  , position: 1, group: 1, label: "Webpack"   , level: 2 },
 				],
@@ -143,7 +144,7 @@ class Skills extends Component {
 	}
 
 	appendNodes(nodesData, nodesElements, area = "", language = "") {
-		let nodeGroupClass = (area.length && language.length)? `${language}-${area}` : "skill-nodes";
+		let nodeGroupClass = (area.length && language.length)? `${language}-${area}` : "nodes";
 
 		let tempNodes = nodesElements.append("g").attr("class", "nodes");
 		
@@ -170,7 +171,7 @@ class Skills extends Component {
 			.data(nodesData)
 			.enter().append("circle")
 			.attr("id", node => node.id)
-			.attr("class", "skill-node")
+			.attr("class", "node")
 			.attr("r", node => node.radius)
 			.attr("fill", this.getNodeColor)
 			.style("stroke", node => {
@@ -270,21 +271,21 @@ class Skills extends Component {
 			.force("charge", d3.forceManyBody().strength(-120))
 				.force("x", d3.forceX(node => {
 					if(node.position === 0) {
-						return this.width/3;
-					} else if(node.position === 1) {
-						return this.width/8;
-					} else if(node.position === 2) {
 						return this.width/2;
+					} else if(node.position === 1) {
+						return this.width/4;
+					} else if(node.position === 2) {
+						return this.width/1.5;
 					}
 				}))
 				.force("y", d3.forceY(node => {
 					if(node.group === 0) {
-						return this.height/3.5;
+						return this.height/2;
 					} else if(node.group === 1) {
-						return this.height/1.5;
+						return this.height/1.2;
 					}
 				}))
-			.force("center", d3.forceCenter(this.width/2.5, this.height/3))
+			.force("center", d3.forceCenter(this.width/2, this.height/3))
 			.force("collide", d3.forceCollide().radius(function(d) { return d.radius }));
 	}
 
@@ -309,7 +310,7 @@ class Skills extends Component {
 	}
 
 	simulationTicked() {
-		this.nodesElements.selectAll("circle.skill-node")
+		this.nodesElements.selectAll("circle.node")
 			.attr("cx", node => node.x)
 			.attr("cy", node => node.y);
 
@@ -359,7 +360,7 @@ class Skills extends Component {
 			$("a#about_nav").removeClass("active");
 		}
 
-		this.width = window.innerWidth;
+		this.width = $("#content").width();
 		this.height = window.innerHeight;
 		let svg = d3.select("svg");
 		svg.attr("width", this.width).attr("height", this.height).style("overflow", "visible");
