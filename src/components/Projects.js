@@ -99,7 +99,7 @@ class Projects extends Component {
 		return cardsTemplate;
 	}
 
-	getProjectRoute() {
+	renderProjectsBase() {
 		let projectRoute = <Route exact path={this.match.path} render={() => (
 				<div className="grid-x grid-padding-x small-up-1 medium-up-2 large-up-4">
 					{this.getCardsTemplate()}
@@ -110,7 +110,7 @@ class Projects extends Component {
 		return projectRoute;
 	}
 
-	getCardsRoutes() {
+	createProjectCardRoutes() {
 		let self = this;
 		let cardsRoutes = this.cards.map((card, index) => {
 			return (
@@ -133,8 +133,8 @@ class Projects extends Component {
 	render() {
 		return (
 			<div className="project-container">
-				{this.getProjectRoute()}
-				{this.getCardsRoutes()}
+				{this.renderProjectsBase()}
+				{this.createProjectCardRoutes()}
 			</div>
 		);
 	}

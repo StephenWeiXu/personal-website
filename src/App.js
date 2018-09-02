@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Route, NavLink, HashRouter } from "react-router-dom";
+import { Route, NavLink, HashRouter, Switch } from "react-router-dom";
 import $ from "jquery";
 import { DropdownMenu } from "foundation-sites/js/foundation.dropdownMenu";
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Publication from './components/Publication';
+import Blogs from './components/Blogs';
+import NotFound from './components/NotFound';
 
 window.$ = window.jQuery = $;
 
@@ -38,15 +40,20 @@ class App extends Component {
 								<li onClick={this.handleNavClick}><NavLink to="/skills"><span>SKILLS</span></NavLink></li>
 								<li onClick={this.handleNavClick}><NavLink to="/projects"><span>PROJECTS</span></NavLink></li>
 								<li onClick={this.handleNavClick}><NavLink to="/publication"><span>PUBLICATION</span></NavLink></li>
+								{ /* <li onClick={this.handleNavClick}><NavLink to="/blogs"><span>BLOGS</span></NavLink></li> */ }
 							</ul>
 						</div>
 					</div>
 
-					<div id="content" className="content ptxl">
-						<Route exact path="/" component={About} />
-						<Route path="/skills" component={Skills} />
-						<Route path="/projects" component={Projects} />
-						<Route path="/publication" component={Publication} />
+					
+					<div id="content" className="content ptxl phs">
+						<Switch>
+							<Route exact path="/" component={About} />
+							<Route path="/skills" component={Skills} />
+							<Route path="/projects" component={Projects} />
+							<Route path="/publication" component={Publication} />
+							<Route component={NotFound} />
+						</Switch>
 					</div>
 				</div>
 			</HashRouter>

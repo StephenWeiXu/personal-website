@@ -80,6 +80,11 @@ module.exports = {
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
                 loader: "url-loader?limit=100000&name=/fonts/[hash].[ext]"
+            },
+            {
+                test: /\.md$/,
+                loader: "raw-loader",
+                options: {}
             }
         ]
     },
@@ -92,7 +97,8 @@ module.exports = {
             onBuildStart:[
                 "echo \033[1;33mMoving images into build/\033[0m",
                 "mkdir -p build",
-                "cp -R images build/"
+                "cp -R images build/",
+                "cp -R blogs build/"
             ]
         })
     ],

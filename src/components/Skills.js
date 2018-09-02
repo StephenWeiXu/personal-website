@@ -363,7 +363,7 @@ class Skills extends Component {
 		this.width = $("#content").width();
 		this.height = window.innerHeight;
 		let svg = d3.select("svg");
-		svg.attr("width", this.width).attr("height", this.height).style("overflow", "visible");
+		svg.attr("width", this.width).attr("height", this.height).style("overflow", "visible").style("margin-left", "-100px");
 
 		this.buildForceSimulation();
 		this.buildDragDropAnimation();
