@@ -4,7 +4,7 @@ import $ from "jquery";
 import { DropdownMenu } from "foundation-sites/js/foundation.dropdownMenu";
 import About from './components/About';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
+import Work from './components/Work';
 import Publication from './components/Publication';
 import Blogs from './components/Blogs';
 import NotFound from './components/NotFound';
@@ -38,9 +38,8 @@ class App extends Component {
 							<ul className="dropdown menu" data-dropdown-menu>
 								<li onClick={this.handleNavClick}><NavLink to="/" id="about_nav"><span>ABOUT</span></NavLink></li>
 								<li onClick={this.handleNavClick}><NavLink to="/skills"><span>SKILLS</span></NavLink></li>
-								<li onClick={this.handleNavClick}><NavLink to="/projects"><span>PROJECTS</span></NavLink></li>
+								<li onClick={this.handleNavClick}><NavLink to="/work"><span>WORK</span></NavLink></li>
 								<li onClick={this.handleNavClick}><NavLink to="/publication"><span>PUBLICATION</span></NavLink></li>
-								{ /* <li onClick={this.handleNavClick}><NavLink to="/blogs"><span>BLOGS</span></NavLink></li> */ }
 							</ul>
 						</div>
 					</div>
@@ -50,7 +49,7 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" component={About} />
 							<Route path="/skills" component={Skills} />
-							<Route path="/projects" component={Projects} />
+							<Route path="/work" component={Work} />
 							<Route path="/publication" component={Publication} />
 							<Route component={NotFound} />
 						</Switch>

@@ -4,8 +4,10 @@
 @import "display";
 @import "typography";
 @import "spacing";
+@import "icons";
 
 @include foundation-everything;
 @include display-utils;
 @include typography;
 @include spacing;
+@include icons;

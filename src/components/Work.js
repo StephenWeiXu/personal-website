@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import ProjectCard from "./project/ProjectCard";
-import ProjectDetail from "./project/ProjectDetail";
+import ProjectCard from "./work/ProjectCard";
+import ProjectDetail from "./work/ProjectDetail";
 import { Route } from "react-router-dom";
 
 
-class Projects extends Component {
+class Work extends Component {
 	constructor(props) {
 		super(props);
 
@@ -14,7 +14,7 @@ class Projects extends Component {
 			{
 				"name": "umich-dataset-catalog",
 				"imagePath": "images/project-dataset-catalog.jpg",
-				"title": "Web App Development for UMICH Health System Dataset Catalog",
+				"title": "UMICH Health System Dataset Catalog Web App",
 				"labels": ["Python", "Pylons", "Jinja2", "JavaScript", "HTML/CSS"],
 				"description": 'I worked on this project as a Software Developer Intern at <a href="http://cci.med.umich.edu/" target="_blank"> \
 					University of Michigan Health System - Cancer Center Informatics</a> for 4 months. The project goal is to collect and publish \
@@ -27,7 +27,7 @@ class Projects extends Component {
 			{
 				"name": "retinal-diagnose-tool",
 				"imagePath": "images/project-retinal-diagnose.jpg",
-				"title": "Diagnostic Tool Development with Machine Learning for Retinal Dystrophy",
+				"title": "Machine Learning Diagnostic Tool for Retinal Dystrophy",
 				"labels": ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
 				"description": 'I participated in this project as a team member of Machine Learning group, conducted \
 					by <a href="http://www.kellogg.umich.edu/" target="_blank"><i>Kellogg Eye Center(KEC)</i></a> of University of Michigan. Based \
@@ -41,7 +41,7 @@ class Projects extends Component {
 			{
 				"name": "car-brand-prediction",
 				"imagePath": "images/project-car-brand-prediction.jpg",
-				"title": "Car Brand Prediction Based on Twitter Tweets",
+				"title": "Car Brand Prediction with Twitter Tweets",
 				"labels": ["Python", "Tweepy", "Twitter API", "Machine Learning"],
 				"description": 'This is the final project for UMICH <a href="http://web.eecs.umich.edu/~mihalcea/498IR/" target="_blank">EECS \
 					inter 2015 Special Topics 498-001</a>(<i><b>Information Retrieval and Web Search</b></i>). In this project, we built an \
@@ -140,4 +140,4 @@ class Projects extends Component {
 	}
 }
 
-export default Projects;
+export default Work;

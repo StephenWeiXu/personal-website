@@ -24,11 +24,9 @@ class ProjectCard extends Component {
 			<div className="cell mbm">
 				<div className="card">
 					<Link to={`${this.parentMatch.url}/${this.card.name}`}><img src={this.card.imagePath} alt={this.card.title} />
-						<div className="card-section mts">
+						<div className="card-section">
 							{this.card.title}
-							<div className="block">
-								{this.getCardLabels()}
-							</div>
+							<div className="block">{this.getCardLabels()}</div>
 						</div>
 					</Link>
 				</div>
