@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MediaQuery } from 'foundation-sites/js/foundation.util.mediaQuery';
 import * as d3 from "d3";
+import { toTitleCase, unslugify } from "../utils";
 
 window.d3 = d3;
 
@@ -126,9 +127,9 @@ class Skills extends Component {
 
 	getNodeColor(node) {
 		const nodeColorMap = {
-			1: "#578CA9",
-			2: "#6F9FD8",
-			3: "#6F9FD8",
+			1: "#00A591",
+			2: "#00A591",
+			3: "#00A591",
 		}
 
 		return nodeColorMap[node.level];
@@ -148,7 +149,7 @@ class Skills extends Component {
 
 		let tempNodes = nodesElements.append("g").attr("class", "nodes");
 		
-		if(!this.isSmallScreen && area.length && language.length) {
+		if(area.length && language.length) {
 			tempNodes
 				.selectAll("path")
 				.data(this.areaNodes[language][area])
@@ -355,31 +356,68 @@ class Skills extends Component {
 		});		
 	}
 
+	buildTemplateForMobile() {
+		let template = Object.keys(this.skillNodes).map( (language, index1) => (
+			<div key={index1} className="cell small-12 mbm">
+				<h1>{toTitleCase(language)}</h1>
+				<div className="skill-card">
+				{
+					Object.keys(this.skillNodes[language]).map( (area, index2) => {
+						return (
+							<div key={index2} className="mbm">
+								<h2>{unslugify(area)}</h2>
+								<div className="grid-container">
+								{
+									this.skillNodes[language][area].map( (skillNode, index3) => {
+										return(<div key={index3} className="grid-item">{skillNode.label}</div>);
+									})
+								}
+								</div>
+							</div>
+						);
+					})
+				}
+				</div>
+			</div>
+		));
+
+		return template;
+	}
+
 	componentDidMount() {
 		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
 			$("a#about_nav").removeClass("active");
 		}
 
-		this.width = $("#content").width();
-		this.height = window.innerHeight;
-		let svg = d3.select("svg");
-		svg.attr("width", this.width).attr("height", this.height).style("overflow", "visible").style("margin-left", "-100px");
+		if (!this.isSmallScreen) {
+			this.width = $("#content").width();
+			this.height = window.innerHeight;
+			let svg = d3.select("svg");
+			svg.attr("width", this.width).attr("height", this.height).style("overflow", "visible").attr("class", "skills-responsive");
 
-		this.buildForceSimulation();
-		this.buildDragDropAnimation();
-		this.buildElements(svg);
+			this.buildForceSimulation();
+			this.buildDragDropAnimation();
+			this.buildElements(svg);
 
-		this.simulation.nodes(this.nodes).on("tick", () => this.simulationTicked());
-
-		if(!this.isSmallScreen) {
+			this.simulation.nodes(this.nodes).on("tick", () => this.simulationTicked());
 			this.simulation.force("link").links(this.links);
 		}
 	}
 
 	render() {
-		return(
-		    <svg></svg>
-		);
+		if (!this.isSmallScreen) {
+			return (
+				<div className="skills-container">
+	    			<svg></svg>
+    			</div>
+			);
+		} else {
+			return (
+				<div className="grid-x skills-container">
+					{this.buildTemplateForMobile()}
+				</div>
+			);
+		}
 	}
 }
 
