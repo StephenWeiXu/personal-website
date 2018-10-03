@@ -118,7 +118,6 @@ html {
 
 .project-container {
   .card {
-    height: 450px;
     background: transparent;
 
     @include breakpoint(small down) {
@@ -127,19 +126,23 @@ html {
 
     img {
       width: 100%;
+      border: 1px solid $base-white;
+      border-radius: 5px;
 
       @include breakpoint(medium up) {
-        height: 250px;
+        height: 340px;
       }
-    }
 
-    &:hover {
-      opacity: 0.8;
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     .card-section {
       color: $base-white;
       font-weight: bold;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 

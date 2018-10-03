@@ -101,7 +101,7 @@ class Work extends Component {
 
 	renderProjectsBase() {
 		let projectRoute = <Route exact path={this.match.path} render={() => (
-				<div className="grid-x grid-padding-x small-up-1 medium-up-2 large-up-4">
+				<div className="grid-x grid-padding-x small-up-1 medium-up-1 large-up-3">
 					{this.getCardsTemplate()}
 				</div>
 			)}
