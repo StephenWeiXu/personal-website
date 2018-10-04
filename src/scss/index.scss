@@ -13,6 +13,7 @@ html {
 }
 
 .background-base {
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
@@ -34,6 +35,11 @@ html {
 }
 
 .top-bar {
+  position: fixed;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+
   .top-bar-left .signature-icon {
     width: 50px;
     height: 50px;
@@ -63,7 +69,23 @@ html {
 }
 
 .content {
-  margin-top: 50px;
+  .section {
+    height: auto;
+    padding: 5rem;
+  }
+
+  #work {
+    background: #f5f7f9;
+  }
+
+  #skills {
+    height: 800px;
+    background: #578ca9;
+  }
+
+  #publication {
+    background: #fff;
+  }
 }
 
 .not-found {
@@ -77,7 +99,8 @@ html {
 }
 
 .profile {
-  margin-top: 10%;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
 
   .occupation {
     font-size: 18px;
@@ -98,7 +121,8 @@ html {
 
 .skills-container {
   .skills-responsive {
-    margin-left: -2rem;
+    padding-top: 5rem;
+    margin-left: -5rem;
   }
 
   .skill-card {
@@ -117,6 +141,8 @@ html {
 }
 
 .project-container {
+  padding-top: 5rem;
+
   .card {
     background: transparent;
 
@@ -139,7 +165,7 @@ html {
     }
 
     .card-section {
-      color: $base-white;
+      color: $base-black;
       font-weight: bold;
       padding-left: 0;
       padding-right: 0;
@@ -186,18 +212,18 @@ html {
   }
 }
 
-.data-table {
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
+.publication-container {
+  color: $base-black;
 
-  thead {
-    color: $base-white;
-  }
+  .data-table {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
 
-  .data-heading {
-    th {
-      border-bottom: 1px solid $base-white;
+    .data-heading {
+      th {
+        border-bottom: 1px solid $base-black;
+      }
     }
   }
 }

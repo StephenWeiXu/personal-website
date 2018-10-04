@@ -385,9 +385,9 @@ class Skills extends Component {
 	}
 
 	componentDidMount() {
-		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
-			$("a#about_nav").removeClass("active");
-		}
+		// if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
+		// 	$("a#about_nav").removeClass("active");
+		// }
 
 		if (!this.isSmallScreen) {
 			this.width = $("#content").width();

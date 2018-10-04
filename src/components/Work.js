@@ -10,6 +10,9 @@ class Work extends Component {
 
 		this.match = props.match;
 
+		this.match = {};
+		this.match.path = "/";
+
 		this.cards = [
 			{
 				"name": "umich-dataset-catalog",
