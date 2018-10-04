@@ -12,6 +12,14 @@ class Work extends Component {
 
 		this.cards = [
 			{
+				"name": "personal-portfolio",
+				"imagePath": "images/project-personal-portfolio.jpg",
+				"title": "Personal Portfolio Web Development",
+				"labels": ["React", "React Router", "Webpack", "AWS", "JavaScript", "Foundation", "HTML/CSS"],
+				"description": 'Developed my personal portfolio web app with React JS and Foundation Framework using Webpack, and deployed to AWS S3 as static website hosting. Checkout the \
+					source code at <a href="https://github.com/StephenWeiXu/personal-website" target="_blank">Here</a>.'
+			},
+			{
 				"name": "umich-dataset-catalog",
 				"imagePath": "images/project-dataset-catalog.jpg",
 				"title": "UMICH Health System Dataset Catalog Web App",

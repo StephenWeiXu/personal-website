@@ -157,6 +157,7 @@ html {
     }
 
     border: 1px solid $base-white;
+    border-radius: 5px;
 
     .project-main {
       @include breakpoint(medium up) {
