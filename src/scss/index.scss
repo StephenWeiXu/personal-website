@@ -4,7 +4,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: $base-font;
-  color: $base-color;
 }
 
 body,
@@ -39,6 +38,7 @@ html {
   width: 100%;
   padding-left: 5rem;
   padding-right: 5rem;
+  color: $base-white;
 
   .top-bar-left .signature-icon {
     width: 50px;
@@ -49,7 +49,7 @@ html {
 
   ul[data-dropdown-menu] li {
     a {
-      color: $base-color;
+      color: $base-white;
       font-weight: bold;
       margin-right: $base-spacing-small;
 
@@ -71,20 +71,19 @@ html {
 .content {
   .section {
     height: auto;
-    padding: 5rem;
+    padding: 5rem 10rem 5rem 10rem;
   }
 
   #work {
-    background: #f5f7f9;
+    background: #edeeef;
   }
 
   #skills {
-    height: 800px;
     background: #578ca9;
   }
 
   #publication {
-    background: #fff;
+    background: #edeeef;
   }
 }
 
@@ -99,6 +98,7 @@ html {
 }
 
 .profile {
+  color: $base-white;
   padding-top: 10rem;
   padding-bottom: 10rem;
 
@@ -143,70 +143,17 @@ html {
 .project-container {
   padding-top: 5rem;
 
-  .card {
-    background: transparent;
-
-    @include breakpoint(small down) {
-      height: 100%;
-    }
-
-    img {
-      width: 100%;
-      border: 1px solid $base-white;
-      border-radius: 5px;
-
-      @include breakpoint(medium up) {
-        height: 340px;
-      }
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-
-    .card-section {
-      color: $base-black;
-      font-weight: bold;
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-
   .project-detail {
-    ::-webkit-scrollbar {
-      width: 7px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      border-radius: 5px;
-      background-color: $base-white;
-    }
-
-    border: 1px solid $base-white;
-
     .project-main {
-      @include breakpoint(medium up) {
-        height: 320px;
-      }
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      height: auto;
 
       img {
         width: 100%;
         height: 100%;
-      }
-
-      .project-desc {
-        height: 250px;
-        overflow: auto;
-      }
-    }
-
-    .back-icon,
-    .pagination-icon {
-      font-size: 30px;
-      color: $base-white;
-
-      &:hover {
-        opacity: 0.8;
+        border: 1px solid $base-white;
+        border-radius: 5px;
       }
     }
   }
