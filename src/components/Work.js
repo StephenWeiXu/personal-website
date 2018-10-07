@@ -9,11 +9,6 @@ class Work extends Component {
 	constructor(props) {
 		super(props);
 
-		this.match = props.match;
-
-		this.match = {};
-		this.match.path = "/";
-
 		this.cards = [
 			{
 				"name": "umich-dataset-catalog",
@@ -78,9 +73,6 @@ class Work extends Component {
 	}
 
 	componentDidMount() {
-		// if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
-		// 	$("a#about_nav").removeClass("active");
-		// }
 		this.cards.map((card, index) => {
 			new Reveal($(`#${card.name}`));
 		});
@@ -106,7 +98,6 @@ class Work extends Component {
 					previousCard={this.getPreviousCardName(index)}
 					nextCard={this.getNextCardName(index)}
 					totalLength={this.totalCardsLength}
-					parentmatch={self.match}
 					card={card} 
 				/>
 			);
@@ -118,12 +109,12 @@ class Work extends Component {
 	render() {
 		return (
 			<div className="project-container">
-				<h2>Some of My Work</h2>
+				<h2>Some Recent Work</h2>
 				<div className="grid-x grid-padding-x small-up-1 medium-up-2 large-up-2">
 					{
 						this.cards.map((card, index) => {
 							return (
-								<ProjectCard key={index} card={card} match={this.match} />
+								<ProjectCard key={index} card={card} />
 							);
 						})
 					}
@@ -138,7 +129,6 @@ class Work extends Component {
 										previousCard={this.getPreviousCardName(index)}
 										nextCard={this.getNextCardName(index)}
 										totalLength={this.totalCardsLength}
-										parentmatch={self.match}
 										card={card} 
 									/>
 								</div>

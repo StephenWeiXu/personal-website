@@ -5,7 +5,6 @@ class ProjectCard extends Component {
 		super(props);
 
 		this.card = props.card;
-		this.parentMatch = props.match
 	}
 
 	getCardLabels() {

@@ -8,15 +8,9 @@ import Conclusion from "./publication/Conclusion";
 class Publication extends Component {
 	constructor(props) {
 		super(props);
-
-		this.match = props.match;
 	}
 
 	componentDidMount() {
-		// if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
-		// 	$("a#about_nav").removeClass("active");
-		// }
-
 		new Accordion($("[data-accordion]"));
 	}
 

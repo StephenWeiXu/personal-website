@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import Work from './components/Work';
 import Publication from './components/Publication';
 import Blogs from './components/Blogs';
+import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 import ScrollspyNav from "react-scrollspy-nav";
 
@@ -22,11 +23,6 @@ class App extends Component {
 		new DropdownMenu($("[data-dropdown-menu]"));
 	}
 
-	handleNavClick(event) {
-		$(event.target).closest("li").siblings().find("a").removeClass("active");
-		$(event.target).closest("a").addClass("active");
-	}
-
 	render() {
 		return(
 			<HashRouter>
@@ -38,10 +34,10 @@ class App extends Component {
 						<div className="top-bar-right">
 							<ScrollspyNav scrollTargetIds={["about", "work", "skills", "publication"]} activeNavClass="active" router="HashRouter">
 								<ul className="dropdown menu" data-dropdown-menu>
-									<li onClick={this.handleNavClick}><NavLink to="#about" id="about_nav"><span>ABOUT</span></NavLink></li>
-									<li onClick={this.handleNavClick}><NavLink to="#work"><span>WORK</span></NavLink></li>
-									<li onClick={this.handleNavClick}><NavLink to="#skills"><span>SKILLS</span></NavLink></li>
-									<li onClick={this.handleNavClick}><NavLink to="#publication"><span>PUBLICATION</span></NavLink></li>
+									<li><NavLink to="#about" id="about_nav"><span>ABOUT</span></NavLink></li>
+									<li><NavLink to="#work"><span>WORK</span></NavLink></li>
+									<li><NavLink to="#skills"><span>SKILLS</span></NavLink></li>
+									<li><NavLink to="#publication"><span>PUBLICATION</span></NavLink></li>
 								</ul>
 							</ScrollspyNav>
 						</div>
@@ -59,6 +55,9 @@ class App extends Component {
 						</div>
 						<div className="section" id="publication">
 							<Publication />
+						</div>
+						<div className="section" id="footer">
+							<Footer />
 						</div>
 					</div>
 				</div>

@@ -9,7 +9,6 @@ class ProjectDetail extends Component {
 		this.previousCard = props.previousCard;
 		this.nextCard = props.nextCard;
 		this.totalLength = props.totalLength;
-		this.parentmatch = props.parentmatch;
 		this.card = props.card;
 	}
 

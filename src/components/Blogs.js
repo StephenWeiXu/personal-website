@@ -13,12 +13,6 @@ class Blogs extends Component {
 			"hello-world": 'hello-world.md'
 		}
 	}
-	
-	componentDidMount() {
-		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
-			$("a#about_nav").removeClass("active");
-		}
-	}
 
 	createBlogDist() {
 		let blogDist = [];
