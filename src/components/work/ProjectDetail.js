@@ -37,11 +37,25 @@ class ProjectDetail extends Component {
 					<div className="cell small-12 medium-7">
 						<div className="mbm">
 							<span className="bold mbm">{this.card.title}</span>
-							<div className="block">
+							<a href="javascript:void(0)" data-close={this.card.name} className="float-right back-icon">
+								<i className="fa fa-times-circle txtt icon-large"></i>
+							</a>
+							<div className="block bold">
 								{this.getCardLabels()}
 							</div>
 						</div>
 						<div className="project-desc" dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
+					</div>
+				</div>
+				<div className="grid-x grid-padding-x mbm">
+					<div className="cell small-12 large-2 large-offset-10 txtr">
+						<span className="txttb mrs">{this.currentIndex+1}/{this.totalLength}</span>
+						<a href="javascript:void(0)" className="pagination-icon">
+							<i className="fa fa-arrow-circle-left mrs icon-large"></i>
+						</a>
+						<a href="javascript:void(0)" className="pagination-icon">
+							<i className="fa fa-arrow-circle-right mls icon-large"></i>
+						</a>
 					</div>
 				</div>
 			</div>

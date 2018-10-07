@@ -55,7 +55,7 @@ class App extends Component {
 							<Work />
 						</div>
 						<div className="section" id="skills">
-							<About />
+							<Skills />
 						</div>
 						<div className="section" id="publication">
 							<Publication />

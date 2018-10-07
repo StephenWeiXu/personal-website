@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ProjectCard from "./work/ProjectCard";
 import ProjectDetail from "./work/ProjectDetail";
 import { Route } from "react-router-dom";
+import { Reveal } from "foundation-sites/js/foundation.reveal";
 
 
 class Work extends Component {
@@ -80,6 +81,9 @@ class Work extends Component {
 		// if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
 		// 	$("a#about_nav").removeClass("active");
 		// }
+		this.cards.map((card, index) => {
+			new Reveal($(`#${card.name}`));
+		});
 	}
 
 	getPreviousCardName(currentIndex) {
@@ -90,27 +94,6 @@ class Work extends Component {
 	getNextCardName(currentIndex) {
 		let nextIndex = currentIndex < this.totalCardsLength-1 ? currentIndex+1 : 0;
 		return this.cards[nextIndex].name;
-	}
-
-	getCardsTemplate() {
-		let cardsTemplate = this.cards.map((card, index) => {
-			return (
-				<ProjectCard key={index} card={card} match={this.match} />
-			);
-		});
-
-		return cardsTemplate;
-	}
-
-	renderProjectsBase() {
-		let projectRoute = <Route exact path={this.match.path} render={() => (
-				<div className="grid-x grid-padding-x small-up-1 medium-up-1 large-up-3">
-					{this.getCardsTemplate()}
-				</div>
-			)}
-		/>
-
-		return projectRoute;
 	}
 
 	createProjectCardRoutes() {
@@ -135,7 +118,34 @@ class Work extends Component {
 	render() {
 		return (
 			<div className="project-container">
-				{this.createProjectCardRoutes()}
+				<h2>Some of My Work</h2>
+				<div className="grid-x grid-padding-x small-up-1 medium-up-2 large-up-2">
+					{
+						this.cards.map((card, index) => {
+							return (
+								<ProjectCard key={index} card={card} match={this.match} />
+							);
+						})
+					}
+				</div>
+				<div>
+					{
+						this.cards.map((card, index) => {
+							return (
+								<div key={index} className="reveal large" id={card.name} data-reveal>
+									<ProjectDetail 
+										currentIndex={index}
+										previousCard={this.getPreviousCardName(index)}
+										nextCard={this.getNextCardName(index)}
+										totalLength={this.totalCardsLength}
+										parentmatch={self.match}
+										card={card} 
+									/>
+								</div>
+							);
+						})
+					}
+				</div>
 			</div>
 		);
 	}

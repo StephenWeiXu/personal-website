@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
 
 class ProjectCard extends Component {
 	constructor(props) {
@@ -23,13 +22,14 @@ class ProjectCard extends Component {
 		return (
 			<div className="cell mbm">
 				<div className="card">
-					<Link to={`${this.parentMatch.url}/${this.card.name}`}>
+					<a href="javascript:void(0)" data-open={this.card.name}>
 						<img src={this.card.imagePath} alt={this.card.title} />
-					</Link>
-					<div className="card-section">
-						{this.card.title}
-						<div className="block">{this.getCardLabels()}</div>
-					</div>
+						<div className="card-section">
+							{this.card.title}
+							<div className="block">{this.getCardLabels()}</div>
+						</div>
+					</a>
+
 				</div>
 			</div>
 		);
