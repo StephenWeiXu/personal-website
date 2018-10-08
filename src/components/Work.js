@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import ProjectCard from "./work/ProjectCard";
 import ProjectDetail from "./work/ProjectDetail";
 import { Route } from "react-router-dom";
+import { Reveal } from "foundation-sites/js/foundation.reveal";
 
 
 class Work extends Component {
 	constructor(props) {
 		super(props);
-
-		this.match = props.match;
 
 		this.cards = [
 			{
@@ -25,7 +24,7 @@ class Work extends Component {
 				"title": "UMICH Health System Dataset Catalog Web App",
 				"labels": ["Python", "Pylons", "Jinja2", "JavaScript", "HTML/CSS"],
 				"description": 'I worked on this project as a Software Developer Intern at <a href="http://cci.med.umich.edu/" target="_blank"> \
-					University of Michigan Health System - Cancer Center Informatics</a> for 4 months. The project goal is to collect and publish \
+					University of Michigan Health System - Cancer Center Informatics</a>. The project goal is to collect and publish \
 					the meatdata of research datasets across departments in University of Michigan Health System to provide researchers a convinent \
 					and informative way to browse and search the research datasets they need. I developed this web aplication based on the Open \
 					Source Platform - <a href="http://ckan.org/" target="_blank">CKAN</a>. The web infrastructure is built on Python, Pylons web \
@@ -51,8 +50,8 @@ class Work extends Component {
 				"imagePath": "images/project-car-brand-prediction.jpg",
 				"title": "Car Brand Prediction with Twitter Tweets",
 				"labels": ["Python", "Tweepy", "Twitter API", "Machine Learning"],
-				"description": 'This is the final project for UMICH <a href="http://web.eecs.umich.edu/~mihalcea/498IR/" target="_blank">EECS \
-					inter 2015 Special Topics 498-001</a>(<i><b>Information Retrieval and Web Search</b></i>). In this project, we built an \
+				"description": 'Final project for UMICH <a href="http://web.eecs.umich.edu/~mihalcea/498IR/" target="_blank">Information \
+					Retrieval and Web Search Course</a>. In this project, we built an \
 					efficient text classifier to automatically predict the owned car brand based on the twitter user\'s relevant tweets. \
 					Using <a href="https://dev.twitter.com/overview/documentation" target="_blank">Twitter API</a> and \
 					<a href="http://www.tweepy.org/" target="_blank">tweepy package</a> in Python, we crawled and created a dataset containing \
@@ -66,15 +65,15 @@ class Work extends Component {
 				"name": "natural-scene-text-detection",
 				"imagePath": "images/project-text-detection.jpg",
 				"title": "Text Detection in Natural Scene Images",
-				"labels": ["Python", "Machine Learning"],
-				"description": 'This is a project for my graduation thesis of senior year in Tianjin University. The goal is to detect text \
+				"labels": ["Python", "Machine Learning", "Image Classification"],
+				"description": 'A project for my college graduation thesis in Tianjin University. The goal is to detect text \
 					strings in natural scene images based on Adaboost Learning method and structural analysis according to the \
 					paper <a href="http://dl.acm.org/citation.cfm?id=2238208.2238211" target="_blank"><i>Assistive text reading from complex \
-					background for blind persons</i></a>. My <a href="Project/Text_Detection/TextDetection.pdf"><i>graduation thesis</i></a>(Chinese version) based \
+					background for blind persons</i></a>. My graduation thesis based \
 					on this project won <i>Excellent Graduation Paper prize</i> from the university. The text detection algorithm is trained \
 					and evaluated on <a href="http://algoval.essex.ac.uk/icdar/Datasets.html" target="_blank"><i>Robust \
 					Reading Datasets</i></a> provided by <a href="http://algoval.essex.ac.uk/icdar/Competitions.html" target="_blank"><i>ICDAR 2003 Competitions</i></a>. Experimental \
-					results demonstrate that our method can successfully localize and extract the text information in natural scene images with satisfactory performance.'
+					results demonstrate that the method I implemented can successfully localize and extract the text information in natural scene images with satisfactory performance.'
 			}
 		];
 
@@ -82,9 +81,9 @@ class Work extends Component {
 	}
 
 	componentDidMount() {
-		if (this.match.url !== "/") {  // Remove active style on About nav link for non-about pages
-			$("a#about_nav").removeClass("active");
-		}
+		this.cards.map((card, index) => {
+			new Reveal($(`#${card.name}`));
+		});
 	}
 
 	getPreviousCardName(currentIndex) {
@@ -97,41 +96,18 @@ class Work extends Component {
 		return this.cards[nextIndex].name;
 	}
 
-	getCardsTemplate() {
-		let cardsTemplate = this.cards.map((card, index) => {
-			return (
-				<ProjectCard key={index} card={card} match={this.match} />
-			);
-		});
-
-		return cardsTemplate;
-	}
-
-	renderProjectsBase() {
-		let projectRoute = <Route exact path={this.match.path} render={() => (
-				<div className="grid-x grid-padding-x small-up-1 medium-up-1 large-up-3">
-					{this.getCardsTemplate()}
-				</div>
-			)}
-		/>
-
-		return projectRoute;
-	}
-
 	createProjectCardRoutes() {
 		let self = this;
 		let cardsRoutes = this.cards.map((card, index) => {
 			return (
-				<Route key={index} path={`${this.match.path}/${card.name}`} render={() => (
-					<ProjectDetail 
-						currentIndex={index}
-						previousCard={this.getPreviousCardName(index)}
-						nextCard={this.getNextCardName(index)}
-						totalLength={this.totalCardsLength}
-						parentmatch={self.match}
-						card={card} 
-					/>
-				)} />
+				<ProjectDetail 
+					key={index}
+					currentIndex={index}
+					previousCard={this.getPreviousCardName(index)}
+					nextCard={this.getNextCardName(index)}
+					totalLength={this.totalCardsLength}
+					card={card} 
+				/>
 			);
 		});
 
@@ -141,8 +117,33 @@ class Work extends Component {
 	render() {
 		return (
 			<div className="project-container">
-				{this.renderProjectsBase()}
-				{this.createProjectCardRoutes()}
+				<h2>Some Recent Work</h2>
+				<div className="grid-x grid-padding-x small-up-1 medium-up-2 xlarge-up-3">
+					{
+						this.cards.map((card, index) => {
+							return (
+								<ProjectCard key={index} card={card} />
+							);
+						})
+					}
+				</div>
+				<div>
+					{
+						this.cards.map((card, index) => {
+							return (
+								<div key={index} className="reveal large" id={card.name} data-reveal>
+									<ProjectDetail 
+										currentIndex={index}
+										previousCard={this.getPreviousCardName(index)}
+										nextCard={this.getNextCardName(index)}
+										totalLength={this.totalCardsLength}
+										card={card} 
+									/>
+								</div>
+							);
+						})
+					}
+				</div>
 			</div>
 		);
 	}

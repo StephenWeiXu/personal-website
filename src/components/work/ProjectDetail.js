@@ -9,7 +9,6 @@ class ProjectDetail extends Component {
 		this.previousCard = props.previousCard;
 		this.nextCard = props.nextCard;
 		this.totalLength = props.totalLength;
-		this.parentmatch = props.parentmatch;
 		this.card = props.card;
 	}
 
@@ -37,9 +36,9 @@ class ProjectDetail extends Component {
 					<div className="cell small-12 medium-7">
 						<div className="mbm">
 							<span className="bold mbm">{this.card.title}</span>
-							<Link to={this.parentmatch.url} className="float-right back-icon">
-								<i className="fa fa-times-circle txtt"></i>
-							</Link>
+							<a href="javascript:void(0)" data-close={this.card.name} className="float-right back-icon">
+								<i className="fa fa-times-circle txtt icon-large"></i>
+							</a>
 							<div className="block bold">
 								{this.getCardLabels()}
 							</div>
@@ -47,15 +46,15 @@ class ProjectDetail extends Component {
 						<div className="project-desc" dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
 					</div>
 				</div>
-				<div className="grid-x grid-padding-x mbm">
+				<div className="grid-x grid-padding-x mbm hide">
 					<div className="cell small-12 large-2 large-offset-10 txtr">
 						<span className="txttb mrs">{this.currentIndex+1}/{this.totalLength}</span>
-						<Link to={`${this.parentmatch.url}/${this.previousCard}`} className="pagination-icon">
-							<i className="fa fa-arrow-circle-left mrs"></i>
-						</Link>
-						<Link to={`${this.parentmatch.url}/${this.nextCard}`} className="pagination-icon">
-							<i className="fa fa-arrow-circle-right mls"></i>
-						</Link>
+						<a href="javascript:void(0)" className="pagination-icon">
+							<i className="fa fa-arrow-circle-left mrs icon-large"></i>
+						</a>
+						<a href="javascript:void(0)" className="pagination-icon">
+							<i className="fa fa-arrow-circle-right mls icon-large"></i>
+						</a>
 					</div>
 				</div>
 			</div>

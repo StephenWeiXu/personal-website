@@ -3,7 +3,9 @@ $fa-font-path: "~font-awesome/fonts";
 // Defined variables
 $base-white: #fff !default;
 $base-black: #000 !default;
-$base-color: $base-white !default;
+$base-light-gray: #d3d3d3 !default;
+$base-medium-gray: #808080 !default;
+$base-color: $base-black !default;
 $base-background: #505050 !default;
 $base-font: Century Gothic, arial, sans-serif !default;
 
@@ -16,14 +18,15 @@ $base-spacing-extra-large: $base-spacing * 8 !default;
 
 // Foundation variables overrides
 $contrast-warnings: false;
-$body-font-color: $base-color;
+$body-font-color: $base-black;
 $body-font-family: $base-font;
 $topbar-background: none;
 $table-background: transparent;
 
-$accordion-item-color: $base-white;
+$accordion-item-color: $base-black;
 $accordion-background: transparent;
 $accordion-content-background: transparent;
+$accordion-content-border: 1px solid $base-light-gray;
 
 $card-border: none;
 $label-radius: 2px;
