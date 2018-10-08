@@ -18,7 +18,7 @@ class Skills extends Component {
 		return (
 			<div className="skills-container">
 				<h2>My Skills</h2>
-				<div className="grid-x">
+				<div className="grid-x small-up-1 medium-up-3">
 					<div className="cell small-4 txtc">
 						<img src="images/icon-web-development.png" />
 						<div className="mts">
@@ -41,7 +41,7 @@ class Skills extends Component {
 						</div>				
 					</div>
 				</div>
-				<div className="grid-x mtxl">
+				<div className="grid-x mtxl small-up-1 medium-up-3">
 					<div className="cell small-4 txtc">
 						<img src="images/icon-automation-testing.png" />
 						<div className="mts">

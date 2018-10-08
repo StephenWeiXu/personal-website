@@ -23,7 +23,7 @@ class App extends Component {
 		new DropdownMenu($("[data-dropdown-menu]"));
 
 		window.addEventListener("scroll", () => {
-			if (window.pageYOffset > document.getElementById("work").offsetTop) {
+			if (window.pageYOffset > document.getElementById("skills").offsetTop) {
 				document.getElementById("navigation-bar").classList.add("scroll-motion");
 			} else {
 				document.getElementById("navigation-bar").classList.remove("scroll-motion");
@@ -38,7 +38,7 @@ class App extends Component {
 					<div>
 						<div id="navigation-bar" className="top-bar">
 							<div className="top-bar-left">
-								<NavLink to="/"><img className="signature-icon hide-for-small-only" src="images/favicon.png" /></NavLink>
+								<NavLink to="/"><div className="signature-icon hide-for-small-only"> </div></NavLink>
 							</div>
 							<div className="top-bar-right">
 								<ScrollspyNav scrollTargetIds={["about", "skills", "work", "publication"]} activeNavClass="active" router="HashRouter">

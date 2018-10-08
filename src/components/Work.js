@@ -110,7 +110,7 @@ class Work extends Component {
 		return (
 			<div className="project-container">
 				<h2>Some Recent Work</h2>
-				<div className="grid-x grid-padding-x small-up-1 medium-up-2 large-up-2 xlarge-up-3">
+				<div className="grid-x grid-padding-x small-up-1 medium-up-2 xlarge-up-3">
 					{
 						this.cards.map((card, index) => {
 							return (

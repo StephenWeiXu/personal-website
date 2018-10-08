@@ -29,13 +29,20 @@ html {
   width: 100%;
   padding-left: 5rem;
   padding-right: 5rem;
-  transition: all ease-out 0.5s;
+  transition: all 1s;
 
-  .top-bar-left .signature-icon {
+  @include breakpoint (medium down) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .signature-icon {
+    background-image: url("/images/favicon.png");
     width: 50px;
     height: 50px;
     border: 2px solid $base-white;
     border-radius: 50%;
+    background-size: cover;
   }
 
   .dropdown li {
@@ -63,6 +70,11 @@ html {
     background: #fff;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 
+    .signature-icon {
+      background-image: url("/images/favicon-black.png");
+      border: 2px solid #555;
+    }
+
     .dropdown li {
       a {
         color: #555;
@@ -82,6 +94,10 @@ html {
   .section {
     height: auto;
     padding: 7rem 10rem 7rem 10rem;
+
+    @include breakpoint (medium down) {
+      padding: 2rem;
+    }
 
     h2 {
       text-align: center;
@@ -158,8 +174,8 @@ html {
   }
 }
 
-.reveal-overlay {
-  background-color: #ccc;
+html.is-reveal-open {
+  position: initial;
 }
 
 .project-container {
