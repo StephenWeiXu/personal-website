@@ -33,17 +33,17 @@ class ProjectDetail extends Component {
 					<div className="cell small-12 medium-5">
 						<img src={this.card.imagePath} />
 					</div>
-					<div className="cell small-12 medium-7">
+					<div className="cell small-12 medium-7 project-desc">
 						<div className="mbm">
-							<span className="bold mbm">{this.card.title}</span>
-							<a href="javascript:void(0)" data-close={this.card.name} className="float-right back-icon">
-								<i className="fa fa-times-circle txtt icon-large"></i>
+							<span className="bold mbm project-title">{this.card.title}</span>
+							<a href="javascript:void(0)" data-close={this.card.name} className="float-right">
+								<i className="fa fa-times-circle txtt icon-xlarge"></i>
 							</a>
 							<div className="block bold">
 								{this.getCardLabels()}
 							</div>
 						</div>
-						<div className="project-desc" dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
+						<div dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
 					</div>
 				</div>
 				<div className="grid-x grid-padding-x mbm hide">

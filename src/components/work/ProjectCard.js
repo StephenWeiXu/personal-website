@@ -24,7 +24,7 @@ class ProjectCard extends Component {
 					<a href="javascript:void(0)" data-open={this.card.name}>
 						<div className="card-image" style={ {backgroundImage: `url("${this.card.imagePath}")`} }></div>
 						<div className="card-section">
-							{this.card.title}
+							<span>{this.card.title}</span>
 							<div className="block">{this.getCardLabels()}</div>
 						</div>
 					</a>

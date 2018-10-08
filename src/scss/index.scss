@@ -106,11 +106,11 @@ html {
   }
 
   #skills {
-    background: #ccc;
+    background: #fff;
   }
 
   #work {
-    background: #edeeef;
+    background: #eee;
   }
 
   #publication {
@@ -207,18 +207,27 @@ html.is-reveal-open {
       box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
     }
   }
+}
 
-  .project-detail {
-    .project-main {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      height: auto;
+.project-detail {
+  .project-main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    height: auto;
 
-      img {
-        width: 100%;
-        height: 100%;
-        border: 1px solid $base-white;
-        border-radius: 5px;
+    img {
+      width: 100%;
+      border: 1px solid $base-white;
+      border-radius: 5px;
+    }
+
+    .project-desc {
+      @include breakpoint (small down) {
+        margin-top: $base-spacing-medium;
+      }
+
+      .project-title {
+        font-size: 18px;
       }
     }
   }
