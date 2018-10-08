@@ -46,7 +46,7 @@ class ProjectDetail extends Component {
 						<div className="project-desc" dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
 					</div>
 				</div>
-				<div className="grid-x grid-padding-x mbm">
+				<div className="grid-x grid-padding-x mbm hide">
 					<div className="cell small-12 large-2 large-offset-10 txtr">
 						<span className="txttb mrs">{this.currentIndex+1}/{this.totalLength}</span>
 						<a href="javascript:void(0)" className="pagination-icon">

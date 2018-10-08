@@ -21,21 +21,21 @@ class Skills extends Component {
 				<div className="grid-x">
 					<div className="cell small-4 txtc">
 						<img src="images/icon-web-development.png" />
-						<div>
+						<div className="mts">
 							<span className="skills-name">Web Development</span>
-							<p className="skills-list">Python, Django, MySQL, Apache, AWS, JavaScript, jQuery, Vue, React, Webpack</p>
+							<p className="skills-list">Python, Django, MySQL, Apache, AWS, JavaScript, jQuery, Vue, React, Webpack, HTML/CSS</p>
 						</div>
 					</div>
 					<div className="cell small-4 txtc">
 						<img src="images/icon-responsive-design.png" />
-						<div>
+						<div className="mts">
 							<span className="skills-name">Responsive Web Design</span>
 							<p className="skills-list">Foundation, Media Queries</p>
 						</div>
 					</div>
 					<div className="cell small-4 txtc">
 						<img src="images/icon-cicd.png" />
-						<div>
+						<div className="mts">
 							<span className="skills-name">Continuous Integration & Delivery</span>
 							<p className="skills-list">Kubernetes, Docker, Jenkins, Selenium Grid</p>
 						</div>				
@@ -44,21 +44,21 @@ class Skills extends Component {
 				<div className="grid-x mtxl">
 					<div className="cell small-4 txtc">
 						<img src="images/icon-automation-testing.png" />
-						<div>
+						<div className="mts">
 							<span className="skills-name">Automation Testing & QA</span>
 							<p className="skills-list">Unittest, Jasmine, Cucumber</p>
 						</div>
 					</div>
 					<div className="cell small-4 txtc">
 						<img src="images/icon-data-science.png" />
-						<div>
+						<div className="mts">
 							<span className="skills-name">Data Science</span>
 							<p className="skills-list">Scikit-learn, Pandas, Pyspark, Zeppelin, AWS EMR, D3</p>
 						</div>
 					</div>
 					<div className="cell small-4 txtc">
 						<img src="images/icon-agile.png" />
-						<div>
+						<div className="mts">
 							<span className="skills-name">Agile Software Development</span>
 							<p className="skills-list">Scrum, Automation</p>
 						</div>

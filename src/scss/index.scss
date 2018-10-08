@@ -12,21 +12,12 @@ html {
 }
 
 .background-base {
+  background-image: url("/images/background.jpg");
   background-position: center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
-
-.background-filter {
-  background: $base-background;
-  opacity: 0.6;
-  background-size: cover;
-  position: fixed;
-  width: 100%;
-  height: 100%;
 }
 
 #root {
@@ -38,7 +29,7 @@ html {
   width: 100%;
   padding-left: 5rem;
   padding-right: 5rem;
-  color: $base-white;
+  transition: all ease-out 0.5s;
 
   .top-bar-left .signature-icon {
     width: 50px;
@@ -47,7 +38,7 @@ html {
     border-radius: 50%;
   }
 
-  ul[data-dropdown-menu] li {
+  .dropdown li {
     a {
       color: $base-white;
       font-weight: bold;
@@ -66,12 +57,31 @@ html {
       }
     }
   }
+
+  &.scroll-motion {
+    z-index: 1;
+    background: #fff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+
+    .dropdown li {
+      a {
+        color: #555;
+
+        &.active,
+        &:hover {
+          span {
+            border-bottom: 2px solid #555;
+          }
+        }
+      }
+    }
+  }
 }
 
 .content {
   .section {
     height: auto;
-    padding: 5rem 10rem 5rem 10rem;
+    padding: 7rem 10rem 7rem 10rem;
 
     h2 {
       text-align: center;
@@ -79,19 +89,20 @@ html {
     }
   }
 
+  #skills {
+    background: #ccc;
+  }
+
   #work {
     background: #edeeef;
   }
 
-  #skills {
-    background: #578ca9;
-  }
-
   #publication {
-    background: #edeeef;
+    background: #fff;
   }
 
   #footer {
+    background: #ccc;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -130,7 +141,7 @@ html {
 }
 
 .skills-container {
-  color: $base-white;
+  color: $base-black;
 
   img {
     width: 80px;
@@ -143,8 +154,12 @@ html {
 
   .skills-list {
     font-size: 15px;
-    color: #ccc;
+    color: #555;
   }
+}
+
+.reveal-overlay {
+  background-color: #ccc;
 }
 
 .project-container {
@@ -154,8 +169,15 @@ html {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.5s;
 
-    img {
-      width: 100%;
+    a {
+      height: 100%;
+    }
+
+    .card-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+      opacity: 0.8;
       height: 300px;
       border: 1px solid $base-white;
       border-radius: 5px 5px 0 0;
@@ -203,5 +225,5 @@ html {
 }
 
 .footer-container {
-  color: #ccc;
+  color: #555;
 }

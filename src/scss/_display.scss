@@ -54,6 +54,12 @@
   .inline {
     display: inline !important;
   }
+
+  @media print, screen and (min-width: 85em) {
+    .xlarge-up-3 > .cell {
+      width: 33.33333%;
+    }
+  }
 }
 
 @mixin lists-classes {
