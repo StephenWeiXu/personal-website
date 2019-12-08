@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { MediaQuery } from 'foundation-sites/js/foundation.util.mediaQuery';
-import * as d3 from "d3";
-import { toTitleCase, unslugify } from "../utils";
 
-window.d3 = d3;
 
 class Skills extends Component {
 	constructor(props) {
@@ -23,21 +20,21 @@ class Skills extends Component {
 						<img src="images/icon-web-development.png" />
 						<div className="mts">
 							<span className="skills-name">Web Development</span>
-							<p className="skills-list">Python, Django, MySQL, Apache, AWS, JavaScript, jQuery, Vue, React, Webpack, HTML/CSS</p>
+							<p className="skills-list">Java, Python, Django, MySQL, Apache, AWS, JavaScript, jQuery, Vue, React, React Native, Webpack, HTML/CSS</p>
 						</div>
 					</div>
 					<div className="cell small-4 txtc">
 						<img src="images/icon-responsive-design.png" />
 						<div className="mts">
 							<span className="skills-name">Responsive Web Design</span>
-							<p className="skills-list">Foundation, Media Queries</p>
+							<p className="skills-list">Foundation, SASS, Media Queries</p>
 						</div>
 					</div>
 					<div className="cell small-4 txtc">
 						<img src="images/icon-cicd.png" />
 						<div className="mts">
 							<span className="skills-name">Continuous Integration & Delivery</span>
-							<p className="skills-list">Kubernetes, Docker, Jenkins, Selenium Grid</p>
+							<p className="skills-list">Kubernetes, Docker, Jenkins, EKS</p>
 						</div>				
 					</div>
 				</div>
@@ -46,7 +43,7 @@ class Skills extends Component {
 						<img src="images/icon-automation-testing.png" />
 						<div className="mts">
 							<span className="skills-name">Automation Testing & QA</span>
-							<p className="skills-list">Unittest, Jasmine, Cucumber</p>
+							<p className="skills-list">Selenium, Unittest, Jest, Cucumber</p>
 						</div>
 					</div>
 					<div className="cell small-4 txtc">

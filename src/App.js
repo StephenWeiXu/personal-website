@@ -19,16 +19,22 @@ class App extends Component {
 		super(props);
 	}
 
+	scrollListener() {
+		if (window.pageYOffset > document.getElementById("skills").offsetTop) {
+			document.getElementById("navigation-bar").classList.add("scroll-motion");
+		} else {
+			document.getElementById("navigation-bar").classList.remove("scroll-motion");
+		}
+	}
+
 	componentDidMount() {
 		new DropdownMenu($("[data-dropdown-menu]"));
 
-		window.addEventListener("scroll", () => {
-			if (window.pageYOffset > document.getElementById("skills").offsetTop) {
-				document.getElementById("navigation-bar").classList.add("scroll-motion");
-			} else {
-				document.getElementById("navigation-bar").classList.remove("scroll-motion");
-			}
-		});
+		window.addEventListener("scroll", this.scrollListener);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener("scroll", this.scrollListener);
 	}
 
 	render() {
@@ -41,7 +47,12 @@ class App extends Component {
 								<NavLink to="/"><div className="signature-icon hide-for-small-only"> </div></NavLink>
 							</div>
 							<div className="top-bar-right">
-								<ScrollspyNav scrollTargetIds={["about", "skills", "work", "publication"]} activeNavClass="active" router="HashRouter">
+								<ScrollspyNav
+									scrollTargetIds={["about", "skills", "work", "publication"]}
+									offset={10}
+									activeNavClass="active"
+									router="HashRouter"
+								>
 									<ul className="dropdown menu" data-dropdown-menu>
 										<li><NavLink to="#about" id="about_nav"><span>ABOUT</span></NavLink></li>
 										<li><NavLink to="#skills"><span>SKILLS</span></NavLink></li>

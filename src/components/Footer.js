@@ -5,7 +5,7 @@ class Footer extends Component {
 	render() {
 		return (
 			<div className="footer-container txtc">
-				© 2018 Wei Xu. All rights reserved.
+				© 2019 Wei Xu. All rights reserved.
 			</div>
 		)
 	}
