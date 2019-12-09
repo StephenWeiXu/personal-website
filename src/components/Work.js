@@ -11,12 +11,20 @@ class Work extends Component {
 
 		this.cards = [
 			{
+				"name": "react-scrollspy-nav",
+				"imagePath": "images/project-react-scrollspy-nav.jpg",
+				"title": "Npm Package react-scrollspy-nav",
+				"labels": ["Npm", "React", "Webpack", "JavaScript", "HTML/CSS"],
+				"description": 'Developed a npm package in React for smooth webpage scrolling navigation. Pushlished in npm and actively used by other users. Checkout the \
+					source code <a href="https://github.com/StephenWeiXu/react-scrollspy-nav" target="_blank">Here</a>.'
+			},
+			{
 				"name": "personal-portfolio",
 				"imagePath": "images/project-personal-portfolio.jpg",
 				"title": "Personal Portfolio Web Development",
 				"labels": ["React", "React Router", "Webpack", "AWS", "JavaScript", "Foundation", "HTML/CSS"],
 				"description": 'Developed my personal portfolio web app with React JS and Foundation Framework using Webpack, and deployed to AWS S3 as static website hosting. Checkout the \
-					source code at <a href="https://github.com/StephenWeiXu/personal-website" target="_blank">Here</a>.'
+					source code <a href="https://github.com/StephenWeiXu/personal-website" target="_blank">Here</a>.'
 			},
 			{
 				"name": "umich-dataset-catalog",
