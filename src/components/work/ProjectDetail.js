@@ -6,9 +6,6 @@ class ProjectDetail extends Component {
 		super(props);
 
 		this.currentIndex = props.currentIndex;
-		this.previousCard = props.previousCard;
-		this.nextCard = props.nextCard;
-		this.totalLength = props.totalLength;
 		this.card = props.card;
 	}
 
@@ -39,22 +36,11 @@ class ProjectDetail extends Component {
 							<a href="javascript:void(0)" data-close={this.card.name} className="float-right">
 								<i className="fa fa-times-circle txtt icon-xlarge"></i>
 							</a>
-							<div className="block bold">
+							<div className="block">
 								{this.getCardLabels()}
 							</div>
 						</div>
 						<div dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
-					</div>
-				</div>
-				<div className="grid-x grid-padding-x mbm hide">
-					<div className="cell small-12 large-2 large-offset-10 txtr">
-						<span className="txttb mrs">{this.currentIndex+1}/{this.totalLength}</span>
-						<a href="javascript:void(0)" className="pagination-icon">
-							<i className="fa fa-arrow-circle-left mrs icon-large"></i>
-						</a>
-						<a href="javascript:void(0)" className="pagination-icon">
-							<i className="fa fa-arrow-circle-right mls icon-large"></i>
-						</a>
 					</div>
 				</div>
 			</div>

@@ -31,10 +31,19 @@ class App extends Component {
 		new DropdownMenu($("[data-dropdown-menu]"));
 
 		window.addEventListener("scroll", this.scrollListener);
+		this.registerHomeNavListener();
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener("scroll", this.scrollListener);
+	}
+
+	registerHomeNavListener() {
+		document.getElementById("home_nav").addEventListener("click", (event) => {
+			event.preventDefault();
+
+			window.scrollTo({top: 0, behavior: "smooth"});
+		})
 	}
 
 	render() {
@@ -44,7 +53,7 @@ class App extends Component {
 					<div>
 						<div id="navigation-bar" className="top-bar">
 							<div className="top-bar-left">
-								<NavLink to="/"><div className="signature-icon hide-for-small-only"> </div></NavLink>
+								<div id="home_nav" className="signature-icon hide-for-small-only"></div>
 							</div>
 							<div className="top-bar-right">
 								<ScrollspyNav

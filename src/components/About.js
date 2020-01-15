@@ -6,7 +6,7 @@ class About extends Component {
 		return (
 			<div className="profile txtc">
 				<h1>WEI XU</h1>
-				<span className="occupation">Welcome! I am Wei, a software developer specializing in web application development</span>
+				<span className="occupation">Welcome! I am Wei, a software developer specializing in full stack web application development</span>
 				<div className="social-icons mts">
 					<ul className="inline-list">
 						<li>

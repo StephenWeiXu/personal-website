@@ -2,10 +2,15 @@ import React, { Component } from "react";
 
 
 class Footer extends Component {
+	getCurrentYear() {
+		const today = new Date();
+		return today.getFullYear();
+	}
+
 	render() {
 		return (
 			<div className="footer-container txtc">
-				© 2019 Wei Xu. All rights reserved.
+				Copyright © {this.getCurrentYear()} Wei Xu. All rights reserved.
 			</div>
 		)
 	}

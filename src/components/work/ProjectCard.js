@@ -5,6 +5,7 @@ class ProjectCard extends Component {
 		super(props);
 
 		this.card = props.card;
+		this.classProp = props.classProp;
 	}
 
 	getCardLabels() {
@@ -19,9 +20,9 @@ class ProjectCard extends Component {
 
 	render() {
 		return (
-			<div className="cell mbm">
+			<div className={`cell mbm ${this.classProp}`}>
 				<div className="card">
-					<a href="javascript:void(0)" data-open={this.card.name}>
+					<a href="#" data-open={this.card.name}>
 						<div className="card-image" style={ {backgroundImage: `url("${this.card.imagePath}")`} }></div>
 						<div className="card-section">
 							<span>{this.card.title}</span>
