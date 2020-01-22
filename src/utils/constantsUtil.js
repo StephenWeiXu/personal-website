@@ -5,7 +5,7 @@ export const PROJECTS_DATA = [
     "title": "Calendar Converter Web Tool",
     "labels": ["React", "Redux", "Webpack", "JavaScript", "HTML/CSS"],
     "description": 'Created a calendar converter web tool where you can convert calendar date among various calendars including Gregorian, Lunar, Hebrew, Islamic, Julian, Persian, Indian Civil... Check out the \
-      website <a href="https://calendarconverter.net" target="_blank">Here</a>.'
+    <a href="http://calendarconverter.net" target="_blank">Calendar Conveter</a>.'
   },
   {
     "name": "react-scrollspy-nav",
@@ -13,7 +13,7 @@ export const PROJECTS_DATA = [
     "title": "Npm Package react-scrollspy-nav",
     "labels": ["Npm", "React", "Webpack", "JavaScript", "HTML/CSS"],
     "description": 'Developed a npm package in React for smooth webpage scrolling navigation. Pushlished in npm and actively used by other users. Check out the \
-      source code <a href="https://github.com/StephenWeiXu/react-scrollspy-nav" target="_blank">Here</a>.'
+      source code for <a href="https://github.com/StephenWeiXu/react-scrollspy-nav" target="_blank">react-scrollspy-nav</a>.'
   },
   {
     "name": "personal-portfolio",

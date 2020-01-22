@@ -10,7 +10,7 @@ class Footer extends Component {
 	render() {
 		return (
 			<div className="footer-container txtc">
-				Copyright © {this.getCurrentYear()} Wei Xu. All rights reserved.
+				Calendar Converter © {this.getCurrentYear()} Wei Xu. All rights reserved.
 			</div>
 		)
 	}
