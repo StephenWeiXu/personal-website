@@ -6,7 +6,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Work from './components/Work';
 import Publication from './components/Publication';
-import Blogs from './components/Blogs';
+import Blog from './components/Blog';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 import ScrollspyNav from "react-scrollspy-nav";
@@ -57,7 +57,7 @@ class App extends Component {
 							</div>
 							<div className="top-bar-right">
 								<ScrollspyNav
-									scrollTargetIds={["about", "skills", "work", "publication"]}
+									scrollTargetIds={["about", "skills", "work", "blog", "publication"]}
 									offset={10}
 									activeNavClass="active"
 									router="HashRouter"
@@ -66,6 +66,7 @@ class App extends Component {
 										<li><NavLink to="#about" id="about_nav"><span>ABOUT</span></NavLink></li>
 										<li><NavLink to="#skills"><span>SKILLS</span></NavLink></li>
 										<li><NavLink to="#work"><span>WORK</span></NavLink></li>
+                    <li><NavLink to="#blog"><span>BLOG</span></NavLink></li>
 										<li><NavLink to="#publication"><span>PUBLICATION</span></NavLink></li>
 									</ul>
 								</ScrollspyNav>
@@ -81,6 +82,9 @@ class App extends Component {
 							</div>
 							<div className="section" id="work">
 								<Work />
+							</div>
+              <div className="section" id="blog">
+								<Blog />
 							</div>
 							<div className="section" id="publication">
 								<Publication />
