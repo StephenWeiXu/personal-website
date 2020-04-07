@@ -1,0 +1,67 @@
+
+.top-bar {
+  position: fixed;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  transition: all 1s;
+
+  @include breakpoint (medium down) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .signature-icon {
+    background-image: url("/images/favicon.png");
+    width: 50px;
+    height: 50px;
+    border: 2px solid $base-white;
+    border-radius: 50%;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .dropdown li {
+    a {
+      color: $base-white;
+      font-weight: bold;
+      margin-right: $base-spacing-small;
+
+      @include breakpoint(medium down) {
+        margin-right: 0;
+        padding-left: 0;
+      }
+
+      &.active,
+      &:hover {
+        span {
+          border-bottom: 2px solid $base-white;
+        }
+      }
+    }
+  }
+
+  &.scroll-motion {
+    z-index: 1;
+    background: #fff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+
+    .signature-icon {
+      background-image: url("/images/favicon-black.png");
+      border: 2px solid #555;
+    }
+
+    .dropdown li {
+      a {
+        color: #555;
+
+        &.active,
+        &:hover {
+          span {
+            border-bottom: 2px solid #555;
+          }
+        }
+      }
+    }
+  }
+}

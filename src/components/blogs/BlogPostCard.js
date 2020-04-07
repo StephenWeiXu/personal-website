@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-class ProjectCard extends Component {
+class BlogPostCard extends Component {
 	constructor(props) {
 		super(props);
 
@@ -22,18 +22,17 @@ class ProjectCard extends Component {
 		return (
 			<div className={`cell mbm ${this.classProp}`}>
 				<div className="card">
-					<a href="#" data-open={this.card.name}>
-						<div className="card-image" style={ {backgroundImage: `url("${this.card.imagePath}")`} }></div>
+					<a href="#">
+            <div className="card-image" style={ {backgroundImage: `url("${this.card.featured_image}")`} }></div>
 						<div className="card-section">
 							<span>{this.card.title}</span>
-							<div className="block">{this.getCardLabels()}</div>
+							{/* <div className="block">{this.getCardLabels()}</div> */}
 						</div>
 					</a>
-
 				</div>
 			</div>
 		);
 	}
 }
 
-export default ProjectCard;
+export default BlogPostCard;

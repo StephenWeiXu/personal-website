@@ -10,9 +10,9 @@ export const PROJECTS_DATA = [
   {
     "name": "react-scrollspy-nav",
     "imagePath": "images/project-react-scrollspy-nav.jpg",
-    "title": "Npm Package react-scrollspy-nav",
+    "title": "Open Source Npm Package react-scrollspy-nav",
     "labels": ["Npm", "React", "Webpack", "JavaScript", "HTML/CSS"],
-    "description": 'Developed a npm package in React for smooth webpage scrolling navigation. Pushlished in npm and actively used by other users. Check out the \
+    "description": 'Developed an open source npm package in React for smooth webpage scrolling navigation. Pushlished in npm and actively used by other users. Check out the \
       source code for <a href="https://github.com/StephenWeiXu/react-scrollspy-nav" target="_blank">react-scrollspy-nav</a>.'
   },
   {

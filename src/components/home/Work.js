@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProjectCard from "./work/ProjectCard";
 import ProjectDetail from "./work/ProjectDetail";
 import { Reveal } from "foundation-sites/js/foundation.reveal";
-import { PROJECTS_DATA } from "../utils/constantsUtil";
+import { PROJECTS_DATA } from "../../utils/constantsUtil";
 
 
 class Work extends Component {
@@ -10,7 +10,6 @@ class Work extends Component {
 		super(props);
 
 		this.cards = PROJECTS_DATA;
-		this.totalCardsLength = this.cards.length;
 	}
 
 	componentDidMount() {

@@ -1,69 +1,25 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
-import Blog from './blogs/Blog';
+import BlogPostList from "./blogs/BlogPostList";
+import BlogNav from "./blogs/BlogNav";
 
-class Blogs extends Component {
-	constructor(props) {
-		super(props);
-
-		this.match = props.match;
-		this.state = { content: null };
-
-		this.blogs = {
-			"hello-world": 'hello-world.md'
-		}
-	}
-
-	createBlogDist() {
-		let blogDist = [];
-
-		let counter = 0;
-		for(let blog in this.blogs) {
-			blogDist.push(
-				<Link key={counter} to={`/blogs/${blog}`}>
-					{blog}
-				</Link>
-			)
-			counter += 1;
-		}
-
-		return blogDist;
-	}
-
-	renderBlogsBase() {
-		let blogsRoute = <Route exact path={this.match.path} render={() => (
-				<div>
-					<h1>Blogs Dist</h1>
-					{ this.createBlogDist() }
-				</div>
-			)}
-		/>
-
-		return blogsRoute;
-	}
-
-	createBlogRoutes() {
-		let blogsRoutes = [];
-
-		for(let blog in this.blogs) {
-			blogsRoutes.push(
-				<Route key={blog} path={`/blogs/${blog}`} render={() => (
-					<Blog contentFile={this.blogs[blog]} />
-				)} />
-			)
-		}
-
-		return blogsRoutes;
-	}
+class Blog extends Component {
+  componentDidMount() {
+  }
 
 	render() {
 		return (
-			<div className="blogs">
-				{this.renderBlogsBase()}
-				{this.createBlogRoutes()}
-			</div>
-		)
+      <>
+        <BlogNav />
+
+        <div className="section">
+          <div className="blog-page">
+            <h1>Blog</h1>
+            <BlogPostList />
+          </div>
+        </div>
+      </>
+		);
 	}
 }
 
-export default Blogs
+export default Blog;
