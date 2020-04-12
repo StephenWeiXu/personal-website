@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Row, Col, Badge } from "react-bootstrap";
 
 class ProjectDetail extends Component {
 	constructor(props) {
@@ -12,7 +13,7 @@ class ProjectDetail extends Component {
 	getCardLabels() {
 		let labelsTemplate = this.card.labels.map((label, index) => {
 			return (
-				<span key={index} className="label secondary mrs mts">{label}</span>
+				<Badge key={index} variant="secondary" className="mrs mts">{label}</Badge>
 			);
 		});
 
@@ -23,26 +24,31 @@ class ProjectDetail extends Component {
 		return {__html: this.card.description};
 	}
 
+	handleCloseButtonClick(event) {
+		event.preventDefault();
+		this.props.handleClose();
+	}
+
 	render() {
 		return (
 			<div className="project-detail">
-				<div className="project-main grid-x grid-padding-x mvm">
-					<div className="cell small-12 medium-5">
+				<Row className="project-main mvm">
+					<Col md={5}>
 						<img src={this.card.imagePath} />
-					</div>
-					<div className="cell small-12 medium-7 project-desc">
+					</Col>
+					<Col md={7} className="project-desc">
 						<div className="mbm">
 							<span className="bold mbm project-title">{this.card.title}</span>
-							<a href="javascript:void(0)" data-close={this.card.name} className="float-right">
+							<a href="#" onClick={(e) => this.handleCloseButtonClick(e)} className="float-right">
 								<i className="fa fa-times-circle txtt icon-xlarge"></i>
 							</a>
 							<div className="block">
 								{this.getCardLabels()}
 							</div>
 						</div>
-						<div dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
-					</div>
-				</div>
+						<div className="project-body" dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
+					</Col>
+				</Row>
 			</div>
 		);
 	}

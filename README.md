@@ -5,7 +5,7 @@ Source code of my personal website, written with React. See http://stephenweixu.
 ## Technologies Used
 * React
 * React Router
-* Foundation
+* React Bootstrap
 * Sass
 * Webpack
 * S3 Static Hosting

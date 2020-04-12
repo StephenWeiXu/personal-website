@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
 
 class BlogNav extends Component {
   render() {
     return (
-      <nav id="navigation-bar" className="top-bar scroll-motion">
-        <div className="top-bar-left">
-          <NavLink to="/"><div id="home_nav" className="signature-icon hide-for-small-only"></div></NavLink>
-        </div>
-        <div className="top-bar-right">
-            <ul className="dropdown menu" data-dropdown-menu>
+      <Navbar id="navigation-bar" className="top-bar scroll-motion">
+        <Navbar.Brand href="/" id="home_nav" className="signature-icon hide-for-small-only"></Navbar.Brand>
+        <Navbar.Collapse className="justify-content-end top-bar-right">
+            <ul>
               <li><NavLink to="/">ABOUT</NavLink></li>
               <li><NavLink to="/blog">BLOG</NavLink></li>
             </ul>
-        </div>
-      </nav>
+        </Navbar.Collapse>
+      </Navbar>
     )
   }
 }

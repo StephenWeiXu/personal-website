@@ -5,10 +5,41 @@
   padding-left: 5rem;
   padding-right: 5rem;
   transition: all 1s;
+  background: transparent;
 
-  @include breakpoint (medium down) {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  // @include breakpoint (medium down) {
+  //   padding-left: 2rem;
+  //   padding-right: 2rem;
+  // }
+
+  .top-bar-right {
+    ul {
+      list-style: none;
+      margin-bottom: 0;
+
+      li {
+        display: inline;
+        padding: 1rem;
+
+        a {
+          text-decoration: none;
+          color: $base-white;
+          font-weight: bold;
+          margin-right: $base-spacing-small;
+          // @include breakpoint(medium down) {
+          //   margin-right: 0;
+          //   padding-left: 0;
+          // }
+
+          &.active,
+          &:hover {
+            span {
+              border-bottom: 2px solid $base-white;
+            }
+          }
+        }
+      }
+    }
   }
 
   .signature-icon {
@@ -21,26 +52,6 @@
     cursor: pointer;
   }
 
-  .dropdown li {
-    a {
-      color: $base-white;
-      font-weight: bold;
-      margin-right: $base-spacing-small;
-
-      @include breakpoint(medium down) {
-        margin-right: 0;
-        padding-left: 0;
-      }
-
-      &.active,
-      &:hover {
-        span {
-          border-bottom: 2px solid $base-white;
-        }
-      }
-    }
-  }
-
   &.scroll-motion {
     z-index: 1;
     background: #fff;
@@ -51,7 +62,7 @@
       border: 2px solid #555;
     }
 
-    .dropdown li {
+    .top-bar-right li {
       a {
         color: #555;
 

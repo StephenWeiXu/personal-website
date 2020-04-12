@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Card, Badge } from "react-bootstrap";
 
 class ProjectCard extends Component {
 	constructor(props) {
@@ -11,7 +12,7 @@ class ProjectCard extends Component {
 	getCardLabels() {
 		let labelsTemplate = this.card.labels.map((label, index) => {
 			return (
-				<span key={index} className="label secondary mrs mts">{label}</span>
+				<Badge key={index} variant="secondary" className="mrs mts">{label}</Badge>
 			);
 		});
 
@@ -20,16 +21,14 @@ class ProjectCard extends Component {
 
 	render() {
 		return (
-			<div className={`cell mbm ${this.classProp}`}>
-				<div className="card">
-					<a href="#" data-open={this.card.name}>
-						<div className="card-image" style={ {backgroundImage: `url("${this.card.imagePath}")`} }></div>
-						<div className="card-section">
-							<span>{this.card.title}</span>
-							<div className="block">{this.getCardLabels()}</div>
-						</div>
-					</a>
-				</div>
+			<div className="mbm">
+				<Card className="cursor-pointer">
+					<Card.Img style={ {backgroundImage: `url("${this.card.imagePath}")`} }></Card.Img>
+					<Card.Body className="card-section">
+						<Card.Title>{this.card.title}</Card.Title>
+						<div className="block">{this.getCardLabels()}</div>
+					</Card.Body>
+				</Card>
 			</div>
 		);
 	}

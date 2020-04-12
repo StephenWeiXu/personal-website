@@ -8,6 +8,7 @@ $base-medium-gray: #808080 !default;
 $base-color: $base-black !default;
 $base-background: #505050 !default;
 $base-font: Century Gothic, arial, sans-serif !default;
+$base-font-size: 16px;
 
 $base-spacing: 4px !default;
 $base-spacing-extra-small: 4px !default;
@@ -15,22 +16,3 @@ $base-spacing-small: $base-spacing * 2 !default;
 $base-spacing-medium: $base-spacing * 4 !default;
 $base-spacing-large: $base-spacing * 6 !default;
 $base-spacing-extra-large: $base-spacing * 8 !default;
-
-// Foundation variables overrides
-$contrast-warnings: false;
-$body-font-color: $base-black;
-$body-font-family: $base-font;
-$topbar-background: none;
-$table-background: transparent;
-
-$accordion-item-color: $base-black;
-$accordion-background: transparent;
-$accordion-content-background: transparent;
-$accordion-content-border: 1px solid $base-light-gray;
-
-$card-border: none;
-$label-radius: 2px;
-$label-color-alt: #2f4f4f;
-$label-palette: (
-  secondary: #d0d0d0
-);

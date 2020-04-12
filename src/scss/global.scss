@@ -1,12 +1,13 @@
 @import "settings";
-@import "foundation-sites/scss/foundation";
+@import "~bootstrap/scss/bootstrap";
 @import "font-awesome/scss/font-awesome";
 @import "display";
 @import "typography";
 @import "spacing";
 @import "icons";
+@import "card";
+@import "bootstrap-overrides";
 
-@include foundation-everything;
 @include display-utils;
 @include typography;
 @include spacing;

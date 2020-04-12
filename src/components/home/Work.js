@@ -1,46 +1,72 @@
 import React, { Component } from "react";
 import ProjectCard from "./work/ProjectCard";
 import ProjectDetail from "./work/ProjectDetail";
-import { Reveal } from "foundation-sites/js/foundation.reveal";
 import { PROJECTS_DATA } from "../../utils/constantsUtil";
-
+import { Modal, Row, Col } from "react-bootstrap";
 
 class Work extends Component {
 	constructor(props) {
 		super(props);
 
 		this.cards = PROJECTS_DATA;
+
+		this.state = {
+      show: null
+    };
 	}
 
 	componentDidMount() {
-		this.cards.map((card, index) => {
-			new Reveal($(`#${card.name}`));
-		});
 	}
+
+	handleClose() {
+    this.setState({show: null});
+  }
+
+  handleShow(id) {
+    this.setState({show: id});
+  }
 
 	render() {
 		return (
 			<div className="project-container">
 				<h2>Some Recent Work</h2>
-				<div className="grid-x grid-padding-x small-up-1 medium-up-2 xlarge-up-3">
-					{
-						this.cards.map((card, index) => {
-							return (
-								<ProjectCard key={index} card={card} classProp={index >= 6 ? "hide" : ""} />
-							);
-						})
-					}
-				</div>
+
+				<Row>
+					{this.cards.map((card, index) => {
+						return (
+							<Col
+								key={index}
+								sm={12}
+								md={6}
+								className={index >= 6 ? "hide" : ""}
+								onClick={() => this.handleShow(card.name)}
+							>
+								<ProjectCard key={index} card={card} />
+							</Col>
+						);
+					})}
+				</Row>
+
 				<div>
 					{
 						this.cards.map((card, index) => {
 							return (
-								<div key={index} className="reveal large" id={card.name} data-reveal>
-									<ProjectDetail 
-										currentIndex={index}
-										card={card} 
-									/>
-								</div>
+								<Modal
+									size="lg"
+									centered
+									key={index}
+									id={card.name}
+									show={this.state.show === card.name}
+									onHide={() => this.handleClose()}
+								>
+									<Modal.Body>
+										<ProjectDetail
+											currentIndex={index}
+											card={card}
+											handleClose={() => this.handleClose()}
+										/>
+									</Modal.Body>
+								</Modal>
 							);
 						})
 					}

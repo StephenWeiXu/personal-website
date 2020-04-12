@@ -1,17 +1,12 @@
 import React, { Component } from "react";
-import { Accordion } from "foundation-sites/js/foundation.accordion";
+import { Accordion, Card, Button } from "react-bootstrap";
 import Description from "./publication/Description";
 import Experiment from "./publication/Experiment";
 import Conclusion from "./publication/Conclusion";
 
-
 class Publication extends Component {
 	constructor(props) {
 		super(props);
-	}
-
-	componentDidMount() {
-		new Accordion($("[data-accordion]"));
 	}
 
 	render() {
@@ -23,11 +18,44 @@ class Publication extends Component {
 					<a className="mls" href="https://dl.acm.org/citation.cfm?id=2499811&dl=ACM&coll=DL" target="_blank">View</a>
 				</p>
 				
-				<ul className="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-					<Description />
-					<Experiment />
-					<Conclusion />
-				</ul>
+				<Accordion>
+					<Card>
+						<Card.Header>
+							<Accordion.Toggle className="accordion-header" as={Button} variant="link" eventKey="0">
+								<span>Description</span>
+							</Accordion.Toggle>
+						</Card.Header>
+						<Accordion.Collapse eventKey="0">
+							<Card.Body>
+								<Description />
+							</Card.Body>
+						</Accordion.Collapse>
+					</Card>
+					<Card>
+						<Card.Header>
+							<Accordion.Toggle className="accordion-header" as={Button} variant="link" eventKey="1">
+								<span>Experiments</span>
+							</Accordion.Toggle>
+						</Card.Header>
+						<Accordion.Collapse eventKey="1">
+							<Card.Body>
+								<Experiment />
+							</Card.Body>
+						</Accordion.Collapse>
+					</Card>
+					<Card>
+						<Card.Header>
+							<Accordion.Toggle className="accordion-header" as={Button} variant="link" eventKey="2">
+								<span>Conclusion</span>
+							</Accordion.Toggle>
+						</Card.Header>
+						<Accordion.Collapse eventKey="2">
+							<Card.Body>
+								<Conclusion />
+							</Card.Body>
+						</Accordion.Collapse>
+					</Card>
+				</Accordion>
 			</div>
 		)
 	}

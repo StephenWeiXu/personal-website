@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import $ from "jquery";
-import { DropdownMenu } from "foundation-sites/js/foundation.dropdownMenu";
 import About from './home/About';
 import Skills from './home/Skills';
 import Work from './home/Work';
 import Publication from './home/Publication';
 import Blog from './home/Blog';
-import Nav from './home/Nav';
-
-window.$ = window.jQuery = $;
-
+import Nav from './home/HomeNav';
 
 class Home extends Component {
 	constructor(props) {
@@ -25,8 +20,6 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		new DropdownMenu($("[data-dropdown-menu]"));
-
 		window.addEventListener("scroll", this.scrollListener);
 		this.registerHomeNavListener();
 	}
@@ -58,7 +51,7 @@ class Home extends Component {
           <div className="section" id="work">
             <Work />
           </div>
-          <div className="section" id="blog">
+          <div className="section hide" id="blog">
             <Blog />
           </div>
           <div className="section" id="publication">

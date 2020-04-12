@@ -19,8 +19,8 @@ export const PROJECTS_DATA = [
     "name": "personal-portfolio",
     "imagePath": "images/project-personal-portfolio.jpg",
     "title": "Personal Portfolio Web Development",
-    "labels": ["React", "React Router", "Webpack", "AWS", "JavaScript", "Foundation", "HTML/CSS"],
-    "description": 'Developed my personal portfolio web app with React JS and Foundation Framework using Webpack, and deployed to AWS S3 as static website hosting. Check out the \
+    "labels": ["React", "React Router", "Webpack", "AWS", "JavaScript", "React Bootstrap", "HTML/CSS"],
+    "description": 'Developed my personal portfolio web app with React JS and React Bootstrap Framework using Webpack, and deployed to AWS S3 as static website hosting. Check out the \
       source code <a href="https://github.com/StephenWeiXu/personal-website" target="_blank">Here</a>.'
   },
   {

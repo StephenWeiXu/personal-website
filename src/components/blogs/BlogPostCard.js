@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Card } from "react-bootstrap";
 
 class BlogPostCard extends Component {
 	constructor(props) {
@@ -20,16 +21,14 @@ class BlogPostCard extends Component {
 
 	render() {
 		return (
-			<div className={`cell mbm ${this.classProp}`}>
-				<div className="card">
-					<a href="#">
-            <div className="card-image" style={ {backgroundImage: `url("${this.card.featured_image}")`} }></div>
-						<div className="card-section">
-							<span>{this.card.title}</span>
-							{/* <div className="block">{this.getCardLabels()}</div> */}
-						</div>
-					</a>
-				</div>
+			<div className={`mbm ${this.classProp}`}>
+				<Card className="cursor-pointer">
+					<Card.Img style={ {backgroundImage: `url("${this.card.featured_image}")`} }></Card.Img>
+					<Card.Body className="card-section">
+						<Card.Title>{this.card.title}</Card.Title>
+						{/* <div className="block">{this.getCardLabels()}</div> */}
+					</Card.Body>
+				</Card>
 			</div>
 		);
 	}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import buttercms from "../../api/buttercms";
 import BlogPostCard from "./BlogPostCard";
+import { Row, Col } from "react-bootstrap";
 
 class BlogPostList extends Component {
 	constructor(props) {
@@ -32,15 +33,15 @@ class BlogPostList extends Component {
 	render() {
 		return (
 			<div className="blog-post-container">
-				<div className="grid-x grid-padding-x small-up-1 medium-up-2 xlarge-up-3">
-					{
-						this.state.blogPostList.map((card, index) => {
-							return (
+				<Row>
+					{this.state.blogPostList.map((card, index) => {
+						return (
+							<Col key={index} sm={12} md={6} className={index >= 6 ? "hide" : ""} onClick={() => this.handleShow(card.name)}>
 								<BlogPostCard key={index} card={card} classProp={index >= 6 ? "hide" : ""} />
-							);
-						})
-					}
-				</div>
+							</Col>
+						);
+					})}
+				</Row>
 			</div>
 		);
 	}

@@ -1,0 +1,35 @@
+.project-container,
+.blog-post-container {
+  .card {
+    border-radius: 5px;
+    height: 100%;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.5s;
+
+    a {
+      height: 100%;
+    }
+
+    .card-img {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+      opacity: 0.8;
+      height: 250px;
+      border: 1px solid $base-white;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .card-title {
+      font-size: $base-font-size;
+    }
+
+    // .card-section {
+    //   color: $base-black;
+    // }
+
+    &:hover {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+    }
+  }
+}

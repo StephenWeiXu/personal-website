@@ -43,6 +43,10 @@
 }
 
 @mixin display-classes {
+  .hide {
+    display: none;
+  }
+
   .block {
     display: block !important;
   }
@@ -59,6 +63,10 @@
     .xlarge-up-3 > .cell {
       width: 33.33333%;
     }
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
   }
 }
 
