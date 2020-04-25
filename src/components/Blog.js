@@ -4,6 +4,7 @@ import BlogNav from "./blogs/BlogNav";
 
 class Blog extends Component {
   componentDidMount() {
+    document.getElementById("about_nav").classList.remove("active");
   }
 
 	render() {

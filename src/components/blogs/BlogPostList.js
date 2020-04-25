@@ -36,7 +36,7 @@ class BlogPostList extends Component {
 	}
 
 	/**
-	 * Build the routes and render templates for blog post cards. This is for current page
+	 * Build the routes and render templates for blog post cards. This is for current blog page
 	 */
 	buildBlogPostCardsRoutes() {
 		return (
@@ -57,7 +57,7 @@ class BlogPostList extends Component {
 		)
 	}
 
-		/**
+	/**
 	 * Build the routes and render templates for blog post detail. This is for individual blog post page
 	 */
 	buildBlogPostDetailRoutes() {
