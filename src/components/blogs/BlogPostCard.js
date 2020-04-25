@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
+import {withRouter, Link} from 'react-router-dom';
 
 class BlogPostCard extends Component {
 	constructor(props) {
@@ -9,10 +10,14 @@ class BlogPostCard extends Component {
 		this.classProp = props.classProp;
 	}
 
+	getCardUrl() {
+		return `${this.props.match.url}/${this.card.slug}`;
+	}
+
 	getCardLabels() {
-		let labelsTemplate = this.card.labels.map((label, index) => {
+		let labelsTemplate = this.card.tags.map((tag, index) => {
 			return (
-				<span key={index} className="label secondary mrs mts">{label}</span>
+				<Badge key={index} variant="secondary" className="mrs mts">{tag.name}</Badge>
 			);
 		});
 
@@ -21,17 +26,18 @@ class BlogPostCard extends Component {
 
 	render() {
 		return (
-			<div className={`mbm ${this.classProp}`}>
+			<Link className={`card-as-link mbm ${this.classProp}`} to={this.getCardUrl()}>
 				<Card className="cursor-pointer">
-					<Card.Img style={ {backgroundImage: `url("${this.card.featured_image}")`} }></Card.Img>
+					<Card.Img src={this.card.featured_image} alt={this.card.featured_image_alt}></Card.Img>
 					<Card.Body className="card-section">
-						<Card.Title>{this.card.title}</Card.Title>
+						<Card.Title className="bold">{this.card.title}</Card.Title>
 						{/* <div className="block">{this.getCardLabels()}</div> */}
+						<p className="small-text">{this.card.summary}</p>
 					</Card.Body>
 				</Card>
-			</div>
+			</Link>
 		);
 	}
 }
 
-export default BlogPostCard;
+export default withRouter(BlogPostCard);

@@ -1,4 +1,12 @@
 .home {
+  .section {
+    h1,
+    h2 {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+  }
+
   #skills {
     background: #fff;
   }
@@ -8,7 +16,7 @@
   }
 
   #blog {
-    background: darkcyan;
+    background: #eee;
 
     button {
       border-radius: 3px;

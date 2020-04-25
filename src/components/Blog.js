@@ -11,9 +11,8 @@ class Blog extends Component {
       <>
         <BlogNav />
 
-        <div className="section">
-          <div className="blog-page">
-            <h1>Blog</h1>
+        <div className="blog">
+          <div className="section">
             <BlogPostList />
           </div>
         </div>

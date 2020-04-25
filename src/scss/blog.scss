@@ -1,8 +1,11 @@
 
-.blog-page {
+.blog {
   padding-top: 2rem;
-}
 
-.blog-post-container {
-  border: none;
+  .section {
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
 }

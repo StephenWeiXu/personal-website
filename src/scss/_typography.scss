@@ -12,4 +12,12 @@
   .no-underline {
     text-decoration: none !important;
   }
+
+  .underline {
+    text-decoration: underline !important;
+  }
+
+  .small-text {
+    font-size: $base-font-size*0.9;
+  }
 }
