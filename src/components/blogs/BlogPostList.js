@@ -42,11 +42,11 @@ class BlogPostList extends Component {
 		return (
 			<Route exact path={this.props.match.path} render={() => (
 				<>
-				<h1>Posts</h1>
+				<h1 className="txtc mbl">Posts</h1>
 				<Row>
 						{this.state.blogPostList.map((post, index) => {
 							return (
-								<Col key={index} sm={12} md={6} className={index >= 6 ? "hide" : ""}>
+								<Col key={index} sm={12} md={{ span: 6, offset: 3 }} className={index >= 6 ? "hide" : ""}>
 									<BlogPostCard key={index} card={post} classProp={index >= 6 ? "hide" : ""} />
 								</Col>
 							);

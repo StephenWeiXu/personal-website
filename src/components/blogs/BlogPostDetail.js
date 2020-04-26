@@ -17,6 +17,12 @@ class BlogPostDetail extends Component {
 
 		return labelsTemplate;
   }
+
+  getPostDate(rawDate) {
+    const date = new Date(rawDate);
+    const dateInfo = date.toString().split(" ").slice(1, 4);
+    return `${dateInfo[0]} ${dateInfo[1]}, ${dateInfo[2]}`;
+  }
   
   renderPostHtml() {
     return {__html: this.post.body};
@@ -25,7 +31,10 @@ class BlogPostDetail extends Component {
 	render() {
 		return (
       <>
-      <h1>{this.post.title}</h1>
+      <div className="txtc mbxl">
+        <h1>{this.post.title}</h1>
+        <span className="mvm">{this.getPostDate(this.post.published)}</span>
+      </div>
       <div dangerouslySetInnerHTML={this.renderPostHtml()} />
       </>
 		);
