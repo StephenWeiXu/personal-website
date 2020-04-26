@@ -3,10 +3,11 @@
   color: $base-white;
   font-weight: bold;
   margin-right: $base-spacing-small;
-  // @include breakpoint(medium down) {
-  //   margin-right: 0;
-  //   padding-left: 0;
-  // }
+
+  @include media-breakpoint-down(md) {
+    margin-right: 0;
+    padding-left: 0;
+  }
 
   &.active,
   &:hover {
@@ -24,10 +25,10 @@
   transition: all 1s;
   background: transparent;
 
-  // @include breakpoint (medium down) {
-  //   padding-left: 2rem;
-  //   padding-right: 2rem;
-  // }
+  @include media-breakpoint-down(md) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 
   .top-bar-right {
     ul {

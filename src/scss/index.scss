@@ -37,9 +37,9 @@ html {
   height: auto;
   padding: 5rem 10rem 5rem 10rem;
 
-  // @include breakpoint (medium down) {
-  //   padding: 2rem;
-  // }
+  @include media-breakpoint-down(md) {
+    padding: 2rem;
+  }
 }
 
 .footer {

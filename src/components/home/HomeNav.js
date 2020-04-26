@@ -10,7 +10,7 @@ class HomeNav extends Component {
         <Navbar.Brand href="/" id="home_nav" className="signature-icon hide-for-small-only"></Navbar.Brand>
         <Navbar.Collapse className="justify-content-end top-bar-right">
           <ScrollspyNav
-            scrollTargetIds={["about", "skills", "work", "publication", "blog"]}
+            scrollTargetIds={["about", "skills", "work", "publication"]}
             offset={10}
             activeNavClass="active"
             router="HashRouter"
