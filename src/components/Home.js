@@ -54,9 +54,6 @@ class Home extends Component {
           <div className="section" id="publication">
             <Publication />
           </div>
-					<div className="section" id="blog">
-            <Blog />
-          </div>
         </div>
       </>
 		);

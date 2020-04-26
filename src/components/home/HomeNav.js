@@ -20,9 +20,9 @@ class HomeNav extends Component {
               <li><NavLink to="#skills"><span>SKILLS</span></NavLink></li>
               <li><NavLink to="#work"><span>WORK</span></NavLink></li>
               <li><NavLink to="#publication"><span>PUBLICATION</span></NavLink></li>
-              <li><NavLink to="#blog"><span>BLOG</span></NavLink></li>
             </ul>
           </ScrollspyNav>
+          <NavLink to="/blog"><span>BLOG</span></NavLink>
         </Navbar.Collapse>
       </Navbar>
     )

@@ -1,3 +1,20 @@
+@mixin nav-link-styling {
+  text-decoration: none;
+  color: $base-white;
+  font-weight: bold;
+  margin-right: $base-spacing-small;
+  // @include breakpoint(medium down) {
+  //   margin-right: 0;
+  //   padding-left: 0;
+  // }
+
+  &.active,
+  &:hover {
+    span {
+      border-bottom: 2px solid $base-white;
+    }
+  }
+}
 
 .top-bar {
   position: fixed;
@@ -20,25 +37,11 @@
       li {
         display: inline;
         padding: 1rem;
-
-        a {
-          text-decoration: none;
-          color: $base-white;
-          font-weight: bold;
-          margin-right: $base-spacing-small;
-          // @include breakpoint(medium down) {
-          //   margin-right: 0;
-          //   padding-left: 0;
-          // }
-
-          &.active,
-          &:hover {
-            span {
-              border-bottom: 2px solid $base-white;
-            }
-          }
-        }
       }
+    }
+
+    a {
+      @include nav-link-styling;
     }
   }
 
@@ -62,7 +65,7 @@
       border: 2px solid #555;
     }
 
-    .top-bar-right li {
+    .top-bar-right {
       a {
         color: #555;
 
