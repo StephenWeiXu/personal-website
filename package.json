@@ -22,6 +22,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0",
     "react-router-dom": "^4.2.2",
     "react-scrollspy-nav": "^1.2.4"
   },

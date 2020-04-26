@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Badge } from "react-bootstrap";
+import {Helmet} from "react-helmet";
 
 class BlogPostDetail extends Component {
 	constructor(props) {
@@ -31,11 +32,16 @@ class BlogPostDetail extends Component {
 	render() {
 		return (
       <>
-      <div className="txtc mbxl">
-        <h1>{this.post.title}</h1>
-        <span className="mvm">{this.getPostDate(this.post.published)}</span>
-      </div>
-      <div dangerouslySetInnerHTML={this.renderPostHtml()} />
+        <Helmet>
+          <title>{this.post.seo_title}</title>
+          <meta name="description" content={this.post.meta_description} />
+        </Helmet>
+
+        <div className="txtc mbxl">
+          <h1>{this.post.title}</h1>
+          <span className="mvm">{this.getPostDate(this.post.published)}</span>
+        </div>
+        <div dangerouslySetInnerHTML={this.renderPostHtml()} />
       </>
 		);
 	}
