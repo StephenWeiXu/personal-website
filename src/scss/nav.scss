@@ -56,6 +56,12 @@
     cursor: pointer;
   }
 
+  .blog_nav_menu {
+    @include media-breakpoint-down(sm) {
+      justify-content: normal !important;
+    }
+  }
+
   &.scroll-motion {
     z-index: 1;
     background: #fff;

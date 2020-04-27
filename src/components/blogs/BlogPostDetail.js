@@ -7,7 +7,7 @@ class BlogPostDetail extends Component {
 		super(props);
 
 		this.post = props.post;
-	}
+  }
 
 	getCardLabels() {
 		let labelsTemplate = this.card.tags.map((tag, index) => {
