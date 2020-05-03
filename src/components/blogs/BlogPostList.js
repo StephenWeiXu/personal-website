@@ -42,16 +42,22 @@ class BlogPostList extends Component {
 		return (
 			<Route exact path={this.props.match.path} render={() => (
 				<>
-				<h1 className="txtc mbl">Posts</h1>
-				<Row>
-						{this.state.blogPostList.map((post, index) => {
-							return (
-								<Col key={index} sm={12} md={{ span: 6, offset: 3 }} className={index >= 6 ? "hide" : ""}>
-									<BlogPostCard key={index} card={post} classProp={index >= 6 ? "hide" : ""} />
-								</Col>
-							);
-						})}
-				</Row>
+        <Row className="blog-header">
+          <Col className="blog-header-left">
+            <h1>Blog</h1>
+          </Col>
+          <Col className="blog-header-right">
+          </Col>
+        </Row>
+        <Row className="section">
+            {this.state.blogPostList.map((post, index) => {
+              return (
+                <Col key={index} sm={12} md={{ span: 4, offset: 4 }} className={index >= 6 ? "hide" : ""}>
+                  <BlogPostCard key={index} card={post} classProp={index >= 6 ? "hide" : ""} />
+                </Col>
+              );
+            })}
+        </Row>
 				</>
 			)}/>
 		)
@@ -64,7 +70,9 @@ class BlogPostList extends Component {
 		const blogPostRoutes = this.state.blogPostList.map((post, index) => {
 			return (
 				<Route key={index} exact path={`${this.props.match.path}/${post.slug}`} render={() => (
+          <div className="section">
 						<BlogPostDetail post={post} />
+          </div>
 				)}/>
 			)
 		})
@@ -73,10 +81,10 @@ class BlogPostList extends Component {
 
 	render() {
 		return (
-			<div className="blog-post-container">
-				{this.buildBlogPostCardsRoutes()}
-				{this.buildBlogPostDetailRoutes()}
-			</div>
+      <div className="blog-post-container">
+        {this.buildBlogPostCardsRoutes()}
+        {this.buildBlogPostDetailRoutes()}
+      </div>
 		);
 	}
 }

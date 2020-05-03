@@ -31,8 +31,7 @@ class BlogPostCard extends Component {
 					<Card.Img src={this.card.featured_image} alt={this.card.featured_image_alt}></Card.Img>
 					<Card.Body className="card-section">
 						<Card.Title className="bold">{this.card.title}</Card.Title>
-						<div className="block">{this.getCardLabels()}</div>
-						<p className="mtm small-text">{this.card.summary}</p>
+						<p className="card-description mtm small-text">{this.card.summary}</p>
 					</Card.Body>
 				</Card>
 			</Link>

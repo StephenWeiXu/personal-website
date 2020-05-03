@@ -34,7 +34,7 @@ class ProjectDetail extends Component {
 			<div className="project-detail">
 				<Row className="project-main mvm">
 					<Col md={5}>
-						<img src={this.card.imagePath} />
+						<img src={url("")} />
 					</Col>
 					<Col md={7} className="project-desc">
 						<div className="mbm">

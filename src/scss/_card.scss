@@ -3,7 +3,6 @@
   .card {
     border-radius: 5px;
     height: 100%;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.5s;
 
     a {
@@ -24,9 +23,9 @@
       font-size: 18px;
     }
 
-    // .card-section {
-    //   color: $base-black;
-    // }
+    .card-description {
+      color: $base-medium-gray;
+    }
 
     &:hover {
       box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
