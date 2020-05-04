@@ -2,13 +2,18 @@
 .blog {
   padding-top: 4rem;
 
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   .blog-header {
-    height: 15rem;
+    height: 13rem;
     color: white;
     text-align: center;
 
     .blog-header-left {
-      background: #1a73e8;
+      background: #5ba99b;
 
       h1 {
         position: relative;

@@ -3,10 +3,10 @@ import { Badge } from "react-bootstrap";
 import {Helmet} from "react-helmet";
 
 class BlogPostDetail extends Component {
-	constructor(props) {
-		super(props);
-
-		this.post = props.post;
+  componentDidMount() {
+    window.scrollTo({
+			top: 0
+		});
   }
 
 	getCardLabels() {
@@ -26,22 +26,22 @@ class BlogPostDetail extends Component {
   }
   
   renderPostHtml() {
-    return {__html: this.post.body};
+    return {__html: this.props.post.body};
   }
   
 	render() {
 		return (
       <>
         <Helmet>
-          <title>{this.post.seo_title}</title>
-          <meta name="description" content={this.post.meta_description} />
+          <title>{this.props.post.seo_title}</title>
+          <meta name="description" content={this.props.post.meta_description} />
         </Helmet>
 
         <div className="txtc mbxl">
-          <h1>{this.post.title}</h1>
-          <span className="mvm">{this.getPostDate(this.post.published)}</span>
+          <h1>{this.props.post.title}</h1>
+          <span className="mvm">{this.getPostDate(this.props.post.published)}</span>
         </div>
-        <img src={this.post.featured_image} style={{width: "100%"}} alt={this.post.title} />
+        <img src={this.props.post.featured_image} style={{width: "100%"}} alt={this.props.post.title} />
         <div dangerouslySetInnerHTML={this.renderPostHtml()} />
       </>
 		);

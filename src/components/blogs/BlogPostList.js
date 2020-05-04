@@ -15,6 +15,10 @@ class BlogPostList extends Component {
 	}
 
 	componentDidMount() {
+		window.scrollTo({
+			top: 0
+		});
+
 		if (!this.state.blogPostList.length) {
 			this.getBlogPostList();
 		}
@@ -52,7 +56,7 @@ class BlogPostList extends Component {
         <Row className="section">
             {this.state.blogPostList.map((post, index) => {
               return (
-                <Col key={index} sm={12} md={{ span: 4, offset: 4 }} className={index >= 6 ? "hide" : ""}>
+                <Col key={index} sm={12} md={{ span: 6, offset: 3 }} className={index >= 6 ? "hide" : ""}>
                   <BlogPostCard key={index} card={post} classProp={index >= 6 ? "hide" : ""} />
                 </Col>
               );

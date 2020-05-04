@@ -35,7 +35,7 @@ html {
 
 .section {
   height: auto;
-  padding: 5rem 10rem 5rem 10rem;
+  padding: 5rem;
 
   @include media-breakpoint-down(md) {
     padding: 2rem;

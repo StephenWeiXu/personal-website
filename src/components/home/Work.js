@@ -38,7 +38,8 @@ class Work extends Component {
 								key={index}
 								sm={12}
 								md={6}
-								className={index >= 6 ? "hide" : ""}
+								lg={4}
+								className={`mbl ${index >= 6 ? "hide" : ""}`}
 								onClick={() => this.handleShow(card.name)}
 							>
 								<ProjectCard key={index} card={card} />
