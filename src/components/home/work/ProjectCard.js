@@ -22,7 +22,7 @@ class ProjectCard extends Component {
 	render() {
 		return (
 			<Card className="cursor-pointer">
-				<Card.Img style={ {backgroundImage: `url("${this.card.imagePath}")`} }></Card.Img>
+				<div className="card-img" style={ {backgroundImage: `url("${this.card.imagePath}")`} }></div>
 				<Card.Body className="card-section">
 					<Card.Title className="mbs">{this.card.title}</Card.Title>
 					<div className="block">{this.getCardLabels()}</div>

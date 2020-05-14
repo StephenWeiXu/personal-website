@@ -41,7 +41,9 @@ class BlogPostDetail extends Component {
           <h1>{this.props.post.title}</h1>
           <span className="mvm">{this.getPostDate(this.props.post.published)}</span>
         </div>
-        <img src={this.props.post.featured_image} style={{width: "100%"}} alt={this.props.post.title} />
+        <div className="feature-image">
+          <img src={this.props.post.featured_image} style={{width: "100%"}} alt={this.props.post.title} />
+        </div>
         <div dangerouslySetInnerHTML={this.renderPostHtml()} />
       </>
 		);

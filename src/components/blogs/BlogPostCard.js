@@ -28,7 +28,7 @@ class BlogPostCard extends Component {
 		return (
 			<Link className={`card-as-link mbm ${this.classProp}`} to={this.getCardUrl()}>
 				<Card className="cursor-pointer">
-					<Card.Img src={this.card.featured_image} alt={this.card.featured_image_alt}></Card.Img>
+					<div className="card-img" style={ {backgroundImage: `url("${this.card.featured_image}")`} }></div>
 					<Card.Body className="card-section">
 						<Card.Title className="bold">{this.card.title}</Card.Title>
 						<p className="card-description mtm small-text">{this.card.summary}</p>
