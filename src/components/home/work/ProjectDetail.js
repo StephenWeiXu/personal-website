@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Row, Col, Badge } from "react-bootstrap";
 
 class ProjectDetail extends Component {
@@ -34,7 +33,7 @@ class ProjectDetail extends Component {
 			<div className="project-detail">
 				<Row className="project-main mvm">
 					<Col md={5}>
-						<img src={url("")} />
+						<img src={this.card.imagePath} />
 					</Col>
 					<Col md={7} className="project-desc">
 						<div className="mbm">
