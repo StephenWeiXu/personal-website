@@ -44,7 +44,7 @@ class BlogPostDetail extends Component {
         <div className="feature-image">
           <img src={this.props.post.featured_image} style={{width: "100%"}} alt={this.props.post.title} />
         </div>
-        <div dangerouslySetInnerHTML={this.renderPostHtml()} />
+        <div dangerouslySetInnerHTML={this.renderPostHtml()} className="mvl"/>
       </>
 		);
 	}
