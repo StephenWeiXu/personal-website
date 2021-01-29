@@ -4,7 +4,7 @@ import Skills from './home/Skills';
 import Work from './home/Work';
 import Publication from './home/Publication';
 import Blog from './home/Blog';
-import Nav from './home/HomeNav';
+import HomeNav from './home/HomeNav';
 
 class Home extends Component {
 	constructor(props) {
@@ -39,11 +39,11 @@ class Home extends Component {
 	render() {
 		return (
       <>
-        <Nav />
 
         <div className="home">
-          <div className="section background-base" id="about">
-            <About />
+          <div className="background-base" id="about">
+      	  	<HomeNav />
+    	  	<About />
           </div>
           <div className="section" id="skills">
             <Skills />
