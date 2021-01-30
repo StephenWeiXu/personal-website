@@ -8,7 +8,7 @@ class About extends Component {
 				<h1>WEI XU</h1>
 				<span className="occupation">Welcome! I am Wei, a software developer specializing in full stack web application development</span>
 				<div className="social-icons mts">
-					<ul className="inline-list">
+					<ul className="inline-list pln">
 						<li>
 							<a href="https://github.com/StephenWeiXu" target="_blank">
 								<i className="fa fa-github"></i>

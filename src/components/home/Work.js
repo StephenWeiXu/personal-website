@@ -11,20 +11,20 @@ class Work extends Component {
 		this.cards = PROJECTS_DATA;
 
 		this.state = {
-      show: null
-    };
+			show: null
+		};
 	}
 
 	componentDidMount() {
 	}
 
 	handleClose() {
-    this.setState({show: null});
-  }
+		this.setState({ show: null });
+	}
 
-  handleShow(id) {
-    this.setState({show: id});
-  }
+	handleShow(id) {
+		this.setState({ show: id });
+	}
 
 	render() {
 		return (

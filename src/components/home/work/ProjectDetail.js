@@ -20,7 +20,7 @@ class ProjectDetail extends Component {
 	}
 
 	renderDescriptionInHTML() {
-		return {__html: this.card.description};
+		return { __html: this.card.description };
 	}
 
 	handleCloseButtonClick(event) {
@@ -45,7 +45,7 @@ class ProjectDetail extends Component {
 								{this.getCardLabels()}
 							</div>
 						</div>
-						<div className="project-body" dangerouslySetInnerHTML={ this.renderDescriptionInHTML() } />
+						<div className="project-body" dangerouslySetInnerHTML={this.renderDescriptionInHTML()} />
 					</Col>
 				</Row>
 			</div>

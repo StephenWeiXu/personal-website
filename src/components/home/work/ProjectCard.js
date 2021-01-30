@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Card, Badge } from "react-bootstrap";
 
 class ProjectCard extends Component {
@@ -22,7 +22,7 @@ class ProjectCard extends Component {
 	render() {
 		return (
 			<Card className="cursor-pointer">
-				<div className="card-img" style={ {backgroundImage: `url("${this.card.imagePath}")`} }></div>
+				<div className="card-img" style={{ backgroundImage: `url("${this.card.imagePath}")` }}></div>
 				<Card.Body className="card-section">
 					<Card.Title className="mbs">{this.card.title}</Card.Title>
 					<div className="block">{this.getCardLabels()}</div>
