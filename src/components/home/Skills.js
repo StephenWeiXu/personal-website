@@ -26,28 +26,28 @@ class Skills extends Component {
 						<img src="images/icon-cicd.png" />
 						<div className="mts">
 							<span className="skills-name">CI/CD</span>
-							<p className="skills-list">Kubernetes, Docker, Jenkins, EKS</p>
+							<p className="skills-list">Kubernetes, Docker, Jenkins, ECS, EKS</p>
 						</div>				
 					</Col>
 					<Col sm={12} md={6} lg={4} className="mtxl txtc">
 						<img src="images/icon-automation-testing.png" />
 						<div className="mts">
 							<span className="skills-name">Automated Testing & QA</span>
-							<p className="skills-list">Selenium, Appium, Unittest, Jest, Cucumber</p>
+							<p className="skills-list">Selenium, Appium, Jest, AWS Device Farm</p>
 						</div>
 					</Col>
 					<Col sm={12} md={6} lg={4} className="mtxl txtc">
 						<img src="images/icon-agile.png" />
 						<div className="mts">
 							<span className="skills-name">Agile Software Development</span>
-							<p className="skills-list">Scrum, Automation</p>
+							<p className="skills-list">Scrum, DevOps, Automation</p>
 						</div>
 					</Col>
 					<Col sm={12} md={6} lg={4} className="mtxl txtc">
 						<img src="images/icon-data-science.png" />
 						<div className="mts">
 							<span className="skills-name">Data Science</span>
-							<p className="skills-list">Scikit-learn, Pandas, Pyspark, Zeppelin, AWS EMR, D3</p>
+							<p className="skills-list">Scikit-learn, Pandas, Juipter, SageMaker</p>
 						</div>
 					</Col>
 				</Row>

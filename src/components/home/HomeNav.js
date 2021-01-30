@@ -16,13 +16,13 @@ class HomeNav extends Component {
             router="HashRouter"
           >
             <ul className="d-none d-md-block">
-              <li><NavLink to="#about" id="about_nav"><span>ABOUT</span></NavLink></li>
-              <li><NavLink to="#skills"><span>SKILLS</span></NavLink></li>
-              <li><NavLink to="#work"><span>WORK</span></NavLink></li>
-              <li><NavLink to="#publication"><span>PUBLICATION</span></NavLink></li>
+              <li><NavLink to="#about" id="about_nav"><span>About</span></NavLink></li>
+              <li><NavLink to="#skills"><span>Skills</span></NavLink></li>
+              <li><NavLink to="#work"><span>Work</span></NavLink></li>
+              <li><NavLink to="#publication"><span>Publication</span></NavLink></li>
             </ul>
           </ScrollspyNav>
-          <NavLink to="/blog"><span>BLOG</span></NavLink>
+          <NavLink to="/blog"><span>Blog</span></NavLink>
         </Navbar.Collapse>
       </Navbar>
     )
