@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import About from './home/About';
 import Skills from './home/Skills';
 import Work from './home/Work';
-import Publication from './home/Publication';
-import Blog from './home/Blog';
 import HomeNav from './home/HomeNav';
+import {Helmet} from "react-helmet";
 
 class Home extends Component {
 	constructor(props) {
@@ -32,30 +31,30 @@ class Home extends Component {
 		document.getElementById("home_nav").addEventListener("click", (event) => {
 			event.preventDefault();
 
-			window.scrollTo({top: 0, behavior: "smooth"});
+			window.scrollTo({ top: 0, behavior: "smooth" });
 		})
 	}
 
 	render() {
 		return (
-      <>
-
-        <div className="home">
-          <div className="background-base" id="about">
-      	  	<HomeNav />
-    	  	<About />
-          </div>
-          <div className="section" id="skills">
-            <Skills />
-          </div>
-          <div className="section" id="work">
-            <Work />
-          </div>
-          <div className="section" id="publication">
-            <Publication />
-          </div>
-        </div>
-      </>
+			<>
+				<Helmet>
+					<title>Home | Wei Xu</title>
+					<meta name="description" content="Check out Wei Xu's homepage." />
+				</Helmet>
+				<div className="home">
+					<div className="background-base" id="about">
+						<HomeNav />
+						<About />
+					</div>
+					<div className="section" id="skills">
+						<Skills />
+					</div>
+					<div className="section" id="work">
+						<Work />
+					</div>
+				</div>
+			</>
 		);
 	}
 }

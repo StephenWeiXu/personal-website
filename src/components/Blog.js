@@ -13,7 +13,7 @@ class Blog extends Component {
       <>
         <Helmet>
           <title>Blog | Wei Xu</title>
-          <meta name="description" content="Check out Wei Xu's personal blog post." />
+          <meta name="description" content="Check out Wei Xu's personal blog posts." />
         </Helmet>
 
         <BlogNav />
