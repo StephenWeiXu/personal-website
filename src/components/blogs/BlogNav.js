@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 
 class BlogNav extends Component {
@@ -9,8 +8,8 @@ class BlogNav extends Component {
         <Navbar.Brand href="/" id="home_nav" className="signature-icon"></Navbar.Brand>
         <Navbar.Collapse className="justify-content-end top-bar-right blog_nav_menu">
             <ul>
-              <li><NavLink id="about_nav" to="/"><span>About</span></NavLink></li>
-              <li><NavLink id="blog_nav" to="/blog"><span>Blog</span></NavLink></li>
+              <li><a id="about_nav" href="/"><span>About</span></a></li>
+              <li><a id="blog_nav" href="/blog"><span>Blog</span></a></li>
             </ul>
         </Navbar.Collapse>
       </Navbar>

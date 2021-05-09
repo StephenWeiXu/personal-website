@@ -10,7 +10,7 @@ class Footer extends Component {
 	render() {
 		return (
 			<div className="footer txtc">
-				Copyright © {this.getCurrentYear()} Wei Xu. All rights reserved. Made better with <a href="https://buttercms.com" target="_blank"><img height="30" width="120" src="https://cdn.buttercms.com/RyJ7UhcVTCRqrCFXwgCo" alt="ButterCMS" /></a>
+				Copyright © {this.getCurrentYear()} Wei Xu. All rights reserved. Made better with <a href="https://buttercms.com" target="_blank" rel="noreferrer"><img height="30" width="120" src="https://cdn.buttercms.com/RyJ7UhcVTCRqrCFXwgCo" alt="ButterCMS" /></a>
 			</div>
 		)
 	}

@@ -5,13 +5,11 @@ import Work from './home/Work';
 import HomeNav from './home/HomeNav';
 import {Helmet} from "react-helmet";
 
-class Home extends Component {
-	constructor(props) {
-		super(props);
-	}
+const isBrowser = () => typeof window !== "undefined";
 
+class Home extends Component {
 	scrollListener() {
-		if (window.pageYOffset > document.getElementById("skills").offsetTop) {
+		if (isBrowser() && window.pageYOffset > document.getElementById("skills").offsetTop) {
 			document.getElementById("navigation-bar").classList.add("scroll-motion");
 		} else {
 			document.getElementById("navigation-bar").classList.remove("scroll-motion");
@@ -19,19 +17,19 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		window.addEventListener("scroll", this.scrollListener);
+		isBrowser() && window.addEventListener("scroll", this.scrollListener);
 		this.registerHomeNavListener();
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener("scroll", this.scrollListener);
+		isBrowser() && window.removeEventListener("scroll", this.scrollListener);
 	}
 
 	registerHomeNavListener() {
 		document.getElementById("home_nav").addEventListener("click", (event) => {
 			event.preventDefault();
 
-			window.scrollTo({ top: 0, behavior: "smooth" });
+			isBrowser() && window.scrollTo({ top: 0, behavior: "smooth" });
 		})
 	}
 

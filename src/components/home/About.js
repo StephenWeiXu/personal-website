@@ -10,12 +10,12 @@ class About extends Component {
 				<div className="social-icons mts">
 					<ul className="inline-list pln">
 						<li>
-							<a href="https://github.com/StephenWeiXu" target="_blank">
+							<a href="https://github.com/StephenWeiXu" target="_blank" rel="noreferrer">
 								<i className="fa fa-github"></i>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/in/wei-xu-75952aab/" target="_blank">
+							<a href="https://www.linkedin.com/in/wei-xu-75952aab/" target="_blank" rel="noreferrer">
 								<i className="fa fa-linkedin-square"></i>
 							</a>
 						</li>

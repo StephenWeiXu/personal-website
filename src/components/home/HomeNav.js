@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import ScrollspyNav from "react-scrollspy-nav";
-import { NavLink } from "react-router-dom";
+
+const isBrowser = () => typeof window !== "undefined";
 
 class HomeNav extends Component {
   render() {
@@ -9,19 +10,20 @@ class HomeNav extends Component {
       <Navbar id="navigation-bar" className="top-bar">
         <Navbar.Brand href="/" id="home_nav" className="signature-icon"></Navbar.Brand>
         <Navbar.Collapse className="justify-content-end top-bar-right">
+          {isBrowser() &&
           <ScrollspyNav
             scrollTargetIds={["about", "skills", "work"]}
             offset={10}
             activeNavClass="active"
-            router="HashRouter"
           >
             <ul className="d-none d-md-block">
-              <li><NavLink to="#about" id="about_nav"><span>About</span></NavLink></li>
-              <li><NavLink to="#skills"><span>Skills</span></NavLink></li>
-              <li><NavLink to="#work"><span>Work</span></NavLink></li>
+              <li><a href="#about" id="about_nav"><span>About</span></a></li>
+              <li><a href="#skills"><span>Skills</span></a></li>
+              <li><a href="#work"><span>Work</span></a></li>
             </ul>
           </ScrollspyNav>
-          <NavLink to="/blog" className="mls"><span>Blog</span></NavLink>
+          }
+          <a href="/blog" className="mls"><span>Blog</span></a>
         </Navbar.Collapse>
       </Navbar>
     )
