@@ -2,9 +2,11 @@ module.exports = {
   pathPrefix: "/",
   siteMetadata: {
     title: "personal-website",
+    siteUrl: 'https://stephenweixu.com',
   },
   plugins: [
     'gatsby-plugin-sass',
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-source-buttercms',
       options: {
@@ -15,7 +17,7 @@ module.exports = {
       resolve: `gatsby-plugin-s3`,
       options: {
         bucketName: "stephenweixu.com",
-      },
+      }
     }
   ]
 };
