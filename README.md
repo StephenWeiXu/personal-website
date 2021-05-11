@@ -1,11 +1,14 @@
 # personal-website
 
-Source code of my personal website, written with React. See http://stephenweixu.com
+Source code of my personal website, written with React. See https://stephenweixu.com
 
-## Technologies Used
+## Tech stack used
+* Gatsby
 * React
 * React Router
 * React Bootstrap
 * Sass
-* Webpack
-* S3 Static Hosting
+* ButterCMS
+* S3
+* CloudFront
+
