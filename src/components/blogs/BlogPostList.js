@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
+import { Link } from "gatsby";
 
 
 const BlogPostList = ({ posts }) => {
@@ -14,7 +15,7 @@ const BlogPostList = ({ posts }) => {
 	// }
 	function renderBlogPostCard(post, classProp) {
 		return (
-			<a className={`card-as-link mbm ${classProp}`} href={`/blog/${post.slug}`}>
+			<Link className={`card-as-link mbm ${classProp}`} to={`/blog/${post.slug}`}>
 				<Card className="cursor-pointer">
 					<div className="card-img" style={ {backgroundImage: `url("${post.featured_image}")`} }></div>
 					<Card.Body className="card-section">
@@ -22,7 +23,7 @@ const BlogPostList = ({ posts }) => {
 						<p className="card-description mtm small-text">{post.summary}</p>
 					</Card.Body>
 				</Card>
-			</a>
+			</Link>
 		);
 	}
 

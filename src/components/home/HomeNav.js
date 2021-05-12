@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar } from "react-bootstrap";
 import ScrollspyNav from "react-scrollspy-nav";
+import { Link } from "gatsby";
+
 
 const isBrowser = () => typeof window !== "undefined";
 
@@ -8,7 +10,7 @@ class HomeNav extends Component {
   render() {
     return (
       <Navbar id="navigation-bar" className="top-bar">
-        <Navbar.Brand href="/" id="home_nav" className="signature-icon"></Navbar.Brand>
+        <Link to="/" id="home_nav" className="signature-icon"></Link>
         <Navbar.Collapse className="justify-content-end top-bar-right">
           {isBrowser() &&
           <ScrollspyNav
@@ -23,7 +25,7 @@ class HomeNav extends Component {
             </ul>
           </ScrollspyNav>
           }
-          <a href="/blog" className="mls"><span>Blog</span></a>
+          <Link to="/blog" className="mls"><span>Blog</span></Link>
         </Navbar.Collapse>
       </Navbar>
     )

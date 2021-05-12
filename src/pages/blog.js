@@ -34,7 +34,9 @@ export default Blog;
 
 export const query = graphql`
   query {
-    allButterPost {
+    allButterPost(
+      sort: { order: DESC, fields: [published] }
+    ) {
       edges {
         node {
           id

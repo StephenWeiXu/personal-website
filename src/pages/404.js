@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "gatsby";
+
 
 import "../scss/global.scss";
 
@@ -9,7 +11,7 @@ const NotFound = () => {
             <div className="not-found txtc">
                 <h1 className="block">404</h1>
                 <p>SORRY, PAGE NOT FOUND!</p>
-                <a href="/"><button className="button">Home Page</button></a>
+                <Link to="/"><button className="button">Home Page</button></Link>
             </div>
         </div>
     );
