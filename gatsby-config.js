@@ -1,7 +1,7 @@
 module.exports = {
-  pathPrefix: "/",
+  pathPrefix: '/',
   siteMetadata: {
-    title: "personal-website",
+    title: 'personal-website',
     siteUrl: 'https://stephenweixu.com',
   },
   plugins: [
@@ -14,11 +14,30 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-s3`,
+      resolve: 'gatsby-plugin-s3',
       options: {
-        bucketName: "stephenweixu.com",
+        bucketName: 'stephenweixu.com',
       }
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Wei Xu - Software Developer',
+        short_name: 'Wei Xu',
+        description: 'Wei Xu, Software developer specializing in full stack web application development',
+        start_url: '/',
+        background_color: '#fffffff',
+        theme_color: '#000000',
+        display: 'standalone',
+        icons: [
+          {
+            src: 'static/images/favicon-tab.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
+    },
   ]
 };
   
