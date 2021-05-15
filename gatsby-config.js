@@ -26,16 +26,27 @@ module.exports = {
         short_name: 'Wei Xu',
         description: 'Wei Xu, Software developer specializing in full stack web application development',
         start_url: '/',
-        background_color: '#fffffff',
+        background_color: '#ffffff',
         theme_color: '#000000',
         display: 'standalone',
         icons: [
           {
-            src: 'static/images/favicon-tab.png',
-            sizes: '512x512',
+            src: 'images/favicon-tab.png',
+            sizes: '48x48',
             type: 'image/png',
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: [
+          'G-26S18HBTLQ',
+        ],
+        pluginConfig: {
+          head: true,
+        },
       },
     },
   ]
