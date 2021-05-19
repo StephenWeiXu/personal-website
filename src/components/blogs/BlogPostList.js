@@ -39,7 +39,7 @@ const BlogPostList = ({ posts }) => {
 			<Row className="section">
 				{posts.map(({ node }, index) => {
 				return (
-					<Col key={index} sm={12} md={{ span: 6 }} className={`mbl ${index >= 6 ? 'hide' : ''}`}>
+					<Col key={index} sm={12} md={{ span: 6 }} lg={{ span: 4 }} className={`mbl ${index >= 6 ? 'hide' : ''}`}>
 						{renderBlogPostCard(node, index >= 6 ? 'hide' : '')}
 					</Col>
 				);
