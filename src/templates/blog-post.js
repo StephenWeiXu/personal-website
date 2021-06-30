@@ -34,15 +34,12 @@ const BlogPostDetail = function Template({ data }) {
       <BlogNav />
 
       <div className="blog">
-        <div className="txtc mbxl ptxl">
-            <h1>{post.title}</h1>
-            <span className="mvm">{getPostDate(post.published)}</span>
-          </div>
-          <div className="feature-image">
-            <img src={post.featured_image} style={{width: "100%"}} alt={post.title} />
-          </div>
         <div className="section">
-          <div dangerouslySetInnerHTML={renderPostHtml()} className="mvl"/>
+            <div className="txtc pbxl">
+              <h1>{post.title}</h1>
+              <span className="mvm">{getPostDate(post.published)}</span>
+            </div>
+            <div dangerouslySetInnerHTML={renderPostHtml()} className="mvl"/>
         </div>
       </div>
     </>
