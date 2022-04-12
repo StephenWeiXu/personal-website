@@ -12,21 +12,28 @@ class Skills extends Component {
 						<img alt="icon" src="images/icon-web-development.png" />
 						<div className="mts">
 							<span className="skills-name">Backend Web Development</span>
-							<p className="skills-list">Java, Spring, Python, Django, MySQL, DynamoDB, AWS Lambda, Apache</p>
+							<p className="skills-list">Python, Django/Flask, Java, Spring, GraphQL, MySQL, DynamoDB, AWS Lambda, Apache</p>
 						</div>
 					</Col>
 					<Col sm={12} md={6} lg={4} className="mtxl txtc">
 						<img alt="icon" src="images/icon-responsive-design.png" />
 						<div className="mts">
 							<span className="skills-name">Front-end Web Development</span>
-							<p className="skills-list">React, Redux, React Native, Vue, JavaScript, jQuery, Webpack, HTML/CSS, Foundation/Bootstrap, SASS</p>
+							<p className="skills-list">React, Redux, React Native, Vue, JavaScript, Webpack, HTML/CSS, Foundation/Bootstrap, SASS</p>
+						</div>
+					</Col>
+					<Col sm={12} md={6} lg={4} className="mtxl txtc">
+						<img alt="icon" src="images/icon-data-science.png" />
+						<div className="mts">
+							<span className="skills-name">Machine Learning</span>
+							<p className="skills-list">AWS SageMaker, Tensorflow, Scikit-learn, Pandas, Juipter Notebook</p>
 						</div>
 					</Col>
 					<Col sm={12} md={6} lg={4} className="mtxl txtc">
 						<img alt="icon" src="images/icon-cicd.png" />
 						<div className="mts">
 							<span className="skills-name">CI/CD</span>
-							<p className="skills-list">Kubernetes, Docker, Jenkins, ECS, EKS</p>
+							<p className="skills-list">Kubernetes, Docker, Jenkins, AWS ECS, AWS EKS</p>
 						</div>				
 					</Col>
 					<Col sm={12} md={6} lg={4} className="mtxl txtc">
@@ -41,13 +48,6 @@ class Skills extends Component {
 						<div className="mts">
 							<span className="skills-name">Agile Software Development</span>
 							<p className="skills-list">Scrum, DevOps, Automation</p>
-						</div>
-					</Col>
-					<Col sm={12} md={6} lg={4} className="mtxl txtc">
-						<img alt="icon" src="images/icon-data-science.png" />
-						<div className="mts">
-							<span className="skills-name">Data Science</span>
-							<p className="skills-list">Scikit-learn, Pandas, Juipter, SageMaker</p>
 						</div>
 					</Col>
 				</Row>
