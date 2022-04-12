@@ -3,7 +3,8 @@ import About from './home/About';
 import Skills from './home/Skills';
 import Work from './home/Work';
 import HomeNav from './home/HomeNav';
-import {Helmet} from "react-helmet";
+import Footer from './Footer';
+import { Helmet } from "react-helmet";
 
 const isBrowser = () => typeof window !== "undefined";
 
@@ -52,6 +53,7 @@ class Home extends Component {
 						<Work />
 					</div>
 				</div>
+				<Footer />
 			</>
 		);
 	}

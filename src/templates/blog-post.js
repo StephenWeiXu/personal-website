@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import BlogNav from "../components/blogs/BlogNav";
+import Footer from "../components/Footer";
 import { graphql } from 'gatsby'
 
 import "../scss/blog.scss";
@@ -42,6 +43,8 @@ const BlogPostDetail = function Template({ data }) {
             <div dangerouslySetInnerHTML={renderPostHtml()} className="mvl"/>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

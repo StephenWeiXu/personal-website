@@ -1,6 +1,7 @@
 import React from "react";
 import BlogPostList from "../components/blogs/BlogPostList";
 import BlogNav from "../components/blogs/BlogNav";
+import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import { graphql } from 'gatsby';
 
@@ -25,6 +26,8 @@ const Blog = ({ data }) => {
       <div className="blog">
         <BlogPostList posts={posts} />
       </div>
+
+      <Footer />
     </>
   );
 }

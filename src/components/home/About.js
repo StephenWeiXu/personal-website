@@ -5,8 +5,10 @@ class About extends Component {
 	render() {
 		return (
 			<div className="profile txtc">
-				<h1>WEI XU</h1>
-				<span className="occupation">Welcome! I am Wei, a software developer specializing in full stack web application development</span>
+				<h1>Hello, I'm WEI XU</h1>
+				<p className="occupation">
+					A Software Engineer based in NYC
+				</p>
 				<div className="social-icons mts">
 					<ul className="inline-list pln">
 						<li>

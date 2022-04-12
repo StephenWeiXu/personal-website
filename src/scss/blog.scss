@@ -8,34 +8,6 @@
     height: auto;
   }
 
-  .blog-header {
-    height: 13rem;
-    color: white;
-    text-align: center;
-
-    @include media-breakpoint-down(sm) {
-      display: none;
-    }
-
-    .blog-header-left {
-      background: #5ba99b;
-
-      h1 {
-        position: relative;
-        top: 40%;
-      }
-    }
-
-    .blog-header-right {
-      background-image: url("/images/blog-header.jpg");
-      background-position: center;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-  }
-
   .section {
     h2 {
       margin: 3rem 0 2rem 0;

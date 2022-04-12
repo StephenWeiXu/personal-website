@@ -29,13 +29,6 @@ const BlogPostList = ({ posts }) => {
 
 	return (
 		<div className="blog-post-container">
-			<Row className="blog-header">
-				<Col className="blog-header-left">
-					<h1>Blog</h1>
-				</Col>
-				<Col className="blog-header-right">
-				</Col>
-			</Row>
 			<Row className="section">
 				{posts.map(({ node }, index) => {
 				return (
