@@ -29,9 +29,10 @@ module.exports = {
         background_color: '#ffffff',
         theme_color: '#000000',
         display: 'standalone',
+        icon: '/images/favicon-tab.png',
         icons: [
           {
-            src: 'images/favicon-tab.png',
+            src: '/images/favicon-tab.png',
             sizes: '48x48',
             type: 'image/png',
           },
