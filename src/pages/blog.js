@@ -37,7 +37,12 @@ export default Blog;
 
 export const query = graphql`
   query {
-    allButterPost(
+    allButterPost(filter: {
+      categories: {
+        elemMatch: {
+          slug: { in: "developer-blog" }
+        }
+	    }},
       sort: { order: DESC, fields: [published] }
     ) {
       edges {

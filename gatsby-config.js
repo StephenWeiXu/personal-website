@@ -31,7 +31,7 @@ module.exports = {
         display: 'standalone',
         icons: [
           {
-            src: 'images/favicon-tab.png',
+            src: '/images/favicon.ico',
             sizes: '48x48',
             type: 'image/png',
           },
