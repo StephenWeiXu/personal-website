@@ -39,7 +39,7 @@ class Home extends Component {
 			<>
 				<Helmet>
 					<title>Home | Wei Xu</title>
-					<meta rel="icon" href="/images/favicon-tab.png" />
+					<link rel="icon" href="/images/favicon-tab.png" />
 					<meta name="description" content="Check out Wei Xu's homepage." />
 				</Helmet>
 				<div className="home">
