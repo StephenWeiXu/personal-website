@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 
 
-import "../scss/global.scss";
-
-
 const NotFound = () => {
     return (
         <div className="section">

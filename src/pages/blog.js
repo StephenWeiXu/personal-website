@@ -5,8 +5,6 @@ import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import { graphql } from 'gatsby';
 
-import "../scss/blog.scss";
-
 
 const Blog = ({ data }) => {
   const posts = data.allButterPost.edges;

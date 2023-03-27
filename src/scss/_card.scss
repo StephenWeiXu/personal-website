@@ -1,5 +1,4 @@
-.project-container,
-.blog-post-container {
+.project-container {
   .card {
     border-radius: 5px;
     height: 100%;
@@ -33,6 +32,38 @@
 
     &:hover {
       box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .card-as-link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.blog-post-container {
+  .horizontal-card {
+    height: 100%;
+
+    a {
+      height: 100%;
+    }
+
+    .card-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+      opacity: 0.8;
+      height: 250px;
+      width: 250px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .card-description {
+      color: $base-medium-gray;
+    }
+
+    &:hover {
     }
   }
 

@@ -3,8 +3,6 @@ import { Helmet } from "react-helmet";
 import Carousel from "react-bootstrap/Carousel";
 import { Row, Col } from "react-bootstrap";
 
-import "../scss/family.scss";
-
 
 const Family = () => {
 

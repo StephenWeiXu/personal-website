@@ -5,24 +5,17 @@ import { Link } from "gatsby";
 
 
 const BlogPostList = ({ posts }) => {
-	// constructor(props) {
-	// 	super(props);
-
-	// componentDidMount() {
-	// 	window.scrollTo({
-	// 		top: 0
-	// 	});
-	// }
 	function renderBlogPostCard(post, classProp) {
 		return (
-			<Link className={`card-as-link mbm ${classProp}`} to={`/blog/${post.slug}`}>
-				<Card className="cursor-pointer">
-					<div className="card-img" style={ {backgroundImage: `url("${post.featured_image}")`} }></div>
-					<Card.Body className="card-section">
-						<Card.Title className="bold">{post.title}</Card.Title>
-						<p className="card-description mtm small-text">{post.summary}</p>
-					</Card.Body>
-				</Card>
+			<Link className={`horizontal-card card-as-link mbm ${classProp}`} to={`/blog/${post.slug}`}>
+				<Row className="cursor-pointer">
+					<Col sm={6} className="card-image" style={ {backgroundImage: `url("${post.featured_image}")`} }>
+					</Col>
+					<Col sm={6}>
+						<h4 className="bold">{post.title}</h4>
+						<p className="card-description mtm">{post.summary}</p>
+					</Col>
+				</Row>
 			</Link>
 		);
 	}
@@ -31,11 +24,11 @@ const BlogPostList = ({ posts }) => {
 		<div className="blog-post-container">
 			<Row className="section">
 				{posts.map(({ node }, index) => {
-				return (
-					<Col key={index} sm={12} md={{ span: 6 }} lg={{ span: 4 }} className="mbl">
-						{renderBlogPostCard(node, '')}
-					</Col>
-				);
+					return (
+						<Row key={index} className="mbl">
+							{renderBlogPostCard(node, '')}
+						</Row>
+					);
 				})}
 			</Row>
 		</div>
