@@ -7,7 +7,7 @@ import { Link } from "gatsby";
 const BlogPostList = ({ posts }) => {
 	function renderBlogPostCard(post, classProp) {
 		return (
-			<Link className={`horizontal-card card-as-link mbm ${classProp}`} to={`/blog/${post.slug}`}>
+			<Link className={`horizontal-card card-as-link mbxl ${classProp}`} to={`/blog/${post.slug}`}>
 				<Row className="cursor-pointer">
 					<Col sm={6} className="card-image" style={ {backgroundImage: `url("${post.featured_image}")`} }>
 					</Col>

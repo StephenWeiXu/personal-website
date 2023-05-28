@@ -15,14 +15,14 @@ html {
 }
 
 .background-base {
-  background-color: #89B2B9;
+  //background-color: #89B2B9;
   background-position: center;
   width: 100%;
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  // background-image: url("/images/background.jpeg");
-  // box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+  background-image: url("/images/background.jpeg");
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
 }
 
 #root {
