@@ -7,33 +7,37 @@ import { Link } from "gatsby";
 const BlogPostList = ({ posts }) => {
 	function renderBlogPostCard(post, classProp) {
 		return (
-			<Link className={`horizontal-card card-as-link mbxl ${classProp}`} to={`/blog/${post.slug}`}>
-				<Row className="cursor-pointer">
-					<Col sm={6} className="card-image" style={ {backgroundImage: `url("${post.featured_image}")`} }>
-					</Col>
-					<Col sm={6}>
-						<h4 className="bold">{post.title}</h4>
-						<p className="card-description mtm">{post.summary}</p>
-					</Col>
-				</Row>
+			<Link className={`horizontal-card card-as-link mbm ${classProp}`} to={`/blog/${post.slug}`}>
+				<Card className="cursor-pointer">
+					<Row>
+						<Col sm={12} md={6}>
+							<div className="card-img" style={ {backgroundImage: `url("${post.featured_image}")`} }></div>
+						</Col>
+						<Col sm={12} md={6}>
+							<Card.Body className="card-section">
+								<Card.Title className="bold">{post.title}</Card.Title>
+								<p className="card-description mtm small-text">{post.summary}</p>
+							</Card.Body>
+						</Col>
+					</Row>
+				</Card>
 			</Link>
 		);
 	}
 
 	return (
 		<div className="blog-post-container">
-			<Row className="section">
+			<div className="section">
 				{posts.map(({ node }, index) => {
-					return (
-						<Row key={index} className="mbl">
-							{renderBlogPostCard(node, '')}
-						</Row>
-					);
+				return (
+					<div key={index} className="mbl">
+						{renderBlogPostCard(node, '')}
+					</div>
+				);
 				})}
-			</Row>
+			</div>
 		</div>
 	);
 }
 
 export default BlogPostList;
-

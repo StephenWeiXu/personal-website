@@ -1,4 +1,5 @@
-.project-container {
+.project-container,
+.blog-post-container {
   .card {
     border-radius: 5px;
     height: 100%;
@@ -41,33 +42,3 @@
   }
 }
 
-.blog-post-container {
-  .horizontal-card {
-    height: 100%;
-
-    a {
-      height: 100%;
-    }
-
-    .card-image {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: top;
-      opacity: 0.8;
-      height: 250px;
-      border-radius: 5px 5px 0 0;
-    }
-
-    .card-description {
-      color: $base-medium-gray;
-    }
-
-    &:hover {
-    }
-  }
-
-  .card-as-link {
-    text-decoration: none;
-    color: inherit;
-  }
-}
