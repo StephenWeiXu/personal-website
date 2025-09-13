@@ -29,7 +29,7 @@ class Work extends Component {
 	render() {
 		return (
 			<div className="project-container">
-				<h2>Some Recent Work</h2>
+				<h2>Past Work</h2>
 
 				<Row>
 					{this.cards.map((card, index) => {

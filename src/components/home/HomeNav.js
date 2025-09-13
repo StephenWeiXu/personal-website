@@ -25,7 +25,7 @@ class HomeNav extends Component {
             </ul>
           </ScrollspyNav>
           }
-          <Link to="/blog" className="mls"><span>Blog</span></Link>
+          <Link to="/" className="mls"><span>Blog</span></Link>
         </Navbar.Collapse>
       </Navbar>
     )
